@@ -1,0 +1,78 @@
+{
+  "schemaVersion": "1",
+  "caseId": "apia-skipped-date-unsupported",
+  "contract": "recurrence",
+  "contractVersion": "1",
+  "title": "Decline a skipped civil date before selection",
+  "tags": [
+    "daily",
+    "policy",
+    "apia"
+  ],
+  "inputValidity": "unsupported",
+  "input": {
+    "timeZone": "Pacific/Apia",
+    "localTime": "09:00:00",
+    "firstCandidateDate": "2011-12-30",
+    "horizonDays": 2,
+    "strictlyAfter": "2011-12-29T00:00:00Z",
+    "gapPolicy": "shift-by-gap",
+    "foldPolicy": "earlier"
+  },
+  "expected": {
+    "status": "rejected",
+    "reasonCode": "UNSUPPORTED_RECURRENCE_TRANSITION"
+  },
+  "rationale": "Apia jumps from \u221210:00 to +14:00, skipping Dec 30. Preflight declines the whole window; no computed occurrence is claimed.",
+  "sources": [
+    "https://data.iana.org/time-zones/tzdb-2026a/australasia",
+    "https://www.iana.org/time-zones",
+    "https://tc39.es/proposal-temporal/docs/timezone.html"
+  ],
+  "oracle": {
+    "method": "Literal expected reviewed with Gregorian rules, manual UTC = local \u2212 offset, and independent CPython zoneinfo/TZif cross-check; no Temporal imports.",
+    "calculation": "Apia jumps from \u221210:00 to +14:00, skipping Dec 30. Preflight declines the whole window; no computed occurrence is claimed.",
+    "canaries": [
+      {
+        "timeZone": "Pacific/Apia",
+        "instant": "2011-12-30T19:00:00Z",
+        "offset": "+14:00",
+        "localDateTime": "2011-12-31T09:00:00"
+      },
+      {
+        "timeZone": "Pacific/Apia",
+        "instant": "2011-12-30T09:59:59Z",
+        "offset": "-10:00",
+        "localDateTime": "2011-12-29T23:59:59"
+      },
+      {
+        "timeZone": "Pacific/Apia",
+        "instant": "2011-12-30T10:00:00Z",
+        "offset": "+14:00",
+        "localDateTime": "2011-12-31T00:00:00"
+      }
+    ],
+    "transitions": [
+      {
+        "instant": "2011-12-30T10:00:00Z",
+        "beforeOffset": "-10:00",
+        "afterOffset": "+14:00",
+        "note": "2011-12-30 is skipped as a civil date; recurrence v1 declines this entire window."
+      }
+    ],
+    "candidates": [
+      {
+        "nominalDate": "2011-12-30",
+        "instants": [],
+        "forwardProjection": "2011-12-30T19:00:00Z"
+      },
+      {
+        "nominalDate": "2011-12-31",
+        "instants": [
+          "2011-12-30T19:00:00Z"
+        ]
+      }
+    ]
+  },
+  "reviewedAt": "2026-10-12"
+}

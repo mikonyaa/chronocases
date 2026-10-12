@@ -1,0 +1,13 @@
+# Verification record and reproduction
+
+Local verification uses macOS 26.7.1 / Darwin 25.6.0 arm64, Node 26.9.0, npm 11.19.1, ICU 78.3 and Node tzdata 2026a. Independent oracle tools are Python 3.13.7 with macOS TZif 2026d and `/usr/sbin/zdump`. Browser screenshots/tests use Google Chrome 155.0.8059.39 launched with a new Playwright context, not a normal user profile.
+
+The final source is checked by clean npm ci, strict type checking (server and browser), ESLint, 66 unit scenarios, 19 real child-process integration scenarios, 14 browser scenarios, independent corpus integrity/oracle checks, production build and a clean consumer outside the checkout. Consumer verification runs an actual custom user function, installed package init/correct/buggy adapters, one-case reproduction, a compiled TypeScript adapter, demo and standalone explorer. An additional consumer run executes both optional Vitest 5.0.4 and Jest 30.5.2 examples.
+
+The full correct corpus must have 35 PASS, 0 FAIL, 0 ADAPTER_ERROR, 1 UNSUPPORTED. The broken corpus has 19 PASS, 16 FAIL, 0 ADAPTER_ERROR, 1 UNSUPPORTED. The date-only, UTC bucket and fixed-24-hour mutations run through the same public adapter interface. The Apia negative self-test remains uncovered in the summary. Expected rejections and finite-window no-result are checked separately from operational errors.
+
+CI checks source commit S on push/main in Linux x64 Node 22/24/26 jobs. Each job runs clean install, types, lint, unit, independent oracle/integrity, build, real adapters, Chromium UI and exact-tgz consumer verification. Tested child TZ values also include UTC and Pacific/Honolulu in integration tests. Full action SHAs are pinned to verified upstream refs. The exact successful run URL, source S and actual CI runtime versions are recorded in the Release manifest, rather than inferred from a badge.
+
+Before public publication, the local final tgz must be installed again outside the checkout after all build/media/document changes. After successful CI, the checked Node 24 artifact supplies the exact release package and web bundle. Anonymous download checks archive format, byte length and SHA-256, installs the downloaded package in a new consumer and reruns the documented scenario. Pages is checked on its actual deployment URL with project-relative content, filter, copy/download, mobile and hard refresh.
+
+This record describes reproducible gates. The release-manifest and successful workflow are the evidence for a particular published version; no external user study, physical Safari validation or exhaustive timezone correctness is claimed.

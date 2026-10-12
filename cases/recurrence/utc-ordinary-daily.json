@@ -1,0 +1,71 @@
+{
+  "schemaVersion": "1",
+  "caseId": "utc-ordinary-daily",
+  "contract": "recurrence",
+  "contractVersion": "1",
+  "title": "UTC is a valid daily schedule zone",
+  "tags": [
+    "daily",
+    "policy"
+  ],
+  "inputValidity": "valid",
+  "input": {
+    "timeZone": "UTC",
+    "localTime": "09:00:00",
+    "firstCandidateDate": "2024-06-04",
+    "horizonDays": 2,
+    "strictlyAfter": "2024-06-04T08:00:00Z",
+    "gapPolicy": "shift-by-gap",
+    "foldPolicy": "earlier"
+  },
+  "expected": {
+    "status": "value",
+    "value": {
+      "nominalDate": "2024-06-04",
+      "resolvedLocalDateTime": "2024-06-04T09:00:00",
+      "instant": "2024-06-04T09:00:00Z",
+      "offset": "+00:00",
+      "appliedPolicy": "exact"
+    }
+  },
+  "rationale": "UTC 09:00 \u2212 00:00 = 09:00Z > 08:00Z. No transition or projection. ",
+  "sources": [
+    "https://data.iana.org/time-zones/tzdb-2026a/etcetera",
+    "https://www.iana.org/time-zones",
+    "https://tc39.es/proposal-temporal/docs/timezone.html"
+  ],
+  "oracle": {
+    "method": "Literal expected reviewed with Gregorian rules, manual UTC = local \u2212 offset, and independent CPython zoneinfo/TZif cross-check; no Temporal imports.",
+    "calculation": "UTC 09:00 \u2212 00:00 = 09:00Z > 08:00Z. No transition or projection. ",
+    "canaries": [
+      {
+        "timeZone": "UTC",
+        "instant": "2024-06-04T09:00:00Z",
+        "offset": "+00:00",
+        "localDateTime": "2024-06-04T09:00:00"
+      },
+      {
+        "timeZone": "UTC",
+        "instant": "2024-06-05T09:00:00Z",
+        "offset": "+00:00",
+        "localDateTime": "2024-06-05T09:00:00"
+      }
+    ],
+    "transitions": [],
+    "candidates": [
+      {
+        "nominalDate": "2024-06-04",
+        "instants": [
+          "2024-06-04T09:00:00Z"
+        ]
+      },
+      {
+        "nominalDate": "2024-06-05",
+        "instants": [
+          "2024-06-05T09:00:00Z"
+        ]
+      }
+    ]
+  },
+  "reviewedAt": "2026-10-12"
+}

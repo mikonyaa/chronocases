@@ -1,0 +1,90 @@
+{
+  "schemaVersion": "1",
+  "caseId": "lord-howe-gap-shift",
+  "contract": "recurrence",
+  "contractVersion": "1",
+  "title": "Shift by the actual 30-minute gap",
+  "tags": [
+    "daily",
+    "policy",
+    "lord-gap"
+  ],
+  "inputValidity": "valid",
+  "input": {
+    "timeZone": "Australia/Lord_Howe",
+    "localTime": "02:15:00",
+    "firstCandidateDate": "2024-10-06",
+    "horizonDays": 2,
+    "strictlyAfter": "2024-10-05T00:00:00Z",
+    "gapPolicy": "shift-by-gap",
+    "foldPolicy": "earlier"
+  },
+  "expected": {
+    "status": "value",
+    "value": {
+      "nominalDate": "2024-10-06",
+      "resolvedLocalDateTime": "2024-10-06T02:45:00",
+      "instant": "2024-10-05T15:45:00Z",
+      "offset": "+11:00",
+      "appliedPolicy": "gap:shift-by-gap"
+    }
+  },
+  "rationale": "02:15 + 00:30 gap = 02:45; UTC = Oct 6 02:45 \u2212 11:00 = Oct 5 15:45Z.",
+  "sources": [
+    "https://data.iana.org/time-zones/tzdb-2026a/australasia",
+    "https://www.iana.org/time-zones",
+    "https://tc39.es/proposal-temporal/docs/timezone.html"
+  ],
+  "oracle": {
+    "method": "Literal expected reviewed with Gregorian rules, manual UTC = local \u2212 offset, and independent CPython zoneinfo/TZif cross-check; no Temporal imports.",
+    "calculation": "02:15 + 00:30 gap = 02:45; UTC = Oct 6 02:45 \u2212 11:00 = Oct 5 15:45Z.",
+    "canaries": [
+      {
+        "timeZone": "Australia/Lord_Howe",
+        "instant": "2024-10-05T15:45:00Z",
+        "offset": "+11:00",
+        "localDateTime": "2024-10-06T02:45:00"
+      },
+      {
+        "timeZone": "Australia/Lord_Howe",
+        "instant": "2024-10-06T15:15:00Z",
+        "offset": "+11:00",
+        "localDateTime": "2024-10-07T02:15:00"
+      },
+      {
+        "timeZone": "Australia/Lord_Howe",
+        "instant": "2024-10-05T15:29:59Z",
+        "offset": "+10:30",
+        "localDateTime": "2024-10-06T01:59:59"
+      },
+      {
+        "timeZone": "Australia/Lord_Howe",
+        "instant": "2024-10-05T15:30:00Z",
+        "offset": "+11:00",
+        "localDateTime": "2024-10-06T02:30:00"
+      }
+    ],
+    "transitions": [
+      {
+        "instant": "2024-10-05T15:30:00Z",
+        "beforeOffset": "+10:30",
+        "afterOffset": "+11:00",
+        "note": "02:00\u201302:29:59 local is missing; gap duration 30 minutes."
+      }
+    ],
+    "candidates": [
+      {
+        "nominalDate": "2024-10-06",
+        "instants": [],
+        "forwardProjection": "2024-10-05T15:45:00Z"
+      },
+      {
+        "nominalDate": "2024-10-07",
+        "instants": [
+          "2024-10-06T15:15:00Z"
+        ]
+      }
+    ]
+  },
+  "reviewedAt": "2026-10-12"
+}

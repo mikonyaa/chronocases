@@ -1,0 +1,53 @@
+{
+  "schemaVersion": "1",
+  "caseId": "utc-window-empty",
+  "contract": "recurrence",
+  "contractVersion": "1",
+  "title": "Finite search window has no next value",
+  "tags": [
+    "daily",
+    "policy"
+  ],
+  "inputValidity": "valid",
+  "input": {
+    "timeZone": "UTC",
+    "localTime": "09:00:00",
+    "firstCandidateDate": "2024-06-04",
+    "horizonDays": 1,
+    "strictlyAfter": "2024-06-04T09:00:00Z",
+    "gapPolicy": "shift-by-gap",
+    "foldPolicy": "earlier"
+  },
+  "expected": {
+    "status": "no-occurrence",
+    "reasonCode": "NO_OCCURRENCE_IN_WINDOW"
+  },
+  "rationale": "The only candidate equals the cursor; the one-date window is exhausted.",
+  "sources": [
+    "https://data.iana.org/time-zones/tzdb-2026a/etcetera",
+    "https://www.iana.org/time-zones",
+    "https://tc39.es/proposal-temporal/docs/timezone.html"
+  ],
+  "oracle": {
+    "method": "Literal expected reviewed with Gregorian rules, manual UTC = local \u2212 offset, and independent CPython zoneinfo/TZif cross-check; no Temporal imports.",
+    "calculation": "The only candidate equals the cursor; the one-date window is exhausted.",
+    "canaries": [
+      {
+        "timeZone": "UTC",
+        "instant": "2024-06-04T09:00:00Z",
+        "offset": "+00:00",
+        "localDateTime": "2024-06-04T09:00:00"
+      }
+    ],
+    "transitions": [],
+    "candidates": [
+      {
+        "nominalDate": "2024-06-04",
+        "instants": [
+          "2024-06-04T09:00:00Z"
+        ]
+      }
+    ]
+  },
+  "reviewedAt": "2026-10-12"
+}

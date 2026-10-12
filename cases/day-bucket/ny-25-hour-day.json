@@ -1,0 +1,64 @@
+{
+  "schemaVersion": "1",
+  "caseId": "ny-25-hour-day",
+  "contract": "day-bucket",
+  "contractVersion": "1",
+  "title": "The autumn day ends after 25 hours",
+  "tags": [
+    "day-boundary"
+  ],
+  "inputValidity": "valid",
+  "input": {
+    "instant": "2024-11-04T04:59:59Z",
+    "timeZone": "America/New_York"
+  },
+  "expected": {
+    "status": "value",
+    "value": "2024-11-03"
+  },
+  "rationale": "UTC Nov 4 04:59:59 \u2212 05:00 = Nov 3 23:59:59; day bounds 04:00Z to next 05:00Z.",
+  "sources": [
+    "https://data.iana.org/time-zones/tzdb-2026a/northamerica",
+    "https://www.iana.org/time-zones",
+    "https://tc39.es/proposal-temporal/docs/timezone.html"
+  ],
+  "oracle": {
+    "method": "Literal expected reviewed with Gregorian rules, manual UTC = local \u2212 offset, and independent CPython zoneinfo/TZif cross-check; no Temporal imports.",
+    "calculation": "UTC Nov 4 04:59:59 \u2212 05:00 = Nov 3 23:59:59; day bounds 04:00Z to next 05:00Z.",
+    "canaries": [
+      {
+        "timeZone": "America/New_York",
+        "instant": "2024-11-04T04:59:59Z",
+        "offset": "-05:00",
+        "localDateTime": "2024-11-03T23:59:59"
+      },
+      {
+        "timeZone": "America/New_York",
+        "instant": "2024-11-03T05:59:59Z",
+        "offset": "-04:00",
+        "localDateTime": "2024-11-03T01:59:59"
+      },
+      {
+        "timeZone": "America/New_York",
+        "instant": "2024-11-03T06:00:00Z",
+        "offset": "-05:00",
+        "localDateTime": "2024-11-03T01:00:00"
+      }
+    ],
+    "transitions": [
+      {
+        "instant": "2024-11-03T06:00:00Z",
+        "beforeOffset": "-04:00",
+        "afterOffset": "-05:00",
+        "note": "01:00\u201301:59:59 local occurs twice; fold duration 60 minutes."
+      }
+    ],
+    "candidates": [],
+    "dayBounds": {
+      "start": "2024-11-03T04:00:00Z",
+      "end": "2024-11-04T05:00:00Z",
+      "hours": 25.0
+    }
+  },
+  "reviewedAt": "2026-10-12"
+}

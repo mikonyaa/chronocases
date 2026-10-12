@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "1",
+  "caseId": "bucket-invalid-zone",
+  "contract": "day-bucket",
+  "contractVersion": "1",
+  "title": "A deliberately invalid zone is a business rejection",
+  "tags": [
+    "invalid-input"
+  ],
+  "inputValidity": "invalid",
+  "input": {
+    "instant": "2024-06-04T00:00:00Z",
+    "timeZone": "Not/A_Zone"
+  },
+  "expected": {
+    "status": "rejected",
+    "reasonCode": "INVALID_TIME_ZONE"
+  },
+  "rationale": "Not/A_Zone is a deliberate invalid identifier, not a missing real IANA environment dependency.",
+  "sources": [
+    "https://www.iana.org/time-zones",
+    "https://tc39.es/proposal-temporal/docs/timezone.html"
+  ],
+  "oracle": {
+    "method": "Literal expected reviewed with Gregorian rules, manual UTC = local \u2212 offset, and independent CPython zoneinfo/TZif cross-check; no Temporal imports.",
+    "calculation": "Not/A_Zone is a deliberate invalid identifier, not a missing real IANA environment dependency.",
+    "canaries": [],
+    "transitions": [],
+    "candidates": []
+  },
+  "reviewedAt": "2026-10-12"
+}

@@ -1,0 +1,59 @@
+name: CI
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  verify:
+    name: Node ${{ matrix.node }} / ${{ matrix.tz }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - node: 22
+            tz: UTC
+          - node: 24
+            tz: America/New_York
+          - node: 26
+            tz: Pacific/Honolulu
+    env:
+      TZ: ${{ matrix.tz }}
+      CHRONOCASES_TEST_TZ: ${{ matrix.tz }}
+      PLAYWRIGHT_BROWSERS_PATH: ${{ github.workspace }}/.artifacts/browsers
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5, verified upstream
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6, verified upstream
+        with:
+          node-version: ${{ matrix.node }}
+          cache: npm
+      - run: npm ci
+      - run: npm run typecheck
+      - run: npm run lint
+      - run: npm run test:unit
+      - run: npm run verify:corpus
+      - run: npm run build
+      - run: npm run test:integration
+      - run: npx --no-install playwright install --with-deps chromium
+      - run: npm run test:ui
+      - run: npm run build:site
+      - run: node scripts/package-web.mjs
+      - run: npm run test:package
+      - name: Build provenance
+        run: node scripts/ci-provenance.mjs
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4, verified upstream
+        with:
+          name: checked-release-node-${{ matrix.node }}
+          path: |
+            .artifacts/package/chronocases-0.1.0.tgz
+            .artifacts/package/chronocases-explorer-example.zip
+            .artifacts/package-verification.json
+            .artifacts/ci-provenance.json
+          if-no-files-found: error
+          retention-days: 14

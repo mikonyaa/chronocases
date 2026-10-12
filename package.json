@@ -1,0 +1,42 @@
+{
+  "name": "chronocases",
+  "version": "0.1.0",
+  "description": "Portable regression cases for calendar dates, timezone day buckets and recurring schedules.",
+  "type": "module",
+  "license": "MIT",
+  "author": "Meiram Bakhytzhan (https://github.com/mikonyaa)",
+  "repository": { "type": "git", "url": "git+https://github.com/mikonyaa/chronocases.git" },
+  "homepage": "https://mikonyaa.github.io/chronocases/",
+  "engines": { "node": ">=22.13.0" },
+  "bin": { "chronocases": "dist/cli.js" },
+  "exports": {
+    ".": { "types": "./dist/index.d.ts", "import": "./dist/index.js" },
+    "./reference": { "types": "./dist/adapter/reference.d.ts", "import": "./dist/adapter/reference.js" },
+    "./schemas/case.json": "./resources/schemas/case.json",
+    "./schemas/report.json": "./resources/schemas/report.json",
+    "./package.json": "./package.json"
+  },
+  "files": ["dist", "cases", "resources", "examples", "docs", "oracle", "LICENSE", "CHANGELOG.md", "CONTRIBUTING.md", "SECURITY.md", "THIRD_PARTY.md"],
+  "scripts": {
+    "typecheck": "tsc --noEmit && tsc -p tsconfig.explorer.json --noEmit",
+    "lint": "eslint src tests scripts examples *.mjs",
+    "test:unit": "vitest run tests/unit",
+    "build": "node scripts/build.mjs",
+    "test:integration": "vitest run tests/integration",
+    "test:ui": "playwright test",
+    "test:package": "node scripts/verify-package.mjs",
+    "verify:corpus": "node scripts/verify-corpus.mjs && python3 oracle/cross-check.py",
+    "build:site": "node scripts/build-site.mjs",
+    "demo:capture": "node scripts/capture-demo.mjs"
+  },
+  "dependencies": { "@js-temporal/polyfill": "0.5.1", "ajv": "8.20.0" },
+  "devDependencies": {
+    "@playwright/test": "1.64.0",
+    "@types/node": "24.10.0",
+    "esbuild": "0.28.2",
+    "eslint": "10.12.0",
+    "typescript": "5.9.3",
+    "typescript-eslint": "8.71.2",
+    "vitest": "5.0.4"
+  }
+}

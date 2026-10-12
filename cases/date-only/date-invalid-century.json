@@ -1,0 +1,43 @@
+{
+  "schemaVersion": "1",
+  "caseId": "date-invalid-century",
+  "contract": "date-only",
+  "contractVersion": "1",
+  "title": "Reject Feb 29 in year 1900",
+  "tags": [
+    "invalid-date",
+    "gregorian-century"
+  ],
+  "inputValidity": "invalid",
+  "input": {
+    "date": "1900-02-29",
+    "storageTimeZone": "UTC",
+    "displayTimeZone": "UTC"
+  },
+  "expected": {
+    "status": "rejected",
+    "reasonCode": "INVALID_DATE"
+  },
+  "rationale": "A century divisible by 100 but not by 400 is not a leap year.",
+  "sources": [
+    "https://data.iana.org/time-zones/tzdb-2026a/etcetera",
+    "https://www.iana.org/time-zones",
+    "https://docs.python.org/3.13/library/datetime.html#date-objects",
+    "https://tc39.es/proposal-temporal/docs/plaindate.html"
+  ],
+  "oracle": {
+    "method": "Literal expected reviewed with Gregorian rules, manual UTC = local \u2212 offset, and independent CPython zoneinfo/TZif cross-check; no Temporal imports.",
+    "calculation": "1900 mod 100 = 0 and 1900 mod 400 != 0; February has 28 days.",
+    "canaries": [
+      {
+        "timeZone": "UTC",
+        "instant": "2024-06-04T00:00:00Z",
+        "offset": "+00:00",
+        "localDateTime": "2024-06-04T00:00:00"
+      }
+    ],
+    "transitions": [],
+    "candidates": []
+  },
+  "reviewedAt": "2026-10-12"
+}

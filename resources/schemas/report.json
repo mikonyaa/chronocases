@@ -1,0 +1,819 @@
+{
+  "type": "object",
+  "properties": {
+    "schemaVersion": {
+      "const": "1"
+    },
+    "packageVersion": {
+      "type": "string",
+      "maxLength": 40
+    },
+    "createdAt": {
+      "type": "string",
+      "maxLength": 80
+    },
+    "adapter": {
+      "type": "string",
+      "maxLength": 2048
+    },
+    "provenance": {
+      "type": "object",
+      "properties": {
+        "node": {
+          "type": "string",
+          "maxLength": 200
+        },
+        "platform": {
+          "type": "string",
+          "maxLength": 200
+        },
+        "osRelease": {
+          "type": "string",
+          "maxLength": 200
+        },
+        "arch": {
+          "type": "string",
+          "maxLength": 200
+        },
+        "icu": {
+          "type": "string",
+          "maxLength": 200
+        },
+        "tzdata": {
+          "type": "string",
+          "maxLength": 200
+        },
+        "processTZ": {
+          "type": "string",
+          "maxLength": 200
+        },
+        "defaultTimeZone": {
+          "type": "string",
+          "maxLength": 200
+        },
+        "corpusVersion": {
+          "type": "string",
+          "maxLength": 200
+        },
+        "corpusHash": {
+          "type": "string",
+          "maxLength": 200
+        },
+        "supportedTimeZones": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "maxLength": 100
+          },
+          "maxItems": 1000
+        },
+        "temporal": {
+          "type": "object",
+          "properties": {
+            "implementation": {
+              "type": "string",
+              "maxLength": 200
+            },
+            "version": {
+              "type": "string",
+              "maxLength": 200
+            },
+            "timezoneDatabase": {
+              "type": "string",
+              "maxLength": 200
+            }
+          },
+          "required": [
+            "implementation",
+            "version",
+            "timezoneDatabase"
+          ],
+          "additionalProperties": false
+        },
+        "adapterProcessTZ": {
+          "type": "string",
+          "maxLength": 200
+        }
+      },
+      "required": [
+        "node",
+        "platform",
+        "osRelease",
+        "arch",
+        "icu",
+        "tzdata",
+        "processTZ",
+        "defaultTimeZone",
+        "corpusVersion",
+        "corpusHash",
+        "supportedTimeZones",
+        "temporal",
+        "adapterProcessTZ"
+      ],
+      "additionalProperties": false
+    },
+    "summary": {
+      "type": "object",
+      "properties": {
+        "selectedContracts": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "date-only",
+              "day-bucket",
+              "recurrence"
+            ]
+          },
+          "maxItems": 3
+        },
+        "selected": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1000
+        },
+        "passed": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1000
+        },
+        "failed": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1000
+        },
+        "adapterErrors": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1000
+        },
+        "unsupported": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1000
+        },
+        "interrupted": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1000
+        },
+        "exitCode": {
+          "enum": [
+            0,
+            1,
+            2,
+            3,
+            130
+          ]
+        }
+      },
+      "required": [
+        "selectedContracts",
+        "selected",
+        "passed",
+        "failed",
+        "adapterErrors",
+        "unsupported",
+        "interrupted",
+        "exitCode"
+      ],
+      "additionalProperties": false
+    },
+    "results": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "caseId": {
+            "type": "string",
+            "maxLength": 160
+          },
+          "contract": {
+            "enum": [
+              "date-only",
+              "day-bucket",
+              "recurrence"
+            ]
+          },
+          "status": {
+            "enum": [
+              "PASS",
+              "FAIL",
+              "ADAPTER_ERROR",
+              "UNSUPPORTED",
+              "INTERRUPTED"
+            ]
+          },
+          "expected": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "status": {
+                    "const": "value"
+                  },
+                  "value": {
+                    "oneOf": [
+                      {
+                        "type": "string",
+                        "maxLength": 100
+                      },
+                      {
+                        "type": "object",
+                        "properties": {
+                          "nominalDate": {
+                            "type": "string",
+                            "maxLength": 80
+                          },
+                          "resolvedLocalDateTime": {
+                            "type": "string",
+                            "maxLength": 80
+                          },
+                          "instant": {
+                            "type": "string",
+                            "maxLength": 80
+                          },
+                          "offset": {
+                            "type": "string",
+                            "maxLength": 80
+                          },
+                          "appliedPolicy": {
+                            "type": "string",
+                            "maxLength": 80
+                          }
+                        },
+                        "required": [
+                          "nominalDate",
+                          "resolvedLocalDateTime",
+                          "instant",
+                          "offset",
+                          "appliedPolicy"
+                        ],
+                        "additionalProperties": false
+                      }
+                    ]
+                  }
+                },
+                "required": [
+                  "status",
+                  "value"
+                ],
+                "additionalProperties": false
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "status": {
+                    "const": "rejected"
+                  },
+                  "reasonCode": {
+                    "enum": [
+                      "INVALID_DATE",
+                      "INVALID_INSTANT",
+                      "INVALID_TIME_ZONE",
+                      "INVALID_LOCAL_TIME",
+                      "INVALID_WINDOW",
+                      "INVALID_POLICY",
+                      "OUT_OF_RANGE",
+                      "AMBIGUOUS_LOCAL_TIME",
+                      "NONEXISTENT_LOCAL_TIME",
+                      "UNSUPPORTED_RECURRENCE_TRANSITION"
+                    ]
+                  }
+                },
+                "required": [
+                  "status",
+                  "reasonCode"
+                ],
+                "additionalProperties": false
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "status": {
+                    "const": "no-occurrence"
+                  },
+                  "reasonCode": {
+                    "const": "NO_OCCURRENCE_IN_WINDOW"
+                  }
+                },
+                "required": [
+                  "status",
+                  "reasonCode"
+                ],
+                "additionalProperties": false
+              }
+            ]
+          },
+          "actual": {},
+          "explanation": {
+            "type": "string",
+            "maxLength": 16384
+          },
+          "reasonCode": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 100
+          },
+          "repro": {
+            "type": "string",
+            "maxLength": 16384
+          },
+          "durationMs": {
+            "type": "number",
+            "minimum": 0
+          },
+          "logs": {
+            "type": "object",
+            "properties": {
+              "stdout": {
+                "type": "string",
+                "maxLength": 65536
+              },
+              "stderr": {
+                "type": "string",
+                "maxLength": 65536
+              },
+              "truncated": {
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "stdout",
+              "stderr",
+              "truncated"
+            ],
+            "additionalProperties": false
+          },
+          "fixture": {
+            "type": "object",
+            "properties": {
+              "schemaVersion": {
+                "const": "1"
+              },
+              "caseId": {
+                "type": "string",
+                "pattern": "^[a-z0-9][a-z0-9-]*$",
+                "maxLength": 160
+              },
+              "contract": {
+                "enum": [
+                  "date-only",
+                  "day-bucket",
+                  "recurrence"
+                ]
+              },
+              "contractVersion": {
+                "const": "1"
+              },
+              "title": {
+                "type": "string",
+                "maxLength": 200
+              },
+              "tags": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "maxLength": 100
+                },
+                "maxItems": 20
+              },
+              "inputValidity": {
+                "enum": [
+                  "valid",
+                  "invalid",
+                  "unsupported"
+                ]
+              },
+              "input": {
+                "type": "object"
+              },
+              "expected": {
+                "oneOf": [
+                  {
+                    "type": "object",
+                    "properties": {
+                      "status": {
+                        "const": "value"
+                      },
+                      "value": {
+                        "oneOf": [
+                          {
+                            "type": "string",
+                            "maxLength": 100
+                          },
+                          {
+                            "type": "object",
+                            "properties": {
+                              "nominalDate": {
+                                "type": "string",
+                                "maxLength": 80
+                              },
+                              "resolvedLocalDateTime": {
+                                "type": "string",
+                                "maxLength": 80
+                              },
+                              "instant": {
+                                "type": "string",
+                                "maxLength": 80
+                              },
+                              "offset": {
+                                "type": "string",
+                                "maxLength": 80
+                              },
+                              "appliedPolicy": {
+                                "type": "string",
+                                "maxLength": 80
+                              }
+                            },
+                            "required": [
+                              "nominalDate",
+                              "resolvedLocalDateTime",
+                              "instant",
+                              "offset",
+                              "appliedPolicy"
+                            ],
+                            "additionalProperties": false
+                          }
+                        ]
+                      }
+                    },
+                    "required": [
+                      "status",
+                      "value"
+                    ],
+                    "additionalProperties": false
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "status": {
+                        "const": "rejected"
+                      },
+                      "reasonCode": {
+                        "enum": [
+                          "INVALID_DATE",
+                          "INVALID_INSTANT",
+                          "INVALID_TIME_ZONE",
+                          "INVALID_LOCAL_TIME",
+                          "INVALID_WINDOW",
+                          "INVALID_POLICY",
+                          "OUT_OF_RANGE",
+                          "AMBIGUOUS_LOCAL_TIME",
+                          "NONEXISTENT_LOCAL_TIME",
+                          "UNSUPPORTED_RECURRENCE_TRANSITION"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "status",
+                      "reasonCode"
+                    ],
+                    "additionalProperties": false
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "status": {
+                        "const": "no-occurrence"
+                      },
+                      "reasonCode": {
+                        "const": "NO_OCCURRENCE_IN_WINDOW"
+                      }
+                    },
+                    "required": [
+                      "status",
+                      "reasonCode"
+                    ],
+                    "additionalProperties": false
+                  }
+                ]
+              },
+              "rationale": {
+                "type": "string",
+                "maxLength": 16384
+              },
+              "sources": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "pattern": "^https://",
+                  "maxLength": 2048
+                },
+                "maxItems": 10
+              },
+              "oracle": {
+                "type": "object",
+                "properties": {
+                  "method": {
+                    "type": "string",
+                    "maxLength": 16384
+                  },
+                  "calculation": {
+                    "type": "string",
+                    "maxLength": 16384
+                  },
+                  "canaries": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "timeZone": {
+                          "type": "string",
+                          "maxLength": 100
+                        },
+                        "instant": {
+                          "type": "string",
+                          "maxLength": 80
+                        },
+                        "offset": {
+                          "type": "string",
+                          "maxLength": 30
+                        },
+                        "localDateTime": {
+                          "type": "string",
+                          "maxLength": 80
+                        }
+                      },
+                      "required": [
+                        "timeZone",
+                        "instant",
+                        "offset",
+                        "localDateTime"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "maxItems": 1000
+                  },
+                  "transitions": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "instant": {
+                          "type": "string",
+                          "maxLength": 80
+                        },
+                        "beforeOffset": {
+                          "type": "string",
+                          "maxLength": 30
+                        },
+                        "afterOffset": {
+                          "type": "string",
+                          "maxLength": 30
+                        },
+                        "note": {
+                          "type": "string",
+                          "maxLength": 16384
+                        }
+                      },
+                      "required": [
+                        "instant",
+                        "beforeOffset",
+                        "afterOffset",
+                        "note"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "maxItems": 10
+                  },
+                  "candidates": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "nominalDate": {
+                          "type": "string",
+                          "maxLength": 80
+                        },
+                        "instants": {
+                          "type": "array",
+                          "items": {
+                            "type": "string",
+                            "maxLength": 80
+                          },
+                          "maxItems": 2
+                        },
+                        "forwardProjection": {
+                          "type": "string",
+                          "maxLength": 80
+                        }
+                      },
+                      "required": [
+                        "nominalDate",
+                        "instants"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "maxItems": 370
+                  },
+                  "dayBounds": {
+                    "type": "object",
+                    "properties": {
+                      "start": {
+                        "type": "string",
+                        "maxLength": 80
+                      },
+                      "end": {
+                        "type": "string",
+                        "maxLength": 80
+                      },
+                      "hours": {
+                        "type": "number"
+                      }
+                    },
+                    "required": [
+                      "start",
+                      "end",
+                      "hours"
+                    ],
+                    "additionalProperties": false
+                  }
+                },
+                "required": [
+                  "method",
+                  "calculation",
+                  "canaries",
+                  "transitions",
+                  "candidates"
+                ],
+                "additionalProperties": false
+              },
+              "reviewedAt": {
+                "type": "string",
+                "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+              }
+            },
+            "required": [
+              "schemaVersion",
+              "caseId",
+              "contract",
+              "contractVersion",
+              "title",
+              "tags",
+              "inputValidity",
+              "input",
+              "expected",
+              "rationale",
+              "sources",
+              "oracle",
+              "reviewedAt"
+            ],
+            "additionalProperties": false,
+            "allOf": [
+              {
+                "if": {
+                  "properties": {
+                    "contract": {
+                      "const": "date-only"
+                    }
+                  }
+                },
+                "then": {
+                  "properties": {
+                    "input": {
+                      "type": "object",
+                      "properties": {
+                        "date": {
+                          "type": "string",
+                          "maxLength": 100
+                        },
+                        "storageTimeZone": {
+                          "type": "string",
+                          "maxLength": 100
+                        },
+                        "displayTimeZone": {
+                          "type": "string",
+                          "maxLength": 100
+                        }
+                      },
+                      "required": [
+                        "date",
+                        "storageTimeZone",
+                        "displayTimeZone"
+                      ],
+                      "additionalProperties": false
+                    }
+                  }
+                }
+              },
+              {
+                "if": {
+                  "properties": {
+                    "contract": {
+                      "const": "day-bucket"
+                    }
+                  }
+                },
+                "then": {
+                  "properties": {
+                    "input": {
+                      "type": "object",
+                      "properties": {
+                        "instant": {
+                          "type": "string",
+                          "maxLength": 100
+                        },
+                        "timeZone": {
+                          "type": "string",
+                          "maxLength": 100
+                        }
+                      },
+                      "required": [
+                        "instant",
+                        "timeZone"
+                      ],
+                      "additionalProperties": false
+                    }
+                  }
+                }
+              },
+              {
+                "if": {
+                  "properties": {
+                    "contract": {
+                      "const": "recurrence"
+                    }
+                  }
+                },
+                "then": {
+                  "properties": {
+                    "input": {
+                      "type": "object",
+                      "properties": {
+                        "timeZone": {
+                          "type": "string",
+                          "maxLength": 100
+                        },
+                        "localTime": {
+                          "type": "string",
+                          "maxLength": 100
+                        },
+                        "firstCandidateDate": {
+                          "type": "string",
+                          "maxLength": 100
+                        },
+                        "strictlyAfter": {
+                          "type": "string",
+                          "maxLength": 100
+                        },
+                        "gapPolicy": {
+                          "type": "string",
+                          "maxLength": 100
+                        },
+                        "foldPolicy": {
+                          "type": "string",
+                          "maxLength": 100
+                        },
+                        "horizonDays": {
+                          "type": "integer"
+                        }
+                      },
+                      "required": [
+                        "timeZone",
+                        "localTime",
+                        "firstCandidateDate",
+                        "strictlyAfter",
+                        "gapPolicy",
+                        "foldPolicy",
+                        "horizonDays"
+                      ],
+                      "additionalProperties": false
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        "required": [
+          "caseId",
+          "contract",
+          "status",
+          "expected",
+          "actual",
+          "explanation",
+          "reasonCode",
+          "repro",
+          "durationMs",
+          "logs",
+          "fixture"
+        ],
+        "additionalProperties": false
+      },
+      "maxItems": 1000
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "packageVersion",
+    "createdAt",
+    "adapter",
+    "provenance",
+    "summary",
+    "results"
+  ],
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}

@@ -1,0 +1,45 @@
+{
+  "schemaVersion": "1",
+  "caseId": "offset-input-utc-leap-boundary",
+  "contract": "day-bucket",
+  "contractVersion": "1",
+  "title": "Numeric offset input crosses a leap-day boundary",
+  "tags": [
+    "day-boundary"
+  ],
+  "inputValidity": "valid",
+  "input": {
+    "instant": "2024-03-01T00:15:00+05:45",
+    "timeZone": "UTC"
+  },
+  "expected": {
+    "status": "value",
+    "value": "2024-02-29"
+  },
+  "rationale": "March 1 00:15 \u2212 05:45 = Feb 29 18:30Z. A true UTC bucket is valid.",
+  "sources": [
+    "https://data.iana.org/time-zones/tzdb-2026a/etcetera",
+    "https://www.iana.org/time-zones",
+    "https://tc39.es/proposal-temporal/docs/timezone.html"
+  ],
+  "oracle": {
+    "method": "Literal expected reviewed with Gregorian rules, manual UTC = local \u2212 offset, and independent CPython zoneinfo/TZif cross-check; no Temporal imports.",
+    "calculation": "March 1 00:15 \u2212 05:45 = Feb 29 18:30Z. A true UTC bucket is valid.",
+    "canaries": [
+      {
+        "timeZone": "UTC",
+        "instant": "2024-02-29T18:30:00Z",
+        "offset": "+00:00",
+        "localDateTime": "2024-02-29T18:30:00"
+      }
+    ],
+    "transitions": [],
+    "candidates": [],
+    "dayBounds": {
+      "start": "2024-02-29T00:00:00Z",
+      "end": "2024-03-01T00:00:00Z",
+      "hours": 24.0
+    }
+  },
+  "reviewedAt": "2026-10-12"
+}

@@ -1,0 +1,46 @@
+{
+  "schemaVersion": "1",
+  "caseId": "recurrence-window-out-of-range",
+  "contract": "recurrence",
+  "contractVersion": "1",
+  "title": "The entire nominal window must fit v1",
+  "tags": [
+    "daily",
+    "policy"
+  ],
+  "inputValidity": "invalid",
+  "input": {
+    "timeZone": "UTC",
+    "localTime": "09:00:00",
+    "firstCandidateDate": "2100-12-31",
+    "horizonDays": 2,
+    "strictlyAfter": "2100-12-30T00:00:00Z",
+    "gapPolicy": "shift-by-gap",
+    "foldPolicy": "earlier"
+  },
+  "expected": {
+    "status": "rejected",
+    "reasonCode": "OUT_OF_RANGE"
+  },
+  "rationale": "The included second nominal date would be 2101-01-01, outside v1. Reject before searching.",
+  "sources": [
+    "https://data.iana.org/time-zones/tzdb-2026a/etcetera",
+    "https://www.iana.org/time-zones",
+    "https://tc39.es/proposal-temporal/docs/timezone.html"
+  ],
+  "oracle": {
+    "method": "Literal expected reviewed with Gregorian rules, manual UTC = local \u2212 offset, and independent CPython zoneinfo/TZif cross-check; no Temporal imports.",
+    "calculation": "The included second nominal date would be 2101-01-01, outside v1. Reject before searching.",
+    "canaries": [
+      {
+        "timeZone": "UTC",
+        "instant": "2024-06-04T00:00:00Z",
+        "offset": "+00:00",
+        "localDateTime": "2024-06-04T00:00:00"
+      }
+    ],
+    "transitions": [],
+    "candidates": []
+  },
+  "reviewedAt": "2026-10-12"
+}

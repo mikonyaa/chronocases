@@ -1,0 +1,45 @@
+{
+  "schemaVersion": "1",
+  "caseId": "la-at-midnight",
+  "contract": "day-bucket",
+  "contractVersion": "1",
+  "title": "Local midnight belongs to the new day",
+  "tags": [
+    "day-boundary"
+  ],
+  "inputValidity": "valid",
+  "input": {
+    "instant": "2024-06-04T07:00:00Z",
+    "timeZone": "America/Los_Angeles"
+  },
+  "expected": {
+    "status": "value",
+    "value": "2024-06-04"
+  },
+  "rationale": "UTC 07:00:00 \u2212 07:00 = June 4, 00:00:00.",
+  "sources": [
+    "https://data.iana.org/time-zones/tzdb-2026a/northamerica",
+    "https://www.iana.org/time-zones",
+    "https://tc39.es/proposal-temporal/docs/timezone.html"
+  ],
+  "oracle": {
+    "method": "Literal expected reviewed with Gregorian rules, manual UTC = local \u2212 offset, and independent CPython zoneinfo/TZif cross-check; no Temporal imports.",
+    "calculation": "UTC 07:00:00 \u2212 07:00 = June 4, 00:00:00.",
+    "canaries": [
+      {
+        "timeZone": "America/Los_Angeles",
+        "instant": "2024-06-04T07:00:00Z",
+        "offset": "-07:00",
+        "localDateTime": "2024-06-04T00:00:00"
+      }
+    ],
+    "transitions": [],
+    "candidates": [],
+    "dayBounds": {
+      "start": "2024-06-04T07:00:00Z",
+      "end": "2024-06-05T07:00:00Z",
+      "hours": 24.0
+    }
+  },
+  "reviewedAt": "2026-10-12"
+}

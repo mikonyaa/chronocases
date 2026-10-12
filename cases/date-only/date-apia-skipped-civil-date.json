@@ -1,0 +1,43 @@
+{
+  "schemaVersion": "1",
+  "caseId": "date-apia-skipped-civil-date",
+  "contract": "date-only",
+  "contractVersion": "1",
+  "title": "Skipped civil date is still a valid label",
+  "tags": [
+    "date-label",
+    "skipped-date"
+  ],
+  "inputValidity": "valid",
+  "input": {
+    "date": "2011-12-30",
+    "storageTimeZone": "Pacific/Apia",
+    "displayTimeZone": "Pacific/Apia"
+  },
+  "expected": {
+    "status": "value",
+    "value": "2011-12-30"
+  },
+  "rationale": "Date-only labels need not correspond to an instant in a display zone. Apia skipped this civil date but the Gregorian label remains valid.",
+  "sources": [
+    "https://data.iana.org/time-zones/tzdb-2026a/australasia",
+    "https://www.iana.org/time-zones",
+    "https://docs.python.org/3.13/library/datetime.html#date-objects",
+    "https://tc39.es/proposal-temporal/docs/plaindate.html"
+  ],
+  "oracle": {
+    "method": "Literal expected reviewed with Gregorian rules, manual UTC = local \u2212 offset, and independent CPython zoneinfo/TZif cross-check; no Temporal imports.",
+    "calculation": "Gregorian 2011-12-30 is valid; no timezone mapping is part of date-only storage.",
+    "canaries": [
+      {
+        "timeZone": "Pacific/Apia",
+        "instant": "2024-06-04T00:00:00Z",
+        "offset": "+13:00",
+        "localDateTime": "2024-06-04T13:00:00"
+      }
+    ],
+    "transitions": [],
+    "candidates": []
+  },
+  "reviewedAt": "2026-10-12"
+}

@@ -1,0 +1,90 @@
+{
+  "schemaVersion": "1",
+  "caseId": "ny-gap-skip",
+  "contract": "recurrence",
+  "contractVersion": "1",
+  "title": "Skip the nominal date in the gap",
+  "tags": [
+    "daily",
+    "policy",
+    "ny-gap"
+  ],
+  "inputValidity": "valid",
+  "input": {
+    "timeZone": "America/New_York",
+    "localTime": "02:30:00",
+    "firstCandidateDate": "2024-03-10",
+    "horizonDays": 2,
+    "strictlyAfter": "2024-03-10T00:00:00Z",
+    "gapPolicy": "skip",
+    "foldPolicy": "earlier"
+  },
+  "expected": {
+    "status": "value",
+    "value": {
+      "nominalDate": "2024-03-11",
+      "resolvedLocalDateTime": "2024-03-11T02:30:00",
+      "instant": "2024-03-11T06:30:00Z",
+      "offset": "-04:00",
+      "appliedPolicy": "exact"
+    }
+  },
+  "rationale": "March 10 has zero candidates. March 11 02:30 \u2212 (\u221204:00) = 06:30Z.",
+  "sources": [
+    "https://data.iana.org/time-zones/tzdb-2026a/northamerica",
+    "https://www.iana.org/time-zones",
+    "https://tc39.es/proposal-temporal/docs/timezone.html"
+  ],
+  "oracle": {
+    "method": "Literal expected reviewed with Gregorian rules, manual UTC = local \u2212 offset, and independent CPython zoneinfo/TZif cross-check; no Temporal imports.",
+    "calculation": "March 10 has zero candidates. March 11 02:30 \u2212 (\u221204:00) = 06:30Z.",
+    "canaries": [
+      {
+        "timeZone": "America/New_York",
+        "instant": "2024-03-10T07:30:00Z",
+        "offset": "-04:00",
+        "localDateTime": "2024-03-10T03:30:00"
+      },
+      {
+        "timeZone": "America/New_York",
+        "instant": "2024-03-11T06:30:00Z",
+        "offset": "-04:00",
+        "localDateTime": "2024-03-11T02:30:00"
+      },
+      {
+        "timeZone": "America/New_York",
+        "instant": "2024-03-10T06:59:59Z",
+        "offset": "-05:00",
+        "localDateTime": "2024-03-10T01:59:59"
+      },
+      {
+        "timeZone": "America/New_York",
+        "instant": "2024-03-10T07:00:00Z",
+        "offset": "-04:00",
+        "localDateTime": "2024-03-10T03:00:00"
+      }
+    ],
+    "transitions": [
+      {
+        "instant": "2024-03-10T07:00:00Z",
+        "beforeOffset": "-05:00",
+        "afterOffset": "-04:00",
+        "note": "02:00\u201302:59:59 local is missing; gap duration 60 minutes."
+      }
+    ],
+    "candidates": [
+      {
+        "nominalDate": "2024-03-10",
+        "instants": [],
+        "forwardProjection": "2024-03-10T07:30:00Z"
+      },
+      {
+        "nominalDate": "2024-03-11",
+        "instants": [
+          "2024-03-11T06:30:00Z"
+        ]
+      }
+    ]
+  },
+  "reviewedAt": "2026-10-12"
+}

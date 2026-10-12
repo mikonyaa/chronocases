@@ -1,0 +1,40 @@
+{
+  "schemaVersion": "1",
+  "caseId": "instant-missing-offset",
+  "contract": "day-bucket",
+  "contractVersion": "1",
+  "title": "Reject an instant without a timezone suffix",
+  "tags": [
+    "invalid-input"
+  ],
+  "inputValidity": "invalid",
+  "input": {
+    "instant": "2024-06-04T00:00:00",
+    "timeZone": "UTC"
+  },
+  "expected": {
+    "status": "rejected",
+    "reasonCode": "INVALID_INSTANT"
+  },
+  "rationale": "No Z or numeric offset means the input does not identify one instant.",
+  "sources": [
+    "https://data.iana.org/time-zones/tzdb-2026a/etcetera",
+    "https://www.iana.org/time-zones",
+    "https://tc39.es/proposal-temporal/docs/timezone.html"
+  ],
+  "oracle": {
+    "method": "Literal expected reviewed with Gregorian rules, manual UTC = local \u2212 offset, and independent CPython zoneinfo/TZif cross-check; no Temporal imports.",
+    "calculation": "No Z or numeric offset means the input does not identify one instant.",
+    "canaries": [
+      {
+        "timeZone": "UTC",
+        "instant": "2024-06-04T00:00:00Z",
+        "offset": "+00:00",
+        "localDateTime": "2024-06-04T00:00:00"
+      }
+    ],
+    "transitions": [],
+    "candidates": []
+  },
+  "reviewedAt": "2026-10-12"
+}

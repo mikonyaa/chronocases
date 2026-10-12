@@ -1,0 +1,29 @@
+{
+  "reviewedAt": "2026-10-12",
+  "corpusVersion": "1.0.0",
+  "corpusHash": "a552268ca7a26fd1ca4fefcb73e68028647f4f9e8c444ef72654a2735c0df28c",
+  "cases": 36,
+  "review": "Implementation-author review plus independent tool cross-check; no external maintainer review claimed.",
+  "python": "3.13.7",
+  "TZPATH": [
+    "/usr/share/zoneinfo",
+    "/usr/lib/zoneinfo",
+    "/usr/share/lib/zoneinfo",
+    "/etc/zoneinfo"
+  ],
+  "systemTZData": "2026d",
+  "node": {
+    "node": "v26.9.0",
+    "icu": "78.3",
+    "tz": "2026a",
+    "arch": "arm64",
+    "platform": "darwin"
+  },
+  "ianaSourceRelease": "2026a",
+  "ianaSourceSHA256": {
+    "northamerica": "44706515a63546cde04a54f1dafcb254298f1a7c569ad1d106a88988d9c187cd",
+    "asia": "cd12fe2bd64a02d808fd34abb92f08f19e5da20133a1c6c347d11171c00d9e1c",
+    "etcetera": "7281f095b42c13c4ae36b8bcba884e81dbb38127221fc1d9805c4dbf852487db",
+    "australasia": "e60bee81387d105dc2a31eef7defd0d0061322abd65c7a21c3bbcbb96e7c2d6b"
+  }
+}
