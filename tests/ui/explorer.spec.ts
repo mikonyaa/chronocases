@@ -6,6 +6,7 @@ import { pathToFileURL } from 'node:url';
 import { execFileSync } from 'node:child_process';
 import { generateExplorer } from '../../dist/explorer/index.js';
 import { runCases } from '../../dist/index.js';
+import { payload as logPayload } from '../fixtures/dollar-logs.mjs';
 let server: Server; let baseURL: string;
 let correct: import('../../src/types.js').Report;
 test.beforeAll(async () => {
@@ -87,4 +88,24 @@ test('standalone file works offline with copy fallback and download', async ({ p
   await context.setOffline(true); await page.goto(pathToFileURL(resolve('site/explorer.html')).href); await expect(page.locator('#case-detail')).toContainText('2024-06-03');
   await page.getByRole('button', { name: 'Copy command' }).click(); await expect(page.locator('#notice')).toContainText(/copied|selected/);
   const download = page.waitForEvent('download'); await page.getByRole('button', { name: 'Download JSON' }).click(); expect((await download).suggestedFilename()).toBe('chronocases-report.json');
+});
+test('real child dollar and hostile logs remain exact visible text in standalone HTML', async ({ page, context }) => {
+  const report = await runCases({ adapterPath: 'tests/fixtures/dollar-logs.mjs', caseId: 'date-la-roundtrip' });
+  const path = resolve('.artifacts/ui/dollar.html');
+  await writeFile(path, await generateExplorer(report));
+  const errors: string[] = [], requests: string[] = [];
+  page.on('pageerror', error => errors.push(error.message));
+  page.on('request', request => { if (/^https?:/.test(request.url())) requests.push(request.url()); });
+  await context.setOffline(true);
+  await page.goto(pathToFileURL(path).href);
+  await page.getByText('Adapter logs', { exact: true }).click();
+  await expect(page.locator('details pre')).toHaveText(`stdout:\n${logPayload}\nstderr:\n${logPayload}`);
+  expect(await page.locator('details pre').textContent()).toBe(`stdout:\n${logPayload}\nstderr:\n${logPayload}`);
+  expect(await page.evaluate(() => 'auditInjected' in globalThis)).toBe(false);
+  await expect(page.locator('img')).toHaveCount(0);
+  const pending = page.waitForEvent('download');
+  await page.getByRole('button', { name: 'Download JSON' }).click();
+  const downloaded = await (await pending).path();
+  expect(JSON.parse(await readFile(downloaded!, 'utf8'))).toEqual(report);
+  expect(errors).toEqual([]); expect(requests).toEqual([]);
 });
