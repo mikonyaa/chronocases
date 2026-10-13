@@ -7,15 +7,16 @@ import { checkEnvironment, provenance } from '../provenance/index.js';
 import { PACKAGE_VERSION, getCorpusHash, loadCases, selectCases } from '../corpus/index.js';
 import { LIMITS } from '../schemas/limits.js';
 import { CONTRACTS, type ChronoCase, type CaseResult, type Report, type ResultStatus } from '../types.js';
+import { BoundedLogCollector } from './logs.js';
 const functions = { 'date-only': 'dateOnlyRoundtrip', 'day-bucket': 'instantToDayBucket', recurrence: 'nextOccurrence' } as const;
 export interface RunOptions { adapterPath: string; caseId?: string; contract?: string; tz?: string; timeoutMs?: number; signal?: AbortSignal; adapterLabel?: string; corpusHash?: string }
 interface WorkerReply { kind: 'result' | 'error' | 'unsupported'; actual?: unknown; reasonCode?: string; invalidShape?: boolean }
 const shell = (s: string): string => `'${s.replaceAll("'", "'\\''")}'`;
 function execute(fixture: ChronoCase, options: RunOptions, repro: string): Promise<CaseResult> {
   const started = performance.now();
-  const logs = { stdout: '', stderr: '', truncated: false };
-  const base = { caseId: fixture.caseId, contract: fixture.contract, expected: fixture.expected, repro, fixture, logs };
-  const result = (status: ResultStatus, actual: unknown, reasonCode: string | null, explanation: string): CaseResult => ({ ...base, status, actual, reasonCode, explanation, durationMs: Math.round(performance.now() - started) });
+  const collector = new BoundedLogCollector(LIMITS.logBytes);
+  const base = { caseId: fixture.caseId, contract: fixture.contract, expected: fixture.expected, repro, fixture };
+  const result = (status: ResultStatus, actual: unknown, reasonCode: string | null, explanation: string): CaseResult => ({ ...base, logs: collector.finish(), status, actual, reasonCode, explanation, durationMs: Math.round(performance.now() - started) });
   const environmentIssue = checkEnvironment(fixture);
   if (environmentIssue) return Promise.resolve(result('UNSUPPORTED', null, 'UNSUPPORTED_ENVIRONMENT', environmentIssue));
   if (options.signal?.aborted) return Promise.resolve(result('INTERRUPTED', null, 'INTERRUPTED', 'Interrupted before adapter execution.'));
@@ -33,10 +34,8 @@ function execute(fixture: ChronoCase, options: RunOptions, repro: string): Promi
     }
     options.signal?.addEventListener('abort', abort, { once: true });
     for (const stream of ['stdout', 'stderr'] as const) child[stream]?.on('data', (chunk: Buffer) => {
-      const used = Buffer.byteLength(logs.stdout) + Buffer.byteLength(logs.stderr);
-      const available = Math.max(0, LIMITS.logBytes - used);
-      logs[stream] += chunk.subarray(0, available).toString('utf8');
-      if (chunk.length > available) { logs.truncated = true; finish('ADAPTER_ERROR', null, 'ADAPTER_LOG_LIMIT', 'Adapter log limit exceeded; captured stdout/stderr are bounded and separate from the IPC result.'); }
+      if (settled) return;
+      if (collector.append(stream, chunk)) finish('ADAPTER_ERROR', null, 'ADAPTER_LOG_LIMIT', 'Adapter log limit exceeded; captured stdout/stderr are bounded and separate from the IPC result.');
     });
     child.on('message', (message: WorkerReply) => { reply = message; });
     child.on('error', () => finish('ADAPTER_ERROR', null, 'ADAPTER_PROCESS_ERROR', 'Unable to start or communicate with the adapter child. Details omitted.'));
