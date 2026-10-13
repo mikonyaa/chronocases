@@ -1,4 +1,7 @@
 import reportSchema from '../../resources/schemas/report.json';
+import { validateReportSemantics, type ReportCorpus } from '../report/semantics.js';
+import { checkJsonLimits } from '../schemas/limits.js';
+declare const CHRONOCASES_CORPUS: ReportCorpus;
 import type { Report, CaseResult, Outcome } from '../types.js';
 type Schema = { type?: string | string[]; const?: unknown; enum?: unknown[]; required?: string[]; properties?: Record<string, Schema>; additionalProperties?: boolean; items?: Schema; maxItems?: number; maxLength?: number; pattern?: string; minimum?: number; maximum?: number; oneOf?: Schema[]; allOf?: Schema[]; if?: Schema; then?: Schema };
 function schemaValid(value: unknown, schema: Schema): boolean {
@@ -21,23 +24,12 @@ function schemaValid(value: unknown, schema: Schema): boolean {
   }
   return true;
 }
-function limits(value: unknown, depth = 0): void {
-  if (depth > 20 || typeof value === 'string' && value.length > 65536) throw Error('JSON depth/string limit exceeded');
-  if (value && typeof value === 'object') {
-    if (Object.keys(value).length > 5000) throw Error('JSON container limit exceeded');
-    for (const child of Object.values(value)) limits(child, depth + 1);
-  }
-}
-function stable(value: unknown): string { if (Array.isArray(value)) return '[' + value.map(stable).join(',') + ']'; if (value && typeof value === 'object') return '{' + Object.entries(value).sort(([a], [b]) => a.localeCompare(b)).map(([k, v]) => JSON.stringify(k) + ':' + stable(v)).join(',') + '}'; return JSON.stringify(value); }
 function validReport(value: unknown): value is Report {
-  limits(value);
+  checkJsonLimits(value);
   // This shipped draft-07 schema uses the subset interpreted above; it is not a user-supplied schema.
   if (!schemaValid(value, reportSchema as unknown as Schema)) return false;
-  const data = value as Report;
-  if (data.summary.selected !== data.results.length || new Set(data.results.map(r => r.caseId)).size !== data.results.length) return false;
-  if (data.results.some(r => r.caseId !== r.fixture.caseId || r.contract !== r.fixture.contract || stable(r.expected) !== stable(r.fixture.expected))) return false;
-  const names = { PASS: 'passed', FAIL: 'failed', ADAPTER_ERROR: 'adapterErrors', UNSUPPORTED: 'unsupported', INTERRUPTED: 'interrupted' } as const;
-  return Object.entries(names).every(([status, key]) => data.summary[key] === data.results.filter(r => r.status === status).length);
+  try { validateReportSemantics(value as Report, CHRONOCASES_CORPUS); return true; }
+  catch { return false; }
 }
 const $ = <T extends HTMLElement>(id: string): T => document.getElementById(id) as T;
 function element<K extends keyof HTMLElementTagNameMap>(tag: K, text = '', className = ''): HTMLElementTagNameMap[K] {
@@ -105,7 +97,7 @@ $<HTMLInputElement>('search').addEventListener('input', render); $<HTMLSelectEle
 $('open-report').onclick = () => $<HTMLInputElement>('report-file').click();
 $<HTMLInputElement>('report-file').onchange = async () => {
   const file = $<HTMLInputElement>('report-file').files?.[0]; if (!file) return;
-  try { if (file.size > 5242880) throw Error('Report exceeds 5 MiB'); const data: unknown = JSON.parse(await file.text()); if (!validReport(data)) throw Error('Invalid report schema or inconsistent result counts'); report = data; $('demo-switch').hidden = true; $('live-demo').hidden = true; render(); notice('Local report opened. No data was uploaded.'); }
+  try { if (file.size > 5242880) throw Error('Report exceeds 5 MiB'); const data: unknown = JSON.parse(await file.text()); if (!validReport(data)) throw Error('Invalid report schema or inconsistent result semantics'); report = data; $('demo-switch').hidden = true; $('live-demo').hidden = true; render(); notice('Local report opened. No data was uploaded.'); }
   catch (error) { notice(error instanceof SyntaxError ? 'Invalid JSON syntax' : error instanceof Error ? error.message : 'Invalid report', true); }
   finally { $<HTMLInputElement>('report-file').value = ''; }
 };

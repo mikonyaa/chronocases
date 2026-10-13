@@ -2,11 +2,11 @@ import { fork } from 'node:child_process';
 import { resolve, extname } from 'node:path';
 import { stat } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
-import { evaluateOutcome } from '../comparison/index.js';
+import { classifyOutcome, summarizeResults } from '../report/semantics.js';
 import { checkEnvironment, provenance } from '../provenance/index.js';
-import { PACKAGE_VERSION, getCorpusHash, loadCases, selectCases } from '../corpus/index.js';
+import { PACKAGE_VERSION, getCorpusHash, loadCases, selectCases, validateReport } from '../corpus/index.js';
 import { LIMITS } from '../schemas/limits.js';
-import { CONTRACTS, type ChronoCase, type CaseResult, type Report, type ResultStatus } from '../types.js';
+import { type ChronoCase, type CaseResult, type Report, type ResultStatus } from '../types.js';
 import { BoundedLogCollector } from './logs.js';
 const functions = { 'date-only': 'dateOnlyRoundtrip', 'day-bucket': 'instantToDayBucket', recurrence: 'nextOccurrence' } as const;
 export interface RunOptions { adapterPath: string; caseId?: string; contract?: string; tz?: string; timeoutMs?: number; signal?: AbortSignal; adapterLabel?: string; corpusHash?: string }
@@ -44,12 +44,8 @@ function execute(fixture: ChronoCase, options: RunOptions, repro: string): Promi
       if (!reply) { finish('ADAPTER_ERROR', null, 'ADAPTER_CRASH', 'Adapter exited without a controlled IPC result.'); return; }
       if (reply.kind === 'error') { finish('ADAPTER_ERROR', null, reply.reasonCode ?? 'ADAPTER_ERROR', 'Adapter threw, rejected, or exceeded a result limit. Exception text and source are intentionally omitted; inspect the trusted local adapter.'); return; }
       if (reply.kind === 'unsupported') { finish('UNSUPPORTED', null, 'MISSING_ADAPTER_EXPORT', `Requested export ${functions[fixture.contract]} is missing. This contract was not evaluated.`); return; }
-      if (reply.invalidShape) { finish('FAIL', reply.actual ?? null, 'INVALID_RETURN_SHAPE', 'INVALID_RETURN_SHAPE: the original adapter return did not match the normalized interface before IPC encoding. Return canonical strings and exact fields; JSON serialization cannot repair an object value or extra undefined fields. The actual preview is its bounded JSON encoding.'); return; }
-      const comparison = evaluateOutcome(fixture, reply.actual);
-      if (comparison.validShape && reply.actual && typeof reply.actual === 'object' && (reply.actual as Record<string, unknown>).reasonCode === 'UNSUPPORTED_RECURRENCE_TRANSITION') {
-        finish('UNSUPPORTED', reply.actual, 'UNSUPPORTED_RECURRENCE_TRANSITION', `${comparison.passed ? 'Matches the declared unsupported-transition negative self-test. ' : 'Adapter declined this transition. '}No occurrence computation is covered for this case.`); return;
-      }
-      finish(comparison.passed ? 'PASS' : 'FAIL', reply.actual ?? null, comparison.validShape ? null : 'INVALID_RETURN_SHAPE', comparison.explanation);
+      const classified = classifyOutcome(fixture, reply.actual, reply.invalidShape);
+      finish(classified.status, reply.actual ?? null, classified.reasonCode, classified.explanation);
     });
     child.send({ adapterPath: resolve(options.adapterPath), exportName: functions[fixture.contract], input: structuredClone(fixture.input), metadata: { caseId: fixture.caseId, contractVersion: fixture.contractVersion } }, error => { if (error) finish('ADAPTER_ERROR', null, 'ADAPTER_PROCESS_ERROR', 'Adapter IPC request could not be sent.'); });
   });
@@ -67,9 +63,8 @@ export async function runCases(options: RunOptions): Promise<Report> {
     const repro = `chronocases run --adapter ${shell(options.adapterLabel ?? options.adapterPath)} --case ${shell(fixture.caseId)} --tz ${shell(options.tz ?? 'UTC')} --corpus-hash ${hash} --out repro --json --no-open`;
     results.push(await execute(fixture, options, repro));
   }
-  const count = (status: ResultStatus): number => results.filter(r => r.status === status).length;
-  const passed = count('PASS'), failed = count('FAIL'), adapterErrors = count('ADAPTER_ERROR'), unsupported = count('UNSUPPORTED'), interrupted = count('INTERRUPTED');
-  const exitCode = interrupted ? 130 : adapterErrors ? 2 : unsupported ? 3 : failed ? 1 : 0;
   const runtime = await provenance(); runtime.adapterProcessTZ = options.tz ?? 'UTC';
-  return { schemaVersion: '1', packageVersion: PACKAGE_VERSION, createdAt: new Date().toISOString(), adapter: options.adapterLabel ?? options.adapterPath, provenance: runtime, summary: { selectedContracts: CONTRACTS.filter(c => selected.some(f => f.contract === c)), selected: selected.length, passed, failed, adapterErrors, unsupported, interrupted, exitCode }, results };
+  const report: Report = { schemaVersion: '1', packageVersion: PACKAGE_VERSION, createdAt: new Date().toISOString(), adapter: options.adapterLabel ?? options.adapterPath, provenance: runtime, summary: summarizeResults(results), results };
+  await validateReport(report);
+  return report;
 }

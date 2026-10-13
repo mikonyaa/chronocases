@@ -1,13 +1,13 @@
 import type { ChronoCase, Outcome } from '../types.js';
 import { REASON_CODES } from '../types.js';
-import { checkJsonLimits, LIMITS } from '../schemas/limits.js';
-function stable(value: unknown): string {
+import { checkJsonLimits, LIMITS, utf8ByteLength } from '../schemas/limits.js';
+export function stable(value: unknown): string {
   if (Array.isArray(value)) return `[${value.map(stable).join(',')}]`;
   if (value && typeof value === 'object') return `{${Object.entries(value).sort(([a], [b]) => a.localeCompare(b)).map(([k, v]) => `${JSON.stringify(k)}:${stable(v)}`).join(',')}}`;
   return JSON.stringify(value) ?? 'undefined';
 }
 export function isOutcome(actual: unknown, contract: ChronoCase['contract']): actual is Outcome {
-  try { checkJsonLimits(actual); if (Buffer.byteLength(JSON.stringify(actual) ?? '') > LIMITS.outcomeBytes) return false; } catch { return false; }
+  try { checkJsonLimits(actual); if (utf8ByteLength(JSON.stringify(actual) ?? '') > LIMITS.outcomeBytes) return false; } catch { return false; }
   if (!actual || typeof actual !== 'object' || Array.isArray(actual)) return false;
   const a = actual as Record<string, unknown>;
   if (Object.keys(a).length !== 2) return false;

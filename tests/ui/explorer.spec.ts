@@ -71,11 +71,29 @@ test('hostile HTML stays text in embedded data and reports', async ({ page }) =>
   await page.goto(`${baseURL}/hostile.html`); await page.locator('#search').fill(correct.results[0]!.caseId);
   await expect(page.locator('#case-detail h2')).toContainText('<script>'); expect(await page.evaluate(() => 'HOSTILE_EXECUTED' in globalThis)).toBe(false); await expect(page.locator('img')).toHaveCount(0);
 });
-test('empty report and long IDs have explicit readable states', async ({ page }) => {
-  const long = structuredClone(correct); const id = 'long-case-' + 'a'.repeat(130); long.results[0]!.caseId = id; long.results[0]!.fixture.caseId = id;
-  await page.locator('#report-file').setInputFiles({ name: 'long.json', mimeType: 'application/json', buffer: Buffer.from(JSON.stringify(long)) }); await page.setViewportSize({ width: 390, height: 900 }); await page.locator('#search').fill(id); await expect(page.locator('#case-detail .id')).toContainText(id); expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+test('empty report and long annotations have explicit readable states', async ({ page }) => {
+  const long = structuredClone(correct); const title = 'long-case-' + 'a'.repeat(130); long.results[0]!.fixture.title = title;
+  await page.locator('#report-file').setInputFiles({ name: 'long.json', mimeType: 'application/json', buffer: Buffer.from(JSON.stringify(long)) }); await page.setViewportSize({ width: 390, height: 900 }); await page.locator('#search').fill(title); await expect(page.locator('#case-detail h2')).toContainText(title); expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
   const empty = structuredClone(correct); empty.results = []; empty.summary = { selectedContracts: [], selected: 0, passed: 0, failed: 0, adapterErrors: 0, unsupported: 0, interrupted: 0, exitCode: 0 };
   await page.locator('#report-file').setInputFiles({ name: 'empty.json', mimeType: 'application/json', buffer: Buffer.from(JSON.stringify(empty)) }); await expect(page.getByRole('heading', { name: 'No results in this report' })).toBeVisible();
+});
+const corruptions: [string, (report: import('../../src/types.js').Report) => void][] = [
+  ['actual', r => { r.results.find(x => x.caseId === 'date-la-roundtrip')!.actual = { status: 'value', value: '1999-01-01' }; }],
+  ['status', r => { r.results.find(x => x.caseId === 'date-la-roundtrip')!.status = 'FAIL'; r.summary.passed--; r.summary.failed++; }],
+  ['summary', r => { r.summary.passed++; }],
+  ['exit', r => { r.summary.exitCode = 0; }],
+  ['duplicate ID', r => { r.results[1] = structuredClone(r.results[0]!); }],
+  ['missing ID', r => { r.results.pop(); }],
+  ['frozen expected', r => { const result = r.results.find(x => x.caseId === 'date-la-roundtrip')!; result.actual = result.expected = result.fixture.expected = { status: 'value', value: '1999-01-01' }; }],
+  ['unknown ID', r => { r.results[0]!.caseId = r.results[0]!.fixture.caseId = 'invented-case'; }],
+  ['corpus hash', r => { r.provenance.corpusHash = '0'.repeat(64); }]
+];
+for (const [name, corrupt] of corruptions) test(`browser import rejects contradictory ${name} and preserves current data`, async ({ page }) => {
+  const data = structuredClone(correct); corrupt(data);
+  await page.locator('#report-file').setInputFiles({ name: 'corrupt.json', mimeType: 'application/json', buffer: Buffer.from(JSON.stringify(data)) });
+  await expect(page.locator('#notice')).toHaveClass(/error/);
+  await expect(page.locator('#notice')).toContainText('Invalid report');
+  await expect(page.locator('#summary')).toContainText('16');
 });
 test('mixed outcomes come from an actually executed adapter', async ({ page }) => {
   await page.locator('#report-file').setInputFiles(resolve('.artifacts/ui/mixed.json')); await expect(page.locator('#summary')).toContainText('exit 2');
