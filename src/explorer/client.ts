@@ -27,6 +27,7 @@ function schemaValid(value: unknown, schema: Schema): boolean {
 }
 function validReport(value: unknown): value is Report {
   checkJsonLimits(value);
+  if (utf8ByteLength(JSON.stringify(value) ?? '') > LIMITS.reportBytes) return false;
   // This shipped draft-07 schema uses the subset interpreted above; it is not a user-supplied schema.
   if (!schemaValid(value, reportSchema as unknown as Schema)) return false;
   try { validateReportSemantics(value as Report, CHRONOCASES_CORPUS); return true; }
@@ -40,7 +41,9 @@ let initial: { report: Report; correctedReport: Report | null } | null = null;
 let report: Report | null = null;
 try {
   const text = $('chronocases-data').textContent ?? '';
-  if (utf8ByteLength(text) > 2 * LIMITS.reportBytes) throw Error('Embedded reports exceed the byte limit');
+  // Safe '<' escaping can expand each JSON byte sixfold; allow both reports plus
+  // wrapper overhead, then enforce each logical report's 5 MiB limit below.
+  if (utf8ByteLength(text) > 2 * 6 * LIMITS.reportBytes + 64) throw Error('Embedded reports exceed the byte limit');
   const payload: unknown = JSON.parse(text);
   if (!payload || typeof payload !== 'object' || Array.isArray(payload)) throw Error('Invalid embedded payload');
   const data = payload as { report: unknown; correctedReport: unknown };

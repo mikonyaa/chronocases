@@ -15,3 +15,5 @@ The existing format records the declared count and included IDs rather than a se
 Both embedded reports are validated before enabling demo switches. Malformed embedded JSON or contradictory data displays a readable error with Open report recovery. A failed file import retains the previously opened valid report. Download is disabled until a valid report is available. Arbitrary invalid actual previews are displayed as text without being interpreted as normalized outcomes.
 
 Logs and display text preserve dollar syntax and both template markers. JSON escapes `<`, U+2028 and U+2029; one callback replacement pass embeds data/script without interpreting dollar replacement syntax or reprocessing markers introduced by logs. The offline CSP is unchanged. The CLI does not open a browser automatically.
+
+The explorer's outer embedded-data budget allows up to sixfold safe-encoding expansion for each of its two reports, plus wrapper overhead. The 5 MiB report budget is checked on each logical JSON report after decoding; valid full-cap `<` logs are not rejected merely because their HTML encoding is longer. An oversized logical report still displays a readable error.

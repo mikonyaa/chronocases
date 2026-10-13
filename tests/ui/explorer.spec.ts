@@ -159,3 +159,37 @@ test('a real invalid adapter return has readable bounded preview without a pagee
   await expect(page.locator('#summary')).toContainText('exit 1');
   expect(errors).toEqual([]);
 });
+test('full-cap less-than logs in both embedded reports survive safe-encoding expansion', async ({ page, context }) => {
+  const path = resolve('.artifacts/ui/full-cap.mjs');
+  await writeFile(path, "import * as ref from 'chronocases/reference';const log=()=>{process.stdout.write('<'.repeat(32768));process.stderr.write('<'.repeat(32768))};export function dateOnlyRoundtrip(i){log();return ref.dateOnlyRoundtrip(i)}export function instantToDayBucket(i){log();return ref.instantToDayBucket(i)}export function nextOccurrence(i){log();return ref.nextOccurrence(i)}");
+  const report = await runCases({ adapterPath: path });
+  expect(report.summary).toMatchObject({ selected: 36, passed: 35, unsupported: 1, exitCode: 3 });
+  expect(Buffer.byteLength(JSON.stringify(report))).toBeLessThan(5242880);
+  for (const result of report.results) expect(result.logs).toEqual({ stdout: '<'.repeat(32768), stderr: '<'.repeat(32768), truncated: false });
+  const html = await generateExplorer(report, report);
+  expect(Buffer.byteLength(html)).toBeGreaterThan(2 * 5242880);
+  const output = resolve('.artifacts/ui/full-cap.html'); await writeFile(output, html);
+  const errors: string[] = [], requests: string[] = [];
+  page.on('pageerror', e => errors.push(e.message)); page.on('request', r => { if (/^https?:/.test(r.url())) requests.push(r.url()); });
+  await context.setOffline(true); await page.goto(pathToFileURL(output).href);
+  await expect(page.locator('#summary')).toContainText('35');
+  await page.getByText('Adapter logs', { exact: true }).click();
+  expect(await page.locator('details pre').textContent()).toBe(`stdout:\n${'<'.repeat(32768)}\nstderr:\n${'<'.repeat(32768)}`);
+  await page.getByRole('button', { name: 'Correct adapter', exact: true }).click();
+  await expect(page.locator('#summary')).toContainText('35');
+  const pending = page.waitForEvent('download'); await page.getByRole('button', { name: 'Download JSON' }).click();
+  expect(JSON.parse(await readFile((await (await pending).path())!, 'utf8'))).toEqual(report);
+  expect(errors).toEqual([]); expect(requests).toEqual([]);
+});
+test('embedded logical report over 5 MiB is rejected even within the encoding-aware outer bound', async ({ page }) => {
+  const report = structuredClone(correct);
+  for (const result of report.results) result.logs = { stdout: '\ufffd'.repeat(65536), stderr: '', truncated: false };
+  expect(Buffer.byteLength(JSON.stringify(report))).toBeGreaterThan(5242880);
+  const path = resolve('.artifacts/ui/oversized-embedded.html');
+  await writeFile(path, await generateExplorer(report));
+  const errors: string[] = []; page.on('pageerror', error => errors.push(error.message));
+  await page.goto(pathToFileURL(path).href);
+  await expect(page.locator('#case-detail')).toContainText('Unable to read embedded report');
+  await expect(page.getByRole('button', { name: 'Download JSON' })).toBeDisabled();
+  expect(errors).toEqual([]);
+});

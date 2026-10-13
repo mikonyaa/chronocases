@@ -72,6 +72,22 @@ try {
     assert.deepEqual(errors, []); assert.deepEqual(requests, []);
     await context.close();
   }
+  // Probe encoding expansion through the installed archive, not just the checkout.
+  await writeFile(join(consumer, 'full-cap.mjs'), "import * as ref from 'chronocases/reference';const log=()=>{process.stdout.write('<'.repeat(32768));process.stderr.write('<'.repeat(32768))};export function dateOnlyRoundtrip(i){log();return ref.dateOnlyRoundtrip(i)}export function instantToDayBucket(i){log();return ref.instantToDayBucket(i)}export function nextOccurrence(i){log();return ref.nextOccurrence(i)}\n");
+  assert.equal(cli(['run', '--adapter', 'full-cap.mjs', '--tz', childTZ, '--out', 'full-cap', '--json'], [3]).status, 3);
+  const fullCap = JSON.parse(await readFile(join(consumer, 'full-cap/report.json'), 'utf8'));
+  for (const result of fullCap.results) assert.deepEqual(result.logs, { stdout: '<'.repeat(32768), stderr: '<'.repeat(32768), truncated: false });
+  cli(['explorer', '--report', 'full-cap/report.json', '--out', 'full-cap.html', '--no-open']);
+  const context = await browser.newContext({ offline: true }), page = await context.newPage();
+  const errors = [], requests = [];
+  page.on('pageerror', error => errors.push(error.message)); page.on('request', request => { if (/^https?:/.test(request.url())) requests.push(request.url()); });
+  await page.goto(pathToFileURL(join(consumer, 'full-cap.html')).href);
+  await page.getByText('Adapter logs', { exact: true }).click();
+  assert.equal(await page.locator('details pre').textContent(), `stdout:\n${'<'.repeat(32768)}\nstderr:\n${'<'.repeat(32768)}`);
+  const pending = page.waitForEvent('download'); await page.getByRole('button', { name: 'Download JSON' }).click();
+  assert.deepEqual(JSON.parse(await readFile(await (await pending).path(), 'utf8')), fullCap);
+  assert.deepEqual(errors, []); assert.deepEqual(requests, []);
+  await context.close();
 } finally { await browser.close(); }
 for (const caseId of ['date-la-roundtrip', 'date-leap-day', 'date-kiritimati-year-edge', 'date-invalid-nonleap']) {
   assert.equal(cli(['run', '--adapter', 'pilot/adapter.mjs', '--case', caseId, '--tz', childTZ, '--out', `pilot-${caseId}`, '--json']).status, 0);
@@ -115,6 +131,6 @@ if (process.argv.includes('--frameworks')) {
   command(process.execPath, ['--experimental-vm-modules', join(consumer, 'node_modules/jest/bin/jest.js'), '--config', 'pilot-jest.config.mjs', '--runInBand']);
 }
 const runtime = JSON.parse(await readFile(join(consumer, 'correct/report.json'), 'utf8')).provenance;
-const evidence = { packageVersion, tarball, sha256, bytes: (await stat(tarball)).size, consumerOutsideCheckout: true, consumerDirectory: consumer, actualUserFunctionExecuted: true, compiledTypeScriptExecuted: true, frameworkExamplesExecuted: process.argv.includes('--frameworks'), logRoundtripExecuted: true, browserLogRoundtripExecuted: true, browserVersion, negativeImportsRejected: corruptions.length, pilotBusinessPoliciesExecuted: true, corpusHash: doctor.provenance.corpusHash, runtime, correct: JSON.parse(correct.output), buggy: JSON.parse(buggy.output), archiveFileCount: archiveFiles.length };
+const evidence = { packageVersion, tarball, sha256, bytes: (await stat(tarball)).size, consumerOutsideCheckout: true, consumerDirectory: consumer, actualUserFunctionExecuted: true, compiledTypeScriptExecuted: true, frameworkExamplesExecuted: process.argv.includes('--frameworks'), logRoundtripExecuted: true, browserLogRoundtripExecuted: true, browserFullCapLogRoundtripExecuted: true, browserVersion, negativeImportsRejected: corruptions.length, pilotBusinessPoliciesExecuted: true, corpusHash: doctor.provenance.corpusHash, runtime, correct: JSON.parse(correct.output), buggy: JSON.parse(buggy.output), archiveFileCount: archiveFiles.length };
 await writeFile(join(root, '.artifacts/package-verification.json'), JSON.stringify(evidence, null, 2) + '\n');
-console.log(JSON.stringify({ sha256, bytes: bytes.length, consumerOutsideCheckout: true, actualUserFunctionExecuted: true, compiledTypeScriptExecuted: true, frameworkExamplesExecuted: evidence.frameworkExamplesExecuted, browserLogRoundtripExecuted: true, negativeImportsRejected: corruptions.length, pilotBusinessPoliciesExecuted: true, passedSupportedCases: 35, expectedBuggyFailures: 16, declaredUnsupported: 1 }));
+console.log(JSON.stringify({ sha256, bytes: bytes.length, consumerOutsideCheckout: true, actualUserFunctionExecuted: true, compiledTypeScriptExecuted: true, frameworkExamplesExecuted: evidence.frameworkExamplesExecuted, browserLogRoundtripExecuted: true, browserFullCapLogRoundtripExecuted: true, negativeImportsRejected: corruptions.length, pilotBusinessPoliciesExecuted: true, passedSupportedCases: 35, expectedBuggyFailures: 16, declaredUnsupported: 1 }));
