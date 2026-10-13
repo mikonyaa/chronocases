@@ -1,12 +1,12 @@
 # ChronoCases
 
-Local candidate **0.1.1-rc.1** fixes log fidelity and report consistency. See [migration](docs/MIGRATION-0.1.1.md), [result invariants](docs/REPORTS.md) and [external validation](docs/EXTERNAL-VALIDATION.md). Existing release links below still refer to published v0.1.0.
+Prerelease **0.1.1-rc.1** fixes log fidelity and report consistency. See [migration](docs/MIGRATION-0.1.1.md), [result invariants](docs/REPORTS.md) and [external validation](docs/EXTERNAL-VALIDATION.md). Download the prerelease archive for these fixes; the hosted demo remains at v0.1.0 until the changes land on main.
 
 Portable regression cases for **calendar dates**, **timezone day buckets** and **recurring schedules**.
 
 Connect a local JavaScript function, compare its actual result with a reviewed literal, and reproduce one case with its input, policies and corpus hash intact. ChronoCases is an experimental test corpus and Node runner. It complements your unit tests and fake clock; a passing report establishes these cases, not correctness of an entire application.
 
-[Try the offline-capable explorer](https://mikonyaa.github.io/chronocases/) · [Download v0.1.0](https://github.com/mikonyaa/chronocases/releases/tag/v0.1.0) · [Contracts](docs/contracts.md) · [Oracle ledger](oracle/ledger.md)
+[Try the offline-capable explorer](https://mikonyaa.github.io/chronocases/) · [Download v0.1.1-rc.1](https://github.com/mikonyaa/chronocases/releases/tag/v0.1.1-rc.1) · [Contracts](docs/contracts.md) · [Oracle ledger](oracle/ledger.md)
 
 ![Real date picker and an executed failing adapter report](docs/media/date-bug.png)
 
@@ -34,7 +34,7 @@ Use Node **22.13+** with full ICU. The package is distributed through GitHub Rel
 mkdir my-time-tests
 cd my-time-tests
 npm init -y
-npm install https://github.com/mikonyaa/chronocases/releases/download/v0.1.0/chronocases-0.1.0.tgz
+npm install https://github.com/mikonyaa/chronocases/releases/download/v0.1.1-rc.1/chronocases-0.1.1-rc.1.tgz
 ./node_modules/.bin/chronocases --version
 ./node_modules/.bin/chronocases doctor
 ./node_modules/.bin/chronocases init --dir sample
