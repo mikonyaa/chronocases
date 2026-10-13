@@ -107,9 +107,9 @@ test('standalone file works offline with copy fallback and download', async ({ p
   await page.getByRole('button', { name: 'Copy command' }).click(); await expect(page.locator('#notice')).toContainText(/copied|selected/);
   const download = page.waitForEvent('download'); await page.getByRole('button', { name: 'Download JSON' }).click(); expect((await download).suggestedFilename()).toBe('chronocases-report.json');
 });
-test('real child dollar and hostile logs remain exact visible text in standalone HTML', async ({ page, context }) => {
-  const report = await runCases({ adapterPath: 'tests/fixtures/dollar-logs.mjs', caseId: 'date-la-roundtrip' });
-  const path = resolve('.artifacts/ui/dollar.html');
+for (const adapterName of ['dollar', 'bytewise']) test(`real child ${adapterName} and hostile logs remain exact visible text in standalone HTML`, async ({ page, context }) => {
+  const report = await runCases({ adapterPath: `tests/fixtures/${adapterName}-logs.mjs`, caseId: 'date-la-roundtrip' });
+  const path = resolve(`.artifacts/ui/${adapterName}.html`);
   await writeFile(path, await generateExplorer(report));
   const errors: string[] = [], requests: string[] = [];
   page.on('pageerror', error => errors.push(error.message));
@@ -126,4 +126,36 @@ test('real child dollar and hostile logs remain exact visible text in standalone
   const downloaded = await (await pending).path();
   expect(JSON.parse(await readFile(downloaded!, 'utf8'))).toEqual(report);
   expect(errors).toEqual([]); expect(requests).toEqual([]);
+});
+for (const kind of ['syntax', 'null', 'semantics', 'corrected'] as const) test(`corrupted embedded ${kind} has a readable error and local-file recovery`, async ({ page }) => {
+  const altered = structuredClone(correct);
+  altered.results.find(r => r.caseId === 'date-la-roundtrip')!.actual = { status: 'value', value: '1999-01-01' };
+  const payload = kind === 'syntax' ? '{"report":' : kind === 'null' ? 'null' : JSON.stringify({ report: kind === 'semantics' ? altered : correct, correctedReport: kind === 'corrected' ? altered : null });
+  const original = await generateExplorer(correct);
+  const html = original.replace(/<script id="chronocases-data" type="application\/json">[\s\S]*?<\/script>/, () => `<script id="chronocases-data" type="application/json">${payload.replaceAll('<', '\\u003c')}</script>`);
+  const path = resolve(`.artifacts/ui/corrupt-${kind}.html`); await writeFile(path, html);
+  const errors: string[] = []; page.on('pageerror', e => errors.push(e.message));
+  await page.goto(pathToFileURL(path).href);
+  await expect(page.locator('#case-detail')).toContainText('Unable to read embedded report');
+  await expect(page.locator('#notice')).toHaveClass(/error/);
+  await expect(page.getByRole('button', { name: 'Download JSON' })).toBeDisabled();
+  await page.locator('#report-file').setInputFiles({ name: 'valid.json', mimeType: 'application/json', buffer: Buffer.from(JSON.stringify(correct)) });
+  await expect(page.locator('#notice')).toContainText('Local report opened');
+  await expect(page.locator('#summary')).toContainText('35');
+  await expect(page.getByRole('button', { name: 'Download JSON' })).toBeEnabled();
+  expect(errors).toEqual([]);
+});
+
+test('a real invalid adapter return has readable bounded preview without a pageerror', async ({ page }) => {
+  const path = resolve('.artifacts/ui/invalid-shape.mjs');
+  await writeFile(path, "export function dateOnlyRoundtrip(){return{status:'value',value:{wrong:'preview'}}}");
+  const report = await runCases({ adapterPath: path, caseId: 'date-la-roundtrip' });
+  expect(report.summary.exitCode).toBe(1);
+  const html = resolve('.artifacts/ui/invalid-shape.html'); await writeFile(html, await generateExplorer(report));
+  const errors: string[] = []; page.on('pageerror', e => errors.push(e.message));
+  await page.goto(pathToFileURL(html).href);
+  await expect(page.locator('.comparison')).toContainText('Invalid return shape');
+  await expect(page.locator('.comparison')).toContainText('preview');
+  await expect(page.locator('#summary')).toContainText('exit 1');
+  expect(errors).toEqual([]);
 });

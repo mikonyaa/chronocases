@@ -1,8 +1,9 @@
 import reportSchema from '../../resources/schemas/report.json';
 import { validateReportSemantics, type ReportCorpus } from '../report/semantics.js';
-import { checkJsonLimits } from '../schemas/limits.js';
+import { checkJsonLimits, LIMITS, utf8ByteLength } from '../schemas/limits.js';
+import { isOutcome } from '../comparison/index.js';
 declare const CHRONOCASES_CORPUS: ReportCorpus;
-import type { Report, CaseResult, Outcome } from '../types.js';
+import type { Report, CaseResult } from '../types.js';
 type Schema = { type?: string | string[]; const?: unknown; enum?: unknown[]; required?: string[]; properties?: Record<string, Schema>; additionalProperties?: boolean; items?: Schema; maxItems?: number; maxLength?: number; pattern?: string; minimum?: number; maximum?: number; oneOf?: Schema[]; allOf?: Schema[]; if?: Schema; then?: Schema };
 function schemaValid(value: unknown, schema: Schema): boolean {
   if ('const' in schema && value !== schema.const || schema.enum && !schema.enum.includes(value)) return false;
@@ -35,21 +36,31 @@ const $ = <T extends HTMLElement>(id: string): T => document.getElementById(id) 
 function element<K extends keyof HTMLElementTagNameMap>(tag: K, text = '', className = ''): HTMLElementTagNameMap[K] {
   const node = document.createElement(tag); node.textContent = text; if (className) node.className = className; return node;
 }
-const initial = JSON.parse($('chronocases-data').textContent ?? '{}') as { report: Report; correctedReport: Report | null };
-let report = initial.report;
+let initial: { report: Report; correctedReport: Report | null } | null = null;
+let report: Report | null = null;
+try {
+  const text = $('chronocases-data').textContent ?? '';
+  if (utf8ByteLength(text) > 2 * LIMITS.reportBytes) throw Error('Embedded reports exceed the byte limit');
+  const payload: unknown = JSON.parse(text);
+  if (!payload || typeof payload !== 'object' || Array.isArray(payload)) throw Error('Invalid embedded payload');
+  const data = payload as { report: unknown; correctedReport: unknown };
+  if (!validReport(data.report) || data.correctedReport !== null && !validReport(data.correctedReport)) throw Error('Invalid embedded report semantics');
+  initial = data as { report: Report; correctedReport: Report | null }; report = initial.report;
+} catch { /* Controls are still installed below so a valid local report can recover the viewer. */ }
 let selectedId = 'date-la-roundtrip';
 function notice(text: string, error = false): void { $('notice').textContent = text; $('notice').className = `notice${error ? ' error' : ''}`; }
-function showOutcome(outcome: unknown, label: string): HTMLElement {
+function showOutcome(outcome: unknown, label: string, contract: CaseResult['contract']): HTMLElement {
   const panel = element('article'); panel.append(element('span', label, 'label'));
-  const data = outcome as Outcome | null;
   let main: string;
-  if (!data) main = 'Not evaluated';
-  else if (data.status === 'value') main = typeof data.value === 'string' ? data.value : data.value.instant;
-  else main = data.reasonCode;
+  if (outcome === null) main = 'Not evaluated';
+  else if (!isOutcome(outcome, contract)) main = 'Invalid return shape';
+  else if (outcome.status === 'value') main = typeof outcome.value === 'string' ? outcome.value : outcome.value.instant;
+  else main = outcome.reasonCode;
   panel.append(element('div', main, `outcome-main${main.length > 16 ? ' compact' : ''}`));
   panel.append(element('pre', JSON.stringify(outcome, null, 2))); return panel;
 }
 function renderDetail(result: CaseResult | undefined): void {
+  if (!report) return;
   const target = $('case-detail'); target.replaceChildren();
   if (!result) {
     const empty = element('div', '', 'empty'); empty.append(element('h2', report.results.length ? 'No matching cases' : 'No results in this report'), element('p', report.results.length ? 'Change the contract or search term.' : 'Open an executed ChronoCases report to inspect outcomes.'));
@@ -61,7 +72,7 @@ function renderDetail(result: CaseResult | undefined): void {
   heading.append(headingText, element('span', result.status === 'UNSUPPORTED' ? 'UNSUPPORTED' : result.status, `status ${result.status.toLowerCase()}`)); target.append(heading);
   const input = element('section', '', 'section'); input.append(element('h3', 'Exact input')); const dl = element('dl', '', 'input-grid');
   for (const [key, value] of Object.entries(f.input)) { const group = element('div'); group.append(element('dt', key), element('dd', String(value))); dl.append(group); } input.append(dl); target.append(input);
-  const comparison = element('div', '', 'comparison'); comparison.append(showOutcome(result.expected, 'Expected · reviewed literal'), showOutcome(result.actual, 'Actual · adapter execution')); target.append(comparison);
+  const comparison = element('div', '', 'comparison'); comparison.append(showOutcome(result.expected, 'Expected · reviewed literal', result.contract), showOutcome(result.actual, 'Actual · adapter execution', result.contract)); target.append(comparison);
   const explanation = element('section', '', 'section'); explanation.append(element('h3', 'What the outcome means'), element('p', result.explanation, 'explanation')); target.append(explanation);
   const evidence = element('section', '', 'section'); evidence.append(element('h3', 'Oracle evidence'), element('p', f.oracle.calculation, 'explanation')); const line = element('ol', '', 'timeline');
   if (f.oracle.candidates.length) {
@@ -81,6 +92,7 @@ function renderDetail(result: CaseResult | undefined): void {
   if (result.logs.stdout || result.logs.stderr) { const logs = element('details', '', 'section'); logs.append(element('summary', `Adapter logs${result.logs.truncated ? ' (bounded / truncated)' : ''}`), element('pre', `stdout:\n${result.logs.stdout}\nstderr:\n${result.logs.stderr}`)); target.append(logs); }
 }
 function render(): void {
+  if (!report) return;
   const summary = $('summary'); summary.replaceChildren();
   for (const [label, count, color] of [['PASS', report.summary.passed, 'pass'], ['FAIL', report.summary.failed, 'fail'], ['UNSUPPORTED', report.summary.unsupported, 'unsupported'], ['ERROR', report.summary.adapterErrors, 'adapter_error']] as const) { const group = element('span', '', color); group.append(element('span', String(count), 'count'), document.createTextNode(label)); summary.append(group); }
   summary.append(element('span', `${report.summary.selected} selected · ${report.summary.selectedContracts.join(' / ')} · exit ${report.summary.exitCode}`, 'meta'));
@@ -97,17 +109,24 @@ $<HTMLInputElement>('search').addEventListener('input', render); $<HTMLSelectEle
 $('open-report').onclick = () => $<HTMLInputElement>('report-file').click();
 $<HTMLInputElement>('report-file').onchange = async () => {
   const file = $<HTMLInputElement>('report-file').files?.[0]; if (!file) return;
-  try { if (file.size > 5242880) throw Error('Report exceeds 5 MiB'); const data: unknown = JSON.parse(await file.text()); if (!validReport(data)) throw Error('Invalid report schema or inconsistent result semantics'); report = data; $('demo-switch').hidden = true; $('live-demo').hidden = true; render(); notice('Local report opened. No data was uploaded.'); }
+  try { if (file.size > LIMITS.reportBytes) throw Error('Report exceeds 5 MiB'); const data: unknown = JSON.parse(await file.text()); if (!validReport(data)) throw Error('Invalid report schema or inconsistent result semantics'); report = data; $<HTMLButtonElement>('download-report').disabled = false; $('demo-switch').hidden = true; $('live-demo').hidden = true; render(); notice('Local report opened. No data was uploaded.'); }
   catch (error) { notice(error instanceof SyntaxError ? 'Invalid JSON syntax' : error instanceof Error ? error.message : 'Invalid report', true); }
   finally { $<HTMLInputElement>('report-file').value = ''; }
 };
-$('download-report').onclick = () => { const blob = new Blob([JSON.stringify(report, null, 2) + '\n'], { type: 'application/json' }); const url = URL.createObjectURL(blob); const link = element('a'); link.href = url; link.download = 'chronocases-report.json'; link.click(); setTimeout(() => URL.revokeObjectURL(url), 1000); notice('Report download prepared locally. It may include private inputs or adapter logs.'); };
-if (initial.correctedReport) {
+$('download-report').onclick = () => { if (!report) return; const blob = new Blob([JSON.stringify(report, null, 2) + '\n'], { type: 'application/json' }); const url = URL.createObjectURL(blob); const link = element('a'); link.href = url; link.download = 'chronocases-report.json'; link.click(); setTimeout(() => URL.revokeObjectURL(url), 1000); notice('Report download prepared locally. It may include private inputs or adapter logs.'); };
+if (initial?.correctedReport) {
+  const demo = initial;
   $('demo-switch').hidden = false; $('live-demo').hidden = false;
-  $('buggy-report').onclick = () => { report = initial.report; $('buggy-report').setAttribute('aria-pressed', 'true'); $('correct-report').setAttribute('aria-pressed', 'false'); render(); notice('Actual built-in buggy adapter report. Expected failures are intentional.'); };
-  $('correct-report').onclick = () => { report = initial.correctedReport!; $('buggy-report').setAttribute('aria-pressed', 'false'); $('correct-report').setAttribute('aria-pressed', 'true'); render(); notice('Actual corrected adapter report. The skipped-date recurrence remains explicitly unsupported.'); };
+  $('buggy-report').onclick = () => { report = demo.report; $('buggy-report').setAttribute('aria-pressed', 'true'); $('correct-report').setAttribute('aria-pressed', 'false'); render(); notice('Actual built-in buggy adapter report. Expected failures are intentional.'); };
+  $('correct-report').onclick = () => { report = demo.correctedReport!; $('buggy-report').setAttribute('aria-pressed', 'false'); $('correct-report').setAttribute('aria-pressed', 'true'); render(); notice('Actual corrected adapter report. The skipped-date recurrence remains explicitly unsupported.'); };
   const dateDemo = (): void => { const date = $<HTMLInputElement>('selected-date').value; if (!date) return; const instant = new Date(`${date}T00:00:00Z`); const storedInstant = JSON.stringify({ instant: instant.toISOString() }); const restored = new Date((JSON.parse(storedInstant) as { instant: string }).instant); const fields = new Intl.DateTimeFormat('en', { timeZone: 'America/Los_Angeles', year: 'numeric', month: '2-digit', day: '2-digit' }).formatToParts(restored); const field = (key: string): string => fields.find(f => f.type === key)?.value ?? ''; const storedLabel = JSON.stringify({ selectedDate: date }); $('buggy-date').textContent = `${field('year')}-${field('month')}-${field('day')}`; $('correct-date').textContent = (JSON.parse(storedLabel) as { selectedDate: string }).selectedDate; $('buggy-date').setAttribute('data-serialized', storedInstant); };
   $<HTMLInputElement>('selected-date').oninput = dateDemo; dateDemo();
 }
-try { if (!validReport(report)) throw Error('Invalid embedded report'); render(); }
-catch { $('case-detail').textContent = 'Invalid embedded report. Generate this viewer from a valid ChronoCases report.'; notice('Report validation failed.', true); }
+if (report) render();
+else {
+  $<HTMLButtonElement>('download-report').disabled = true;
+  $('demo-switch').hidden = true; $('live-demo').hidden = true;
+  const empty = element('div', '', 'empty');
+  empty.append(element('h2', 'Unable to read embedded report'), element('p', 'This HTML contains corrupted or inconsistent report data. Use Open report to select a valid local JSON file, or regenerate the explorer with ChronoCases.'));
+  $('case-detail').replaceChildren(empty); notice('Unable to read embedded report. Open a valid local JSON report to recover.', true);
+}

@@ -1,5 +1,7 @@
 # ChronoCases
 
+Local candidate **0.1.1-rc.1** fixes log fidelity and report consistency. See [migration](docs/MIGRATION-0.1.1.md), [result invariants](docs/REPORTS.md) and [external validation](docs/EXTERNAL-VALIDATION.md). Existing release links below still refer to published v0.1.0.
+
 Portable regression cases for **calendar dates**, **timezone day buckets** and **recurring schedules**.
 
 Connect a local JavaScript function, compare its actual result with a reviewed literal, and reproduce one case with its input, policies and corpus hash intact. ChronoCases is an experimental test corpus and Node runner. It complements your unit tests and fake clock; a passing report establishes these cases, not correctness of an entire application.

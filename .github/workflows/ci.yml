@@ -19,6 +19,8 @@ jobs:
             tz: UTC
           - node: 24
             tz: America/New_York
+          - node: 24
+            tz: Europe/London
           - node: 26
             tz: Pacific/Honolulu
     env:
@@ -44,14 +46,14 @@ jobs:
       - run: npm run test:ui
       - run: npm run build:site
       - run: node scripts/package-web.mjs
-      - run: npm run test:package
+      - run: npm run test:package -- --frameworks
       - name: Build provenance
         run: node scripts/ci-provenance.mjs
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4, verified upstream
         with:
-          name: checked-release-node-${{ matrix.node }}
+          name: checked-release-node-${{ matrix.node }}-${{ strategy.job-index }}
           path: |
-            .artifacts/package/chronocases-0.1.0.tgz
+            .artifacts/package/chronocases-*.tgz
             .artifacts/package/chronocases-explorer-example.zip
             .artifacts/package-verification.json
             .artifacts/ci-provenance.json
