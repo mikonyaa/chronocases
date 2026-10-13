@@ -1,6 +1,7 @@
 import { mkdir, cp, writeFile, rm } from 'node:fs/promises';
 import { execFileSync } from 'node:child_process';
 import { resolve } from 'node:path';
+import { PACKAGE_VERSION } from '../dist/corpus/index.js';
 await rm('.artifacts/web-bundle', { recursive: true, force: true });
 await mkdir('.artifacts/web-bundle/reports', { recursive: true });
 await mkdir('.artifacts/web-bundle/sample', { recursive: true });
@@ -11,9 +12,13 @@ await cp('examples/correct/adapter.mjs', '.artifacts/web-bundle/sample/adapter.m
 await cp('examples/correct/product.mjs', '.artifacts/web-bundle/sample/product.mjs');
 await cp('examples/buggy', '.artifacts/web-bundle/sample/buggy', { recursive: true });
 await cp('examples/typescript', '.artifacts/web-bundle/sample/typescript', { recursive: true });
+await cp('examples/logging', '.artifacts/web-bundle/sample/logging', { recursive: true });
+await cp('examples/pilot', '.artifacts/web-bundle/sample/pilot', { recursive: true });
+await cp('docs/MIGRATION-0.1.1.md', '.artifacts/web-bundle/MIGRATION.md');
+await cp('docs/EXTERNAL-VALIDATION.md', '.artifacts/web-bundle/EXTERNAL-VALIDATION.md');
 await cp('LICENSE', '.artifacts/web-bundle/LICENSE');
-await writeFile('.artifacts/web-bundle/README.txt', `ChronoCases 0.1.0\nOpen explorer.html directly, offline. Its reports were executed by the Node runner.\nInstall the released chronocases-0.1.0.tgz in this directory with npm, then run:\n./node_modules/.bin/chronocases run --adapter sample/adapter.mjs --case date-la-roundtrip --out results\n./node_modules/.bin/chronocases run --adapter sample/buggy/adapter.mjs --case date-la-roundtrip --out repro\nThe deliberately buggy command exits 1. Full correct corpus exits 3: 35 PASS and one explicitly unsupported skipped civil date.\nProduct adapters execute in local Node, not inside the viewer. Reports may contain private inputs and logs.\nSource: https://github.com/mikonyaa/chronocases\n`);
+await writeFile('.artifacts/web-bundle/README.txt', `ChronoCases ${PACKAGE_VERSION}\nOpen explorer.html directly, offline. Its reports were executed by the Node runner.\nInstall chronocases-${PACKAGE_VERSION}.tgz in this directory with npm, then run:\n./node_modules/.bin/chronocases run --adapter sample/adapter.mjs --case date-la-roundtrip --out results\n./node_modules/.bin/chronocases run --adapter sample/buggy/adapter.mjs --case date-la-roundtrip --out repro\nThe deliberately buggy command exits 1. Full correct corpus exits 3: 35 PASS and one explicitly unsupported skipped civil date.\nProduct adapters execute in local Node, not inside the viewer. Reports may contain private inputs and logs.\nSource: https://github.com/mikonyaa/chronocases\n`);
 await mkdir('.artifacts/package', { recursive: true });
 const archive = resolve('.artifacts/package/chronocases-explorer-example.zip'); await rm(archive, { force: true });
-execFileSync('zip', ['-q', '-r', '-X', archive, 'explorer.html', 'reports', 'sample', 'README.txt', 'LICENSE'], { cwd: '.artifacts/web-bundle' });
+execFileSync('zip', ['-q', '-r', '-X', archive, 'explorer.html', 'reports', 'sample', 'README.txt', 'MIGRATION.md', 'EXTERNAL-VALIDATION.md', 'LICENSE'], { cwd: '.artifacts/web-bundle' });
 console.log('Packaged standalone explorer, real reports and small JS/TS examples.');

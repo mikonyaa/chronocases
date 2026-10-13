@@ -1,6 +1,6 @@
 {
   "name": "chronocases",
-  "version": "0.1.0",
+  "version": "0.1.1-rc.1",
   "description": "Portable regression cases for calendar dates, timezone day buckets and recurring schedules.",
   "type": "module",
   "license": "MIT",

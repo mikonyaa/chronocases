@@ -2,7 +2,9 @@ import { mkdir, writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import type { Report } from '../types.js';
 import { LIMITS } from '../schemas/limits.js';
+import { validateReport } from '../corpus/index.js';
 export async function writeReport(report: Report, directory: string): Promise<void> {
+  await validateReport(report);
   const json = `${JSON.stringify(report, null, 2)}\n`;
   if (Buffer.byteLength(json) > LIMITS.reportBytes) throw new Error('Report size limit exceeded');
   await mkdir(directory, { recursive: true });

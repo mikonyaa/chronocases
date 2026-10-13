@@ -2,12 +2,12 @@ import { readFile, readdir, stat } from 'node:fs/promises';
 import { createHash } from 'node:crypto';
 import { fileURLToPath } from 'node:url';
 import { join } from 'node:path';
-import { isDeepStrictEqual } from 'node:util';
 import { Ajv } from 'ajv';
 import { CONTRACTS, type ChronoCase, type Contract } from '../types.js';
 import { checkJsonLimits, LIMITS, parseBoundedJson } from '../schemas/limits.js';
+import { validateReportSemantics } from '../report/semantics.js';
 export const PACKAGE_ROOT = fileURLToPath(new URL('../../', import.meta.url));
-export const PACKAGE_VERSION = '0.1.0';
+export const PACKAGE_VERSION = '0.1.1-rc.1';
 export const CORPUS_VERSION = '1.0.0';
 let cached: ChronoCase[] | undefined;
 let corpusHash = '';
@@ -59,6 +59,5 @@ export async function validateReport(data: unknown): Promise<void> {
   const validator = new Ajv({ strict: true }).compile(schema);
   if (!validator(data)) throw new Error('Invalid report structure');
   const report = data as import('../types.js').Report;
-  const statusFields = { PASS: 'passed', FAIL: 'failed', ADAPTER_ERROR: 'adapterErrors', UNSUPPORTED: 'unsupported', INTERRUPTED: 'interrupted' } as const;
-  if (report.summary.selected !== report.results.length || new Set(report.results.map(r => r.caseId)).size !== report.results.length || report.results.some(r => r.caseId !== r.fixture.caseId || r.contract !== r.fixture.contract || !isDeepStrictEqual(r.expected, r.fixture.expected)) || Object.entries(statusFields).some(([status, field]) => report.summary[field] !== report.results.filter(r => r.status === status).length)) throw new Error('Inconsistent report identities, expectations or counts');
+  validateReportSemantics(report, { corpusVersion: CORPUS_VERSION, corpusHash: await getCorpusHash(), cases: await loadCases() });
 }

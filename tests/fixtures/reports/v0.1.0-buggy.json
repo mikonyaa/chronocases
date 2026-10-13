@@ -1,0 +1,3685 @@
+{
+  "schemaVersion": "1",
+  "packageVersion": "0.1.0",
+  "createdAt": "2026-10-13T20:57:52.242Z",
+  "adapter": "sample/buggy/adapter.mjs",
+  "provenance": {
+    "node": "v26.9.0",
+    "platform": "darwin",
+    "osRelease": "25.6.0",
+    "arch": "arm64",
+    "icu": "78.3",
+    "tzdata": "2026a",
+    "processTZ": "unset",
+    "adapterProcessTZ": "UTC",
+    "defaultTimeZone": "Asia/Almaty",
+    "supportedTimeZones": [
+      "UTC",
+      "Africa/Abidjan",
+      "Africa/Accra",
+      "Africa/Addis_Ababa",
+      "Africa/Algiers",
+      "Africa/Asmera",
+      "Africa/Bamako",
+      "Africa/Bangui",
+      "Africa/Banjul",
+      "Africa/Bissau",
+      "Africa/Blantyre",
+      "Africa/Brazzaville",
+      "Africa/Bujumbura",
+      "Africa/Cairo",
+      "Africa/Casablanca",
+      "Africa/Ceuta",
+      "Africa/Conakry",
+      "Africa/Dakar",
+      "Africa/Dar_es_Salaam",
+      "Africa/Djibouti",
+      "Africa/Douala",
+      "Africa/El_Aaiun",
+      "Africa/Freetown",
+      "Africa/Gaborone",
+      "Africa/Harare",
+      "Africa/Johannesburg",
+      "Africa/Juba",
+      "Africa/Kampala",
+      "Africa/Khartoum",
+      "Africa/Kigali",
+      "Africa/Kinshasa",
+      "Africa/Lagos",
+      "Africa/Libreville",
+      "Africa/Lome",
+      "Africa/Luanda",
+      "Africa/Lubumbashi",
+      "Africa/Lusaka",
+      "Africa/Malabo",
+      "Africa/Maputo",
+      "Africa/Maseru",
+      "Africa/Mbabane",
+      "Africa/Mogadishu",
+      "Africa/Monrovia",
+      "Africa/Nairobi",
+      "Africa/Ndjamena",
+      "Africa/Niamey",
+      "Africa/Nouakchott",
+      "Africa/Ouagadougou",
+      "Africa/Porto-Novo",
+      "Africa/Sao_Tome",
+      "Africa/Tripoli",
+      "Africa/Tunis",
+      "Africa/Windhoek",
+      "America/Adak",
+      "America/Anchorage",
+      "America/Anguilla",
+      "America/Antigua",
+      "America/Araguaina",
+      "America/Argentina/La_Rioja",
+      "America/Argentina/Rio_Gallegos",
+      "America/Argentina/Salta",
+      "America/Argentina/San_Juan",
+      "America/Argentina/San_Luis",
+      "America/Argentina/Tucuman",
+      "America/Argentina/Ushuaia",
+      "America/Aruba",
+      "America/Asuncion",
+      "America/Bahia",
+      "America/Bahia_Banderas",
+      "America/Barbados",
+      "America/Belem",
+      "America/Belize",
+      "America/Blanc-Sablon",
+      "America/Boa_Vista",
+      "America/Bogota",
+      "America/Boise",
+      "America/Buenos_Aires",
+      "America/Cambridge_Bay",
+      "America/Campo_Grande",
+      "America/Cancun",
+      "America/Caracas",
+      "America/Catamarca",
+      "America/Cayenne",
+      "America/Cayman",
+      "America/Chicago",
+      "America/Chihuahua",
+      "America/Ciudad_Juarez",
+      "America/Coral_Harbour",
+      "America/Cordoba",
+      "America/Costa_Rica",
+      "America/Coyhaique",
+      "America/Creston",
+      "America/Cuiaba",
+      "America/Curacao",
+      "America/Danmarkshavn",
+      "America/Dawson",
+      "America/Dawson_Creek",
+      "America/Denver",
+      "America/Detroit",
+      "America/Dominica",
+      "America/Edmonton",
+      "America/Eirunepe",
+      "America/El_Salvador",
+      "America/Fort_Nelson",
+      "America/Fortaleza",
+      "America/Glace_Bay",
+      "America/Godthab",
+      "America/Goose_Bay",
+      "America/Grand_Turk",
+      "America/Grenada",
+      "America/Guadeloupe",
+      "America/Guatemala",
+      "America/Guayaquil",
+      "America/Guyana",
+      "America/Halifax",
+      "America/Havana",
+      "America/Hermosillo",
+      "America/Indiana/Knox",
+      "America/Indiana/Marengo",
+      "America/Indiana/Petersburg",
+      "America/Indiana/Tell_City",
+      "America/Indiana/Vevay",
+      "America/Indiana/Vincennes",
+      "America/Indiana/Winamac",
+      "America/Indianapolis",
+      "America/Inuvik",
+      "America/Iqaluit",
+      "America/Jamaica",
+      "America/Jujuy",
+      "America/Juneau",
+      "America/Kentucky/Monticello",
+      "America/Kralendijk",
+      "America/La_Paz",
+      "America/Lima",
+      "America/Los_Angeles",
+      "America/Louisville",
+      "America/Lower_Princes",
+      "America/Maceio",
+      "America/Managua",
+      "America/Manaus",
+      "America/Marigot",
+      "America/Martinique",
+      "America/Matamoros",
+      "America/Mazatlan",
+      "America/Mendoza",
+      "America/Menominee",
+      "America/Merida",
+      "America/Metlakatla",
+      "America/Mexico_City",
+      "America/Miquelon",
+      "America/Moncton",
+      "America/Monterrey",
+      "America/Montevideo",
+      "America/Montserrat",
+      "America/Nassau",
+      "America/New_York",
+      "America/Nome",
+      "America/Noronha",
+      "America/North_Dakota/Beulah",
+      "America/North_Dakota/Center",
+      "America/North_Dakota/New_Salem",
+      "America/Ojinaga",
+      "America/Panama",
+      "America/Paramaribo",
+      "America/Phoenix",
+      "America/Port-au-Prince",
+      "America/Port_of_Spain",
+      "America/Porto_Velho",
+      "America/Puerto_Rico",
+      "America/Punta_Arenas",
+      "America/Rankin_Inlet",
+      "America/Recife",
+      "America/Regina",
+      "America/Resolute",
+      "America/Rio_Branco",
+      "America/Santarem",
+      "America/Santiago",
+      "America/Santo_Domingo",
+      "America/Sao_Paulo",
+      "America/Scoresbysund",
+      "America/Sitka",
+      "America/St_Barthelemy",
+      "America/St_Johns",
+      "America/St_Kitts",
+      "America/St_Lucia",
+      "America/St_Thomas",
+      "America/St_Vincent",
+      "America/Swift_Current",
+      "America/Tegucigalpa",
+      "America/Thule",
+      "America/Tijuana",
+      "America/Toronto",
+      "America/Tortola",
+      "America/Vancouver",
+      "America/Whitehorse",
+      "America/Winnipeg",
+      "America/Yakutat",
+      "Antarctica/Casey",
+      "Antarctica/Davis",
+      "Antarctica/DumontDUrville",
+      "Antarctica/Macquarie",
+      "Antarctica/Mawson",
+      "Antarctica/McMurdo",
+      "Antarctica/Palmer",
+      "Antarctica/Rothera",
+      "Antarctica/Syowa",
+      "Antarctica/Troll",
+      "Antarctica/Vostok",
+      "Arctic/Longyearbyen",
+      "Asia/Aden",
+      "Asia/Almaty",
+      "Asia/Amman",
+      "Asia/Anadyr",
+      "Asia/Aqtau",
+      "Asia/Aqtobe",
+      "Asia/Ashgabat",
+      "Asia/Atyrau",
+      "Asia/Baghdad",
+      "Asia/Bahrain",
+      "Asia/Baku",
+      "Asia/Bangkok",
+      "Asia/Barnaul",
+      "Asia/Beirut",
+      "Asia/Bishkek",
+      "Asia/Brunei",
+      "Asia/Calcutta",
+      "Asia/Chita",
+      "Asia/Colombo",
+      "Asia/Damascus",
+      "Asia/Dhaka",
+      "Asia/Dili",
+      "Asia/Dubai",
+      "Asia/Dushanbe",
+      "Asia/Famagusta",
+      "Asia/Gaza",
+      "Asia/Hebron",
+      "Asia/Hong_Kong",
+      "Asia/Hovd",
+      "Asia/Irkutsk",
+      "Asia/Jakarta",
+      "Asia/Jayapura",
+      "Asia/Jerusalem",
+      "Asia/Kabul",
+      "Asia/Kamchatka",
+      "Asia/Karachi",
+      "Asia/Katmandu",
+      "Asia/Khandyga",
+      "Asia/Krasnoyarsk",
+      "Asia/Kuala_Lumpur",
+      "Asia/Kuching",
+      "Asia/Kuwait",
+      "Asia/Macau",
+      "Asia/Magadan",
+      "Asia/Makassar",
+      "Asia/Manila",
+      "Asia/Muscat",
+      "Asia/Nicosia",
+      "Asia/Novokuznetsk",
+      "Asia/Novosibirsk",
+      "Asia/Omsk",
+      "Asia/Oral",
+      "Asia/Phnom_Penh",
+      "Asia/Pontianak",
+      "Asia/Pyongyang",
+      "Asia/Qatar",
+      "Asia/Qostanay",
+      "Asia/Qyzylorda",
+      "Asia/Rangoon",
+      "Asia/Riyadh",
+      "Asia/Saigon",
+      "Asia/Sakhalin",
+      "Asia/Samarkand",
+      "Asia/Seoul",
+      "Asia/Shanghai",
+      "Asia/Singapore",
+      "Asia/Srednekolymsk",
+      "Asia/Taipei",
+      "Asia/Tashkent",
+      "Asia/Tbilisi",
+      "Asia/Tehran",
+      "Asia/Thimphu",
+      "Asia/Tokyo",
+      "Asia/Tomsk",
+      "Asia/Ulaanbaatar",
+      "Asia/Urumqi",
+      "Asia/Ust-Nera",
+      "Asia/Vientiane",
+      "Asia/Vladivostok",
+      "Asia/Yakutsk",
+      "Asia/Yekaterinburg",
+      "Asia/Yerevan",
+      "Atlantic/Azores",
+      "Atlantic/Bermuda",
+      "Atlantic/Canary",
+      "Atlantic/Cape_Verde",
+      "Atlantic/Faeroe",
+      "Atlantic/Madeira",
+      "Atlantic/Reykjavik",
+      "Atlantic/South_Georgia",
+      "Atlantic/St_Helena",
+      "Atlantic/Stanley",
+      "Australia/Adelaide",
+      "Australia/Brisbane",
+      "Australia/Broken_Hill",
+      "Australia/Darwin",
+      "Australia/Eucla",
+      "Australia/Hobart",
+      "Australia/Lindeman",
+      "Australia/Lord_Howe",
+      "Australia/Melbourne",
+      "Australia/Perth",
+      "Australia/Sydney",
+      "Europe/Amsterdam",
+      "Europe/Andorra",
+      "Europe/Astrakhan",
+      "Europe/Athens",
+      "Europe/Belgrade",
+      "Europe/Berlin",
+      "Europe/Bratislava",
+      "Europe/Brussels",
+      "Europe/Bucharest",
+      "Europe/Budapest",
+      "Europe/Busingen",
+      "Europe/Chisinau",
+      "Europe/Copenhagen",
+      "Europe/Dublin",
+      "Europe/Gibraltar",
+      "Europe/Guernsey",
+      "Europe/Helsinki",
+      "Europe/Isle_of_Man",
+      "Europe/Istanbul",
+      "Europe/Jersey",
+      "Europe/Kaliningrad",
+      "Europe/Kiev",
+      "Europe/Kirov",
+      "Europe/Lisbon",
+      "Europe/Ljubljana",
+      "Europe/London",
+      "Europe/Luxembourg",
+      "Europe/Madrid",
+      "Europe/Malta",
+      "Europe/Mariehamn",
+      "Europe/Minsk",
+      "Europe/Monaco",
+      "Europe/Moscow",
+      "Europe/Oslo",
+      "Europe/Paris",
+      "Europe/Podgorica",
+      "Europe/Prague",
+      "Europe/Riga",
+      "Europe/Rome",
+      "Europe/Samara",
+      "Europe/San_Marino",
+      "Europe/Sarajevo",
+      "Europe/Saratov",
+      "Europe/Simferopol",
+      "Europe/Skopje",
+      "Europe/Sofia",
+      "Europe/Stockholm",
+      "Europe/Tallinn",
+      "Europe/Tirane",
+      "Europe/Ulyanovsk",
+      "Europe/Vaduz",
+      "Europe/Vatican",
+      "Europe/Vienna",
+      "Europe/Vilnius",
+      "Europe/Volgograd",
+      "Europe/Warsaw",
+      "Europe/Zagreb",
+      "Europe/Zurich",
+      "Indian/Antananarivo",
+      "Indian/Chagos",
+      "Indian/Christmas",
+      "Indian/Cocos",
+      "Indian/Comoro",
+      "Indian/Kerguelen",
+      "Indian/Mahe",
+      "Indian/Maldives",
+      "Indian/Mauritius",
+      "Indian/Mayotte",
+      "Indian/Reunion",
+      "Pacific/Apia",
+      "Pacific/Auckland",
+      "Pacific/Bougainville",
+      "Pacific/Chatham",
+      "Pacific/Easter",
+      "Pacific/Efate",
+      "Pacific/Enderbury",
+      "Pacific/Fakaofo",
+      "Pacific/Fiji",
+      "Pacific/Funafuti",
+      "Pacific/Galapagos",
+      "Pacific/Gambier",
+      "Pacific/Guadalcanal",
+      "Pacific/Guam",
+      "Pacific/Honolulu",
+      "Pacific/Kiritimati",
+      "Pacific/Kosrae",
+      "Pacific/Kwajalein",
+      "Pacific/Majuro",
+      "Pacific/Marquesas",
+      "Pacific/Midway",
+      "Pacific/Nauru",
+      "Pacific/Niue",
+      "Pacific/Norfolk",
+      "Pacific/Noumea",
+      "Pacific/Pago_Pago",
+      "Pacific/Palau",
+      "Pacific/Pitcairn",
+      "Pacific/Ponape",
+      "Pacific/Port_Moresby",
+      "Pacific/Rarotonga",
+      "Pacific/Saipan",
+      "Pacific/Tahiti",
+      "Pacific/Tarawa",
+      "Pacific/Tongatapu",
+      "Pacific/Truk",
+      "Pacific/Wake",
+      "Pacific/Wallis"
+    ],
+    "temporal": {
+      "implementation": "@js-temporal/polyfill",
+      "version": "0.5.1",
+      "timezoneDatabase": "runtime Intl/ICU; not bundled by the polyfill"
+    },
+    "corpusVersion": "1.0.0",
+    "corpusHash": "a552268ca7a26fd1ca4fefcb73e68028647f4f9e8c444ef72654a2735c0df28c"
+  },
+  "summary": {
+    "selectedContracts": [
+      "date-only",
+      "day-bucket",
+      "recurrence"
+    ],
+    "selected": 36,
+    "passed": 19,
+    "failed": 16,
+    "adapterErrors": 0,
+    "unsupported": 1,
+    "interrupted": 0,
+    "exitCode": 3
+  },
+  "results": [
+    {
+      "caseId": "date-apia-skipped-civil-date",
+      "contract": "date-only",
+      "expected": {
+        "status": "value",
+        "value": "2011-12-30"
+      },
+      "repro": "chronocases run --adapter 'sample/buggy/adapter.mjs' --case 'date-apia-skipped-civil-date' --tz 'UTC' --corpus-hash a552268ca7a26fd1ca4fefcb73e68028647f4f9e8c444ef72654a2735c0df28c --out repro --json --no-open",
+      "fixture": {
+        "schemaVersion": "1",
+        "caseId": "date-apia-skipped-civil-date",
+        "contract": "date-only",
+        "contractVersion": "1",
+        "title": "Skipped civil date is still a valid label",
+        "tags": [
+          "date-label",
+          "skipped-date"
+        ],
+        "inputValidity": "valid",
+        "input": {
+          "date": "2011-12-30",
+          "storageTimeZone": "Pacific/Apia",
+          "displayTimeZone": "Pacific/Apia"
+        },
+        "expected": {
+          "status": "value",
+          "value": "2011-12-30"
+        },
+        "rationale": "Date-only labels need not correspond to an instant in a display zone. Apia skipped this civil date but the Gregorian label remains valid.",
+        "sources": [
+          "https://data.iana.org/time-zones/tzdb-2026a/australasia",
+          "https://www.iana.org/time-zones",
+          "https://docs.python.org/3.13/library/datetime.html#date-objects",
+          "https://tc39.es/proposal-temporal/docs/plaindate.html"
+        ],
+        "oracle": {
+          "method": "Literal expected reviewed with Gregorian rules, manual UTC = local − offset, and independent CPython zoneinfo/TZif cross-check; no Temporal imports.",
+          "calculation": "Gregorian 2011-12-30 is valid; no timezone mapping is part of date-only storage.",
+          "canaries": [
+            {
+              "timeZone": "Pacific/Apia",
+              "instant": "2024-06-04T00:00:00Z",
+              "offset": "+13:00",
+              "localDateTime": "2024-06-04T13:00:00"
+            }
+          ],
+          "transitions": [],
+          "candidates": []
+        },
+        "reviewedAt": "2026-10-12"
+      },
+      "logs": {
+        "stdout": "",
+        "stderr": "",
+        "truncated": false
+      },
+      "status": "FAIL",
+      "actual": {
+        "status": "value",
+        "value": "2011-12-29"
+      },
+      "reasonCode": null,
+      "explanation": "A calendar date must survive serialization unchanged. A UTC-midnight conversion is one possible cause; this black-box result alone does not establish internal behavior. Date-only labels need not correspond to an instant in a display zone. Apia skipped this civil date but the Gregorian label remains valid.",
+      "durationMs": 74
+    },
+    {
+      "caseId": "date-century-leap",
+      "contract": "date-only",
+      "expected": {
+        "status": "value",
+        "value": "2000-02-29"
+      },
+      "repro": "chronocases run --adapter 'sample/buggy/adapter.mjs' --case 'date-century-leap' --tz 'UTC' --corpus-hash a552268ca7a26fd1ca4fefcb73e68028647f4f9e8c444ef72654a2735c0df28c --out repro --json --no-open",
+      "fixture": {
+        "schemaVersion": "1",
+        "caseId": "date-century-leap",
+        "contract": "date-only",
+        "contractVersion": "1",
+        "title": "Year 2000 is a leap century",
+        "tags": [
+          "gregorian-century"
+        ],
+        "inputValidity": "valid",
+        "input": {
+          "date": "2000-02-29",
+          "storageTimeZone": "Asia/Kathmandu",
+          "displayTimeZone": "UTC"
+        },
+        "expected": {
+          "status": "value",
+          "value": "2000-02-29"
+        },
+        "rationale": "The Gregorian century exception keeps years divisible by 400 as leap years.",
+        "sources": [
+          "https://data.iana.org/time-zones/tzdb-2026a/asia",
+          "https://data.iana.org/time-zones/tzdb-2026a/etcetera",
+          "https://www.iana.org/time-zones",
+          "https://docs.python.org/3.13/library/datetime.html#date-objects",
+          "https://tc39.es/proposal-temporal/docs/plaindate.html"
+        ],
+        "oracle": {
+          "method": "Literal expected reviewed with Gregorian rules, manual UTC = local − offset, and independent CPython zoneinfo/TZif cross-check; no Temporal imports.",
+          "calculation": "2000 mod 400 = 0; Feb 29 is valid.",
+          "canaries": [
+            {
+              "timeZone": "Asia/Kathmandu",
+              "instant": "2024-06-04T00:00:00Z",
+              "offset": "+05:45",
+              "localDateTime": "2024-06-04T05:45:00"
+            },
+            {
+              "timeZone": "UTC",
+              "instant": "2024-06-04T00:00:00Z",
+              "offset": "+00:00",
+              "localDateTime": "2024-06-04T00:00:00"
+            }
+          ],
+          "transitions": [],
+          "candidates": []
+        },
+        "reviewedAt": "2026-10-12"
+      },
+      "logs": {
+        "stdout": "",
+        "stderr": "",
+        "truncated": false
+      },
+      "status": "PASS",
+      "actual": {
+        "status": "value",
+        "value": "2000-02-29"
+      },
+      "reasonCode": null,
+      "explanation": "Matches the frozen outcome. The Gregorian century exception keeps years divisible by 400 as leap years.",
+      "durationMs": 65
+    },
+    {
+      "caseId": "date-invalid-century",
+      "contract": "date-only",
+      "expected": {
+        "status": "rejected",
+        "reasonCode": "INVALID_DATE"
+      },
+      "repro": "chronocases run --adapter 'sample/buggy/adapter.mjs' --case 'date-invalid-century' --tz 'UTC' --corpus-hash a552268ca7a26fd1ca4fefcb73e68028647f4f9e8c444ef72654a2735c0df28c --out repro --json --no-open",
+      "fixture": {
+        "schemaVersion": "1",
+        "caseId": "date-invalid-century",
+        "contract": "date-only",
+        "contractVersion": "1",
+        "title": "Reject Feb 29 in year 1900",
+        "tags": [
+          "invalid-date",
+          "gregorian-century"
+        ],
+        "inputValidity": "invalid",
+        "input": {
+          "date": "1900-02-29",
+          "storageTimeZone": "UTC",
+          "displayTimeZone": "UTC"
+        },
+        "expected": {
+          "status": "rejected",
+          "reasonCode": "INVALID_DATE"
+        },
+        "rationale": "A century divisible by 100 but not by 400 is not a leap year.",
+        "sources": [
+          "https://data.iana.org/time-zones/tzdb-2026a/etcetera",
+          "https://www.iana.org/time-zones",
+          "https://docs.python.org/3.13/library/datetime.html#date-objects",
+          "https://tc39.es/proposal-temporal/docs/plaindate.html"
+        ],
+        "oracle": {
+          "method": "Literal expected reviewed with Gregorian rules, manual UTC = local − offset, and independent CPython zoneinfo/TZif cross-check; no Temporal imports.",
+          "calculation": "1900 mod 100 = 0 and 1900 mod 400 != 0; February has 28 days.",
+          "canaries": [
+            {
+              "timeZone": "UTC",
+              "instant": "2024-06-04T00:00:00Z",
+              "offset": "+00:00",
+              "localDateTime": "2024-06-04T00:00:00"
+            }
+          ],
+          "transitions": [],
+          "candidates": []
+        },
+        "reviewedAt": "2026-10-12"
+      },
+      "logs": {
+        "stdout": "",
+        "stderr": "",
+        "truncated": false
+      },
+      "status": "FAIL",
+      "actual": {
+        "status": "value",
+        "value": "1900-03-01"
+      },
+      "reasonCode": null,
+      "explanation": "A calendar date must survive serialization unchanged. A UTC-midnight conversion is one possible cause; this black-box result alone does not establish internal behavior. A century divisible by 100 but not by 400 is not a leap year.",
+      "durationMs": 80
+    },
+    {
+      "caseId": "date-invalid-nonleap",
+      "contract": "date-only",
+      "expected": {
+        "status": "rejected",
+        "reasonCode": "INVALID_DATE"
+      },
+      "repro": "chronocases run --adapter 'sample/buggy/adapter.mjs' --case 'date-invalid-nonleap' --tz 'UTC' --corpus-hash a552268ca7a26fd1ca4fefcb73e68028647f4f9e8c444ef72654a2735c0df28c --out repro --json --no-open",
+      "fixture": {
+        "schemaVersion": "1",
+        "caseId": "date-invalid-nonleap",
+        "contract": "date-only",
+        "contractVersion": "1",
+        "title": "Reject Feb 29 in a non-leap year",
+        "tags": [
+          "invalid-date",
+          "normalization"
+        ],
+        "inputValidity": "invalid",
+        "input": {
+          "date": "2023-02-29",
+          "storageTimeZone": "UTC",
+          "displayTimeZone": "America/Los_Angeles"
+        },
+        "expected": {
+          "status": "rejected",
+          "reasonCode": "INVALID_DATE"
+        },
+        "rationale": "Do not normalize this impossible date to March.",
+        "sources": [
+          "https://data.iana.org/time-zones/tzdb-2026a/etcetera",
+          "https://data.iana.org/time-zones/tzdb-2026a/northamerica",
+          "https://www.iana.org/time-zones",
+          "https://docs.python.org/3.13/library/datetime.html#date-objects",
+          "https://tc39.es/proposal-temporal/docs/plaindate.html"
+        ],
+        "oracle": {
+          "method": "Literal expected reviewed with Gregorian rules, manual UTC = local − offset, and independent CPython zoneinfo/TZif cross-check; no Temporal imports.",
+          "calculation": "2023 mod 4 != 0; February has 28 days.",
+          "canaries": [
+            {
+              "timeZone": "America/Los_Angeles",
+              "instant": "2024-06-04T00:00:00Z",
+              "offset": "-07:00",
+              "localDateTime": "2024-06-03T17:00:00"
+            },
+            {
+              "timeZone": "UTC",
+              "instant": "2024-06-04T00:00:00Z",
+              "offset": "+00:00",
+              "localDateTime": "2024-06-04T00:00:00"
+            }
+          ],
+          "transitions": [],
+          "candidates": []
+        },
+        "reviewedAt": "2026-10-12"
+      },
+      "logs": {
+        "stdout": "",
+        "stderr": "",
+        "truncated": false
+      },
+      "status": "FAIL",
+      "actual": {
+        "status": "value",
+        "value": "2023-02-28"
+      },
+      "reasonCode": null,
+      "explanation": "A calendar date must survive serialization unchanged. A UTC-midnight conversion is one possible cause; this black-box result alone does not establish internal behavior. Do not normalize this impossible date to March.",
+      "durationMs": 79
+    },
+    {
+      "caseId": "date-kiritimati-year-edge",
+      "contract": "date-only",
+      "expected": {
+        "status": "value",
+        "value": "2023-12-31"
+      },
+      "repro": "chronocases run --adapter 'sample/buggy/adapter.mjs' --case 'date-kiritimati-year-edge' --tz 'UTC' --corpus-hash a552268ca7a26fd1ca4fefcb73e68028647f4f9e8c444ef72654a2735c0df28c --out repro --json --no-open",
+      "fixture": {
+        "schemaVersion": "1",
+        "caseId": "date-kiritimati-year-edge",
+        "contract": "date-only",
+        "contractVersion": "1",
+        "title": "Calendar label across +14 at year end",
+        "tags": [
+          "year-boundary",
+          "positive-offset"
+        ],
+        "inputValidity": "valid",
+        "input": {
+          "date": "2023-12-31",
+          "storageTimeZone": "America/New_York",
+          "displayTimeZone": "Pacific/Kiritimati"
+        },
+        "expected": {
+          "status": "value",
+          "value": "2023-12-31"
+        },
+        "rationale": "Changing display zones cannot advance a stored calendar date into a new year.",
+        "sources": [
+          "https://data.iana.org/time-zones/tzdb-2026a/australasia",
+          "https://data.iana.org/time-zones/tzdb-2026a/northamerica",
+          "https://www.iana.org/time-zones",
+          "https://docs.python.org/3.13/library/datetime.html#date-objects",
+          "https://tc39.es/proposal-temporal/docs/plaindate.html"
+        ],
+        "oracle": {
+          "method": "Literal expected reviewed with Gregorian rules, manual UTC = local − offset, and independent CPython zoneinfo/TZif cross-check; no Temporal imports.",
+          "calculation": "The label 2023-12-31 is preserved independently of +14:00.",
+          "canaries": [
+            {
+              "timeZone": "America/New_York",
+              "instant": "2024-06-04T00:00:00Z",
+              "offset": "-04:00",
+              "localDateTime": "2024-06-03T20:00:00"
+            },
+            {
+              "timeZone": "Pacific/Kiritimati",
+              "instant": "2024-06-04T00:00:00Z",
+              "offset": "+14:00",
+              "localDateTime": "2024-06-04T14:00:00"
+            }
+          ],
+          "transitions": [],
+          "candidates": []
+        },
+        "reviewedAt": "2026-10-12"
+      },
+      "logs": {
+        "stdout": "",
+        "stderr": "",
+        "truncated": false
+      },
+      "status": "PASS",
+      "actual": {
+        "status": "value",
+        "value": "2023-12-31"
+      },
+      "reasonCode": null,
+      "explanation": "Matches the frozen outcome. Changing display zones cannot advance a stored calendar date into a new year.",
+      "durationMs": 77
+    },
+    {
+      "caseId": "date-la-roundtrip",
+      "contract": "date-only",
+      "expected": {
+        "status": "value",
+        "value": "2024-06-04"
+      },
+      "repro": "chronocases run --adapter 'sample/buggy/adapter.mjs' --case 'date-la-roundtrip' --tz 'UTC' --corpus-hash a552268ca7a26fd1ca4fefcb73e68028647f4f9e8c444ef72654a2735c0df28c --out repro --json --no-open",
+      "fixture": {
+        "schemaVersion": "1",
+        "caseId": "date-la-roundtrip",
+        "contract": "date-only",
+        "contractVersion": "1",
+        "title": "A date is not UTC midnight",
+        "tags": [
+          "date-label",
+          "utc-midnight"
+        ],
+        "inputValidity": "valid",
+        "input": {
+          "date": "2024-06-04",
+          "storageTimeZone": "UTC",
+          "displayTimeZone": "America/Los_Angeles"
+        },
+        "expected": {
+          "status": "value",
+          "value": "2024-06-04"
+        },
+        "rationale": "The stored label is June 4. The deliberate UTC-midnight product instead displays June 3 in Los Angeles.",
+        "sources": [
+          "https://data.iana.org/time-zones/tzdb-2026a/etcetera",
+          "https://data.iana.org/time-zones/tzdb-2026a/northamerica",
+          "https://www.iana.org/time-zones",
+          "https://docs.python.org/3.13/library/datetime.html#date-objects",
+          "https://tc39.es/proposal-temporal/docs/plaindate.html"
+        ],
+        "oracle": {
+          "method": "Literal expected reviewed with Gregorian rules, manual UTC = local − offset, and independent CPython zoneinfo/TZif cross-check; no Temporal imports.",
+          "calculation": "2024-06-04T00:00:00Z − 07:00 = 2024-06-03T17:00:00 locally; correct date-only storage has no instant.",
+          "canaries": [
+            {
+              "timeZone": "America/Los_Angeles",
+              "instant": "2024-06-04T00:00:00Z",
+              "offset": "-07:00",
+              "localDateTime": "2024-06-03T17:00:00"
+            },
+            {
+              "timeZone": "UTC",
+              "instant": "2024-06-04T00:00:00Z",
+              "offset": "+00:00",
+              "localDateTime": "2024-06-04T00:00:00"
+            }
+          ],
+          "transitions": [],
+          "candidates": []
+        },
+        "reviewedAt": "2026-10-12"
+      },
+      "logs": {
+        "stdout": "",
+        "stderr": "",
+        "truncated": false
+      },
+      "status": "FAIL",
+      "actual": {
+        "status": "value",
+        "value": "2024-06-03"
+      },
+      "reasonCode": null,
+      "explanation": "A calendar date must survive serialization unchanged. A UTC-midnight conversion is one possible cause; this black-box result alone does not establish internal behavior. The stored label is June 4. The deliberate UTC-midnight product instead displays June 3 in Los Angeles.",
+      "durationMs": 66
+    },
+    {
+      "caseId": "date-leap-day",
+      "contract": "date-only",
+      "expected": {
+        "status": "value",
+        "value": "2024-02-29"
+      },
+      "repro": "chronocases run --adapter 'sample/buggy/adapter.mjs' --case 'date-leap-day' --tz 'UTC' --corpus-hash a552268ca7a26fd1ca4fefcb73e68028647f4f9e8c444ef72654a2735c0df28c --out repro --json --no-open",
+      "fixture": {
+        "schemaVersion": "1",
+        "caseId": "date-leap-day",
+        "contract": "date-only",
+        "contractVersion": "1",
+        "title": "Leap day remains a calendar label",
+        "tags": [
+          "leap-day"
+        ],
+        "inputValidity": "valid",
+        "input": {
+          "date": "2024-02-29",
+          "storageTimeZone": "UTC",
+          "displayTimeZone": "Pacific/Honolulu"
+        },
+        "expected": {
+          "status": "value",
+          "value": "2024-02-29"
+        },
+        "rationale": "2024 is divisible by four and is a Gregorian leap year.",
+        "sources": [
+          "https://data.iana.org/time-zones/tzdb-2026a/etcetera",
+          "https://data.iana.org/time-zones/tzdb-2026a/northamerica",
+          "https://www.iana.org/time-zones",
+          "https://docs.python.org/3.13/library/datetime.html#date-objects",
+          "https://tc39.es/proposal-temporal/docs/plaindate.html"
+        ],
+        "oracle": {
+          "method": "Literal expected reviewed with Gregorian rules, manual UTC = local − offset, and independent CPython zoneinfo/TZif cross-check; no Temporal imports.",
+          "calculation": "2024 mod 4 = 0, 2024 mod 100 != 0; Feb 29 is valid.",
+          "canaries": [
+            {
+              "timeZone": "Pacific/Honolulu",
+              "instant": "2024-06-04T00:00:00Z",
+              "offset": "-10:00",
+              "localDateTime": "2024-06-03T14:00:00"
+            },
+            {
+              "timeZone": "UTC",
+              "instant": "2024-06-04T00:00:00Z",
+              "offset": "+00:00",
+              "localDateTime": "2024-06-04T00:00:00"
+            }
+          ],
+          "transitions": [],
+          "candidates": []
+        },
+        "reviewedAt": "2026-10-12"
+      },
+      "logs": {
+        "stdout": "",
+        "stderr": "",
+        "truncated": false
+      },
+      "status": "FAIL",
+      "actual": {
+        "status": "value",
+        "value": "2024-02-28"
+      },
+      "reasonCode": null,
+      "explanation": "A calendar date must survive serialization unchanged. A UTC-midnight conversion is one possible cause; this black-box result alone does not establish internal behavior. 2024 is divisible by four and is a Gregorian leap year.",
+      "durationMs": 71
+    },
+    {
+      "caseId": "date-max-range",
+      "contract": "date-only",
+      "expected": {
+        "status": "value",
+        "value": "2100-12-31"
+      },
+      "repro": "chronocases run --adapter 'sample/buggy/adapter.mjs' --case 'date-max-range' --tz 'UTC' --corpus-hash a552268ca7a26fd1ca4fefcb73e68028647f4f9e8c444ef72654a2735c0df28c --out repro --json --no-open",
+      "fixture": {
+        "schemaVersion": "1",
+        "caseId": "date-max-range",
+        "contract": "date-only",
+        "contractVersion": "1",
+        "title": "The upper v1 boundary is inclusive",
+        "tags": [
+          "range-boundary"
+        ],
+        "inputValidity": "valid",
+        "input": {
+          "date": "2100-12-31",
+          "storageTimeZone": "America/New_York",
+          "displayTimeZone": "UTC"
+        },
+        "expected": {
+          "status": "value",
+          "value": "2100-12-31"
+        },
+        "rationale": "2100-12-31 is a valid date-only label inside v1.",
+        "sources": [
+          "https://data.iana.org/time-zones/tzdb-2026a/etcetera",
+          "https://data.iana.org/time-zones/tzdb-2026a/northamerica",
+          "https://www.iana.org/time-zones",
+          "https://docs.python.org/3.13/library/datetime.html#date-objects",
+          "https://tc39.es/proposal-temporal/docs/plaindate.html"
+        ],
+        "oracle": {
+          "method": "Literal expected reviewed with Gregorian rules, manual UTC = local − offset, and independent CPython zoneinfo/TZif cross-check; no Temporal imports.",
+          "calculation": "1900 <= year <= 2100.",
+          "canaries": [
+            {
+              "timeZone": "America/New_York",
+              "instant": "2024-06-04T00:00:00Z",
+              "offset": "-04:00",
+              "localDateTime": "2024-06-03T20:00:00"
+            },
+            {
+              "timeZone": "UTC",
+              "instant": "2024-06-04T00:00:00Z",
+              "offset": "+00:00",
+              "localDateTime": "2024-06-04T00:00:00"
+            }
+          ],
+          "transitions": [],
+          "candidates": []
+        },
+        "reviewedAt": "2026-10-12"
+      },
+      "logs": {
+        "stdout": "",
+        "stderr": "",
+        "truncated": false
+      },
+      "status": "PASS",
+      "actual": {
+        "status": "value",
+        "value": "2100-12-31"
+      },
+      "reasonCode": null,
+      "explanation": "Matches the frozen outcome. 2100-12-31 is a valid date-only label inside v1.",
+      "durationMs": 69
+    },
+    {
+      "caseId": "date-min-range",
+      "contract": "date-only",
+      "expected": {
+        "status": "value",
+        "value": "1900-01-01"
+      },
+      "repro": "chronocases run --adapter 'sample/buggy/adapter.mjs' --case 'date-min-range' --tz 'UTC' --corpus-hash a552268ca7a26fd1ca4fefcb73e68028647f4f9e8c444ef72654a2735c0df28c --out repro --json --no-open",
+      "fixture": {
+        "schemaVersion": "1",
+        "caseId": "date-min-range",
+        "contract": "date-only",
+        "contractVersion": "1",
+        "title": "The lower v1 boundary is inclusive",
+        "tags": [
+          "range-boundary"
+        ],
+        "inputValidity": "valid",
+        "input": {
+          "date": "1900-01-01",
+          "storageTimeZone": "Asia/Kathmandu",
+          "displayTimeZone": "America/Los_Angeles"
+        },
+        "expected": {
+          "status": "value",
+          "value": "1900-01-01"
+        },
+        "rationale": "1900-01-01 is an inclusive calendar boundary; no instant conversion is required.",
+        "sources": [
+          "https://data.iana.org/time-zones/tzdb-2026a/asia",
+          "https://data.iana.org/time-zones/tzdb-2026a/northamerica",
+          "https://www.iana.org/time-zones",
+          "https://docs.python.org/3.13/library/datetime.html#date-objects",
+          "https://tc39.es/proposal-temporal/docs/plaindate.html"
+        ],
+        "oracle": {
+          "method": "Literal expected reviewed with Gregorian rules, manual UTC = local − offset, and independent CPython zoneinfo/TZif cross-check; no Temporal imports.",
+          "calculation": "1900 <= year <= 2100.",
+          "canaries": [
+            {
+              "timeZone": "America/Los_Angeles",
+              "instant": "2024-06-04T00:00:00Z",
+              "offset": "-07:00",
+              "localDateTime": "2024-06-03T17:00:00"
+            },
+            {
+              "timeZone": "Asia/Kathmandu",
+              "instant": "2024-06-04T00:00:00Z",
+              "offset": "+05:45",
+              "localDateTime": "2024-06-04T05:45:00"
+            }
+          ],
+          "transitions": [],
+          "candidates": []
+        },
+        "reviewedAt": "2026-10-12"
+      },
+      "logs": {
+        "stdout": "",
+        "stderr": "",
+        "truncated": false
+      },
+      "status": "FAIL",
+      "actual": {
+        "status": "value",
+        "value": "1899-12-31"
+      },
+      "reasonCode": null,
+      "explanation": "A calendar date must survive serialization unchanged. A UTC-midnight conversion is one possible cause; this black-box result alone does not establish internal behavior. 1900-01-01 is an inclusive calendar boundary; no instant conversion is required.",
+      "durationMs": 79
+    },
+    {
+      "caseId": "bucket-invalid-zone",
+      "contract": "day-bucket",
+      "expected": {
+        "status": "rejected",
+        "reasonCode": "INVALID_TIME_ZONE"
+      },
+      "repro": "chronocases run --adapter 'sample/buggy/adapter.mjs' --case 'bucket-invalid-zone' --tz 'UTC' --corpus-hash a552268ca7a26fd1ca4fefcb73e68028647f4f9e8c444ef72654a2735c0df28c --out repro --json --no-open",
+      "fixture": {
+        "schemaVersion": "1",
+        "caseId": "bucket-invalid-zone",
+        "contract": "day-bucket",
+        "contractVersion": "1",
+        "title": "A deliberately invalid zone is a business rejection",
+        "tags": [
+          "invalid-input"
+        ],
+        "inputValidity": "invalid",
+        "input": {
+          "instant": "2024-06-04T00:00:00Z",
+          "timeZone": "Not/A_Zone"
+        },
+        "expected": {
+          "status": "rejected",
+          "reasonCode": "INVALID_TIME_ZONE"
+        },
+        "rationale": "Not/A_Zone is a deliberate invalid identifier, not a missing real IANA environment dependency.",
+        "sources": [
+          "https://www.iana.org/time-zones",
+          "https://tc39.es/proposal-temporal/docs/timezone.html"
+        ],
+        "oracle": {
+          "method": "Literal expected reviewed with Gregorian rules, manual UTC = local − offset, and independent CPython zoneinfo/TZif cross-check; no Temporal imports.",
+          "calculation": "Not/A_Zone is a deliberate invalid identifier, not a missing real IANA environment dependency.",
+          "canaries": [],
+          "transitions": [],
+          "candidates": []
+        },
+        "reviewedAt": "2026-10-12"
+      },
+      "logs": {
+        "stdout": "",
+        "stderr": "",
+        "truncated": false
+      },
+      "status": "PASS",
+      "actual": {
+        "status": "rejected",
+        "reasonCode": "INVALID_TIME_ZONE"
+      },
+      "reasonCode": null,
+      "explanation": "Matches the frozen outcome. Not/A_Zone is a deliberate invalid identifier, not a missing real IANA environment dependency.",
+      "durationMs": 77
+    },
+    {
+      "caseId": "honolulu-previous-year",
+      "contract": "day-bucket",
+      "expected": {
+        "status": "value",
+        "value": "2023-12-31"
+      },
+      "repro": "chronocases run --adapter 'sample/buggy/adapter.mjs' --case 'honolulu-previous-year' --tz 'UTC' --corpus-hash a552268ca7a26fd1ca4fefcb73e68028647f4f9e8c444ef72654a2735c0df28c --out repro --json --no-open",
+      "fixture": {
+        "schemaVersion": "1",
+        "caseId": "honolulu-previous-year",
+        "contract": "day-bucket",
+        "contractVersion": "1",
+        "title": "A negative offset remains in the old year",
+        "tags": [
+          "day-boundary"
+        ],
+        "inputValidity": "valid",
+        "input": {
+          "instant": "2024-01-01T05:00:00Z",
+          "timeZone": "Pacific/Honolulu"
+        },
+        "expected": {
+          "status": "value",
+          "value": "2023-12-31"
+        },
+        "rationale": "UTC Jan 1 05:00 − 10:00 = Dec 31 19:00.",
+        "sources": [
+          "https://data.iana.org/time-zones/tzdb-2026a/northamerica",
+          "https://www.iana.org/time-zones",
+          "https://tc39.es/proposal-temporal/docs/timezone.html"
+        ],
+        "oracle": {
+          "method": "Literal expected reviewed with Gregorian rules, manual UTC = local − offset, and independent CPython zoneinfo/TZif cross-check; no Temporal imports.",
+          "calculation": "UTC Jan 1 05:00 − 10:00 = Dec 31 19:00.",
+          "canaries": [
+            {
+              "timeZone": "Pacific/Honolulu",
+              "instant": "2024-01-01T05:00:00Z",
+              "offset": "-10:00",
+              "localDateTime": "2023-12-31T19:00:00"
+            }
+          ],
+          "transitions": [],
+          "candidates": [],
+          "dayBounds": {
+            "start": "2023-12-31T10:00:00Z",
+            "end": "2024-01-01T10:00:00Z",
+            "hours": 24
+          }
+        },
+        "reviewedAt": "2026-10-12"
+      },
+      "logs": {
+        "stdout": "",
+        "stderr": "",
+        "truncated": false
+      },
+      "status": "FAIL",
+      "actual": {
+        "status": "value",
+        "value": "2024-01-01"
+      },
+      "reasonCode": null,
+      "explanation": "The bucket is the calendar day in the requested IANA zone, bounded by consecutive local day starts. A UTC day or a fixed 24-hour bucket is a possible cause. UTC Jan 1 05:00 − 10:00 = Dec 31 19:00.",
+      "durationMs": 90
+    },
+    {
+      "caseId": "instant-missing-offset",
+      "contract": "day-bucket",
+      "expected": {
+        "status": "rejected",
+        "reasonCode": "INVALID_INSTANT"
+      },
+      "repro": "chronocases run --adapter 'sample/buggy/adapter.mjs' --case 'instant-missing-offset' --tz 'UTC' --corpus-hash a552268ca7a26fd1ca4fefcb73e68028647f4f9e8c444ef72654a2735c0df28c --out repro --json --no-open",
+      "fixture": {
+        "schemaVersion": "1",
+        "caseId": "instant-missing-offset",
+        "contract": "day-bucket",
+        "contractVersion": "1",
+        "title": "Reject an instant without a timezone suffix",
+        "tags": [
+          "invalid-input"
+        ],
+        "inputValidity": "invalid",
+        "input": {
+          "instant": "2024-06-04T00:00:00",
+          "timeZone": "UTC"
+        },
+        "expected": {
+          "status": "rejected",
+          "reasonCode": "INVALID_INSTANT"
+        },
+        "rationale": "No Z or numeric offset means the input does not identify one instant.",
+        "sources": [
+          "https://data.iana.org/time-zones/tzdb-2026a/etcetera",
+          "https://www.iana.org/time-zones",
+          "https://tc39.es/proposal-temporal/docs/timezone.html"
+        ],
+        "oracle": {
+          "method": "Literal expected reviewed with Gregorian rules, manual UTC = local − offset, and independent CPython zoneinfo/TZif cross-check; no Temporal imports.",
+          "calculation": "No Z or numeric offset means the input does not identify one instant.",
+          "canaries": [
+            {
+              "timeZone": "UTC",
+              "instant": "2024-06-04T00:00:00Z",
+              "offset": "+00:00",
+              "localDateTime": "2024-06-04T00:00:00"
+            }
+          ],
+          "transitions": [],
+          "candidates": []
+        },
+        "reviewedAt": "2026-10-12"
+      },
+      "logs": {
+        "stdout": "",
+        "stderr": "",
+        "truncated": false
+      },
+      "status": "PASS",
+      "actual": {
+        "status": "rejected",
+        "reasonCode": "INVALID_INSTANT"
+      },
+      "reasonCode": null,
+      "explanation": "Matches the frozen outcome. No Z or numeric offset means the input does not identify one instant.",
+      "durationMs": 81
+    },
+    {
+      "caseId": "kathmandu-quarter-hour",
+      "contract": "day-bucket",
+      "expected": {
+        "status": "value",
+        "value": "2024-06-04"
+      },
+      "repro": "chronocases run --adapter 'sample/buggy/adapter.mjs' --case 'kathmandu-quarter-hour' --tz 'UTC' --corpus-hash a552268ca7a26fd1ca4fefcb73e68028647f4f9e8c444ef72654a2735c0df28c --out repro --json --no-open",
+      "fixture": {
+        "schemaVersion": "1",
+        "caseId": "kathmandu-quarter-hour",
+        "contract": "day-bucket",
+        "contractVersion": "1",
+        "title": "A 45-minute offset at midnight",
+        "tags": [
+          "day-boundary"
+        ],
+        "inputValidity": "valid",
+        "input": {
+          "instant": "2024-06-03T18:15:00Z",
+          "timeZone": "Asia/Kathmandu"
+        },
+        "expected": {
+          "status": "value",
+          "value": "2024-06-04"
+        },
+        "rationale": "UTC June 3 18:15 + 05:45 = June 4 00:00.",
+        "sources": [
+          "https://data.iana.org/time-zones/tzdb-2026a/asia",
+          "https://www.iana.org/time-zones",
+          "https://tc39.es/proposal-temporal/docs/timezone.html"
+        ],
+        "oracle": {
+          "method": "Literal expected reviewed with Gregorian rules, manual UTC = local − offset, and independent CPython zoneinfo/TZif cross-check; no Temporal imports.",
+          "calculation": "UTC June 3 18:15 + 05:45 = June 4 00:00.",
+          "canaries": [
+            {
+              "timeZone": "Asia/Kathmandu",
+              "instant": "2024-06-03T18:15:00Z",
+              "offset": "+05:45",
+              "localDateTime": "2024-06-04T00:00:00"
+            }
+          ],
+          "transitions": [],
+          "candidates": [],
+          "dayBounds": {
+            "start": "2024-06-03T18:15:00Z",
+            "end": "2024-06-04T18:15:00Z",
+            "hours": 24
+          }
+        },
+        "reviewedAt": "2026-10-12"
+      },
+      "logs": {
+        "stdout": "",
+        "stderr": "",
+        "truncated": false
+      },
+      "status": "FAIL",
+      "actual": {
+        "status": "value",
+        "value": "2024-06-03"
+      },
+      "reasonCode": null,
+      "explanation": "The bucket is the calendar day in the requested IANA zone, bounded by consecutive local day starts. A UTC day or a fixed 24-hour bucket is a possible cause. UTC June 3 18:15 + 05:45 = June 4 00:00.",
+      "durationMs": 74
+    },
+    {
+      "caseId": "kiritimati-new-year",
+      "contract": "day-bucket",
+      "expected": {
+        "status": "value",
+        "value": "2024-01-01"
+      },
+      "repro": "chronocases run --adapter 'sample/buggy/adapter.mjs' --case 'kiritimati-new-year' --tz 'UTC' --corpus-hash a552268ca7a26fd1ca4fefcb73e68028647f4f9e8c444ef72654a2735c0df28c --out repro --json --no-open",
+      "fixture": {
+        "schemaVersion": "1",
+        "caseId": "kiritimati-new-year",
+        "contract": "day-bucket",
+        "contractVersion": "1",
+        "title": "The +14 zone enters the next year",
+        "tags": [
+          "day-boundary"
+        ],
+        "inputValidity": "valid",
+        "input": {
+          "instant": "2023-12-31T10:00:00Z",
+          "timeZone": "Pacific/Kiritimati"
+        },
+        "expected": {
+          "status": "value",
+          "value": "2024-01-01"
+        },
+        "rationale": "UTC Dec 31 10:00 + 14:00 = Jan 1 00:00.",
+        "sources": [
+          "https://data.iana.org/time-zones/tzdb-2026a/australasia",
+          "https://www.iana.org/time-zones",
+          "https://tc39.es/proposal-temporal/docs/timezone.html"
+        ],
+        "oracle": {
+          "method": "Literal expected reviewed with Gregorian rules, manual UTC = local − offset, and independent CPython zoneinfo/TZif cross-check; no Temporal imports.",
+          "calculation": "UTC Dec 31 10:00 + 14:00 = Jan 1 00:00.",
+          "canaries": [
+            {
+              "timeZone": "Pacific/Kiritimati",
+              "instant": "2023-12-31T10:00:00Z",
+              "offset": "+14:00",
+              "localDateTime": "2024-01-01T00:00:00"
+            }
+          ],
+          "transitions": [],
+          "candidates": [],
+          "dayBounds": {
+            "start": "2023-12-31T10:00:00Z",
+            "end": "2024-01-01T10:00:00Z",
+            "hours": 24
+          }
+        },
+        "reviewedAt": "2026-10-12"
+      },
+      "logs": {
+        "stdout": "",
+        "stderr": "",
+        "truncated": false
+      },
+      "status": "FAIL",
+      "actual": {
+        "status": "value",
+        "value": "2023-12-31"
+      },
+      "reasonCode": null,
+      "explanation": "The bucket is the calendar day in the requested IANA zone, bounded by consecutive local day starts. A UTC day or a fixed 24-hour bucket is a possible cause. UTC Dec 31 10:00 + 14:00 = Jan 1 00:00.",
+      "durationMs": 73
+    },
+    {
+      "caseId": "kolkata-half-hour",
+      "contract": "day-bucket",
+      "expected": {
+        "status": "value",
+        "value": "2024-06-04"
+      },
+      "repro": "chronocases run --adapter 'sample/buggy/adapter.mjs' --case 'kolkata-half-hour' --tz 'UTC' --corpus-hash a552268ca7a26fd1ca4fefcb73e68028647f4f9e8c444ef72654a2735c0df28c --out repro --json --no-open",
+      "fixture": {
+        "schemaVersion": "1",
+        "caseId": "kolkata-half-hour",
+        "contract": "day-bucket",
+        "contractVersion": "1",
+        "title": "A half-hour offset at midnight",
+        "tags": [
+          "day-boundary"
+        ],
+        "inputValidity": "valid",
+        "input": {
+          "instant": "2024-06-03T18:30:00Z",
+          "timeZone": "Asia/Kolkata"
+        },
+        "expected": {
+          "status": "value",
+          "value": "2024-06-04"
+        },
+        "rationale": "UTC June 3 18:30 + 05:30 = June 4 00:00.",
+        "sources": [
+          "https://data.iana.org/time-zones/tzdb-2026a/asia",
+          "https://www.iana.org/time-zones",
+          "https://tc39.es/proposal-temporal/docs/timezone.html"
+        ],
+        "oracle": {
+          "method": "Literal expected reviewed with Gregorian rules, manual UTC = local − offset, and independent CPython zoneinfo/TZif cross-check; no Temporal imports.",
+          "calculation": "UTC June 3 18:30 + 05:30 = June 4 00:00.",
+          "canaries": [
+            {
+              "timeZone": "Asia/Kolkata",
+              "instant": "2024-06-03T18:30:00Z",
+              "offset": "+05:30",
+              "localDateTime": "2024-06-04T00:00:00"
+            }
+          ],
+          "transitions": [],
+          "candidates": [],
+          "dayBounds": {
+            "start": "2024-06-03T18:30:00Z",
+            "end": "2024-06-04T18:30:00Z",
+            "hours": 24
+          }
+        },
+        "reviewedAt": "2026-10-12"
+      },
+      "logs": {
+        "stdout": "",
+        "stderr": "",
+        "truncated": false
+      },
+      "status": "FAIL",
+      "actual": {
+        "status": "value",
+        "value": "2024-06-03"
+      },
+      "reasonCode": null,
+      "explanation": "The bucket is the calendar day in the requested IANA zone, bounded by consecutive local day starts. A UTC day or a fixed 24-hour bucket is a possible cause. UTC June 3 18:30 + 05:30 = June 4 00:00.",
+      "durationMs": 74
+    },
+    {
+      "caseId": "la-at-midnight",
+      "contract": "day-bucket",
+      "expected": {
+        "status": "value",
+        "value": "2024-06-04"
+      },
+      "repro": "chronocases run --adapter 'sample/buggy/adapter.mjs' --case 'la-at-midnight' --tz 'UTC' --corpus-hash a552268ca7a26fd1ca4fefcb73e68028647f4f9e8c444ef72654a2735c0df28c --out repro --json --no-open",
+      "fixture": {
+        "schemaVersion": "1",
+        "caseId": "la-at-midnight",
+        "contract": "day-bucket",
+        "contractVersion": "1",
+        "title": "Local midnight belongs to the new day",
+        "tags": [
+          "day-boundary"
+        ],
+        "inputValidity": "valid",
+        "input": {
+          "instant": "2024-06-04T07:00:00Z",
+          "timeZone": "America/Los_Angeles"
+        },
+        "expected": {
+          "status": "value",
+          "value": "2024-06-04"
+        },
+        "rationale": "UTC 07:00:00 − 07:00 = June 4, 00:00:00.",
+        "sources": [
+          "https://data.iana.org/time-zones/tzdb-2026a/northamerica",
+          "https://www.iana.org/time-zones",
+          "https://tc39.es/proposal-temporal/docs/timezone.html"
+        ],
+        "oracle": {
+          "method": "Literal expected reviewed with Gregorian rules, manual UTC = local − offset, and independent CPython zoneinfo/TZif cross-check; no Temporal imports.",
+          "calculation": "UTC 07:00:00 − 07:00 = June 4, 00:00:00.",
+          "canaries": [
+            {
+              "timeZone": "America/Los_Angeles",
+              "instant": "2024-06-04T07:00:00Z",
+              "offset": "-07:00",
+              "localDateTime": "2024-06-04T00:00:00"
+            }
+          ],
+          "transitions": [],
+          "candidates": [],
+          "dayBounds": {
+            "start": "2024-06-04T07:00:00Z",
+            "end": "2024-06-05T07:00:00Z",
+            "hours": 24
+          }
+        },
+        "reviewedAt": "2026-10-12"
+      },
+      "logs": {
+        "stdout": "",
+        "stderr": "",
+        "truncated": false
+      },
+      "status": "PASS",
+      "actual": {
+        "status": "value",
+        "value": "2024-06-04"
+      },
+      "reasonCode": null,
+      "explanation": "Matches the frozen outcome. UTC 07:00:00 − 07:00 = June 4, 00:00:00.",
+      "durationMs": 75
+    },
+    {
+      "caseId": "la-before-midnight",
+      "contract": "day-bucket",
+      "expected": {
+        "status": "value",
+        "value": "2024-06-03"
+      },
+      "repro": "chronocases run --adapter 'sample/buggy/adapter.mjs' --case 'la-before-midnight' --tz 'UTC' --corpus-hash a552268ca7a26fd1ca4fefcb73e68028647f4f9e8c444ef72654a2735c0df28c --out repro --json --no-open",
+      "fixture": {
+        "schemaVersion": "1",
+        "caseId": "la-before-midnight",
+        "contract": "day-bucket",
+        "contractVersion": "1",
+        "title": "One second before local midnight",
+        "tags": [
+          "day-boundary"
+        ],
+        "inputValidity": "valid",
+        "input": {
+          "instant": "2024-06-04T06:59:59Z",
+          "timeZone": "America/Los_Angeles"
+        },
+        "expected": {
+          "status": "value",
+          "value": "2024-06-03"
+        },
+        "rationale": "UTC 06:59:59 − 07:00 = June 3, 23:59:59.",
+        "sources": [
+          "https://data.iana.org/time-zones/tzdb-2026a/northamerica",
+          "https://www.iana.org/time-zones",
+          "https://tc39.es/proposal-temporal/docs/timezone.html"
+        ],
+        "oracle": {
+          "method": "Literal expected reviewed with Gregorian rules, manual UTC = local − offset, and independent CPython zoneinfo/TZif cross-check; no Temporal imports.",
+          "calculation": "UTC 06:59:59 − 07:00 = June 3, 23:59:59.",
+          "canaries": [
+            {
+              "timeZone": "America/Los_Angeles",
+              "instant": "2024-06-04T06:59:59Z",
+              "offset": "-07:00",
+              "localDateTime": "2024-06-03T23:59:59"
+            }
+          ],
+          "transitions": [],
+          "candidates": [],
+          "dayBounds": {
+            "start": "2024-06-03T07:00:00Z",
+            "end": "2024-06-04T07:00:00Z",
+            "hours": 24
+          }
+        },
+        "reviewedAt": "2026-10-12"
+      },
+      "logs": {
+        "stdout": "",
+        "stderr": "",
+        "truncated": false
+      },
+      "status": "FAIL",
+      "actual": {
+        "status": "value",
+        "value": "2024-06-04"
+      },
+      "reasonCode": null,
+      "explanation": "The bucket is the calendar day in the requested IANA zone, bounded by consecutive local day starts. A UTC day or a fixed 24-hour bucket is a possible cause. UTC 06:59:59 − 07:00 = June 3, 23:59:59.",
+      "durationMs": 72
+    },
+    {
+      "caseId": "ny-23-hour-day",
+      "contract": "day-bucket",
+      "expected": {
+        "status": "value",
+        "value": "2024-03-10"
+      },
+      "repro": "chronocases run --adapter 'sample/buggy/adapter.mjs' --case 'ny-23-hour-day' --tz 'UTC' --corpus-hash a552268ca7a26fd1ca4fefcb73e68028647f4f9e8c444ef72654a2735c0df28c --out repro --json --no-open",
+      "fixture": {
+        "schemaVersion": "1",
+        "caseId": "ny-23-hour-day",
+        "contract": "day-bucket",
+        "contractVersion": "1",
+        "title": "The spring day ends after 23 hours",
+        "tags": [
+          "day-boundary"
+        ],
+        "inputValidity": "valid",
+        "input": {
+          "instant": "2024-03-11T03:59:59Z",
+          "timeZone": "America/New_York"
+        },
+        "expected": {
+          "status": "value",
+          "value": "2024-03-10"
+        },
+        "rationale": "UTC March 11 03:59:59 − 04:00 = March 10 23:59:59; day bounds 05:00Z to next 04:00Z.",
+        "sources": [
+          "https://data.iana.org/time-zones/tzdb-2026a/northamerica",
+          "https://www.iana.org/time-zones",
+          "https://tc39.es/proposal-temporal/docs/timezone.html"
+        ],
+        "oracle": {
+          "method": "Literal expected reviewed with Gregorian rules, manual UTC = local − offset, and independent CPython zoneinfo/TZif cross-check; no Temporal imports.",
+          "calculation": "UTC March 11 03:59:59 − 04:00 = March 10 23:59:59; day bounds 05:00Z to next 04:00Z.",
+          "canaries": [
+            {
+              "timeZone": "America/New_York",
+              "instant": "2024-03-11T03:59:59Z",
+              "offset": "-04:00",
+              "localDateTime": "2024-03-10T23:59:59"
+            },
+            {
+              "timeZone": "America/New_York",
+              "instant": "2024-03-10T06:59:59Z",
+              "offset": "-05:00",
+              "localDateTime": "2024-03-10T01:59:59"
+            },
+            {
+              "timeZone": "America/New_York",
+              "instant": "2024-03-10T07:00:00Z",
+              "offset": "-04:00",
+              "localDateTime": "2024-03-10T03:00:00"
+            }
+          ],
+          "transitions": [
+            {
+              "instant": "2024-03-10T07:00:00Z",
+              "beforeOffset": "-05:00",
+              "afterOffset": "-04:00",
+              "note": "02:00–02:59:59 local is missing; gap duration 60 minutes."
+            }
+          ],
+          "candidates": [],
+          "dayBounds": {
+            "start": "2024-03-10T05:00:00Z",
+            "end": "2024-03-11T04:00:00Z",
+            "hours": 23
+          }
+        },
+        "reviewedAt": "2026-10-12"
+      },
+      "logs": {
+        "stdout": "",
+        "stderr": "",
+        "truncated": false
+      },
+      "status": "FAIL",
+      "actual": {
+        "status": "value",
+        "value": "2024-03-11"
+      },
+      "reasonCode": null,
+      "explanation": "The bucket is the calendar day in the requested IANA zone, bounded by consecutive local day starts. A UTC day or a fixed 24-hour bucket is a possible cause. UTC March 11 03:59:59 − 04:00 = March 10 23:59:59; day bounds 05:00Z to next 04:00Z.",
+      "durationMs": 107
+    },
+    {
+      "caseId": "ny-25-hour-day",
+      "contract": "day-bucket",
+      "expected": {
+        "status": "value",
+        "value": "2024-11-03"
+      },
+      "repro": "chronocases run --adapter 'sample/buggy/adapter.mjs' --case 'ny-25-hour-day' --tz 'UTC' --corpus-hash a552268ca7a26fd1ca4fefcb73e68028647f4f9e8c444ef72654a2735c0df28c --out repro --json --no-open",
+      "fixture": {
+        "schemaVersion": "1",
+        "caseId": "ny-25-hour-day",
+        "contract": "day-bucket",
+        "contractVersion": "1",
+        "title": "The autumn day ends after 25 hours",
+        "tags": [
+          "day-boundary"
+        ],
+        "inputValidity": "valid",
+        "input": {
+          "instant": "2024-11-04T04:59:59Z",
+          "timeZone": "America/New_York"
+        },
+        "expected": {
+          "status": "value",
+          "value": "2024-11-03"
+        },
+        "rationale": "UTC Nov 4 04:59:59 − 05:00 = Nov 3 23:59:59; day bounds 04:00Z to next 05:00Z.",
+        "sources": [
+          "https://data.iana.org/time-zones/tzdb-2026a/northamerica",
+          "https://www.iana.org/time-zones",
+          "https://tc39.es/proposal-temporal/docs/timezone.html"
+        ],
+        "oracle": {
+          "method": "Literal expected reviewed with Gregorian rules, manual UTC = local − offset, and independent CPython zoneinfo/TZif cross-check; no Temporal imports.",
+          "calculation": "UTC Nov 4 04:59:59 − 05:00 = Nov 3 23:59:59; day bounds 04:00Z to next 05:00Z.",
+          "canaries": [
+            {
+              "timeZone": "America/New_York",
+              "instant": "2024-11-04T04:59:59Z",
+              "offset": "-05:00",
+              "localDateTime": "2024-11-03T23:59:59"
+            },
+            {
+              "timeZone": "America/New_York",
+              "instant": "2024-11-03T05:59:59Z",
+              "offset": "-04:00",
+              "localDateTime": "2024-11-03T01:59:59"
+            },
+            {
+              "timeZone": "America/New_York",
+              "instant": "2024-11-03T06:00:00Z",
+              "offset": "-05:00",
+              "localDateTime": "2024-11-03T01:00:00"
+            }
+          ],
+          "transitions": [
+            {
+              "instant": "2024-11-03T06:00:00Z",
+              "beforeOffset": "-04:00",
+              "afterOffset": "-05:00",
+              "note": "01:00–01:59:59 local occurs twice; fold duration 60 minutes."
+            }
+          ],
+          "candidates": [],
+          "dayBounds": {
+            "start": "2024-11-03T04:00:00Z",
+            "end": "2024-11-04T05:00:00Z",
+            "hours": 25
+          }
+        },
+        "reviewedAt": "2026-10-12"
+      },
+      "logs": {
+        "stdout": "",
+        "stderr": "",
+        "truncated": false
+      },
+      "status": "FAIL",
+      "actual": {
+        "status": "value",
+        "value": "2024-11-04"
+      },
+      "reasonCode": null,
+      "explanation": "The bucket is the calendar day in the requested IANA zone, bounded by consecutive local day starts. A UTC day or a fixed 24-hour bucket is a possible cause. UTC Nov 4 04:59:59 − 05:00 = Nov 3 23:59:59; day bounds 04:00Z to next 05:00Z.",
+      "durationMs": 89
+    },
+    {
+      "caseId": "offset-input-utc-leap-boundary",
+      "contract": "day-bucket",
+      "expected": {
+        "status": "value",
+        "value": "2024-02-29"
+      },
+      "repro": "chronocases run --adapter 'sample/buggy/adapter.mjs' --case 'offset-input-utc-leap-boundary' --tz 'UTC' --corpus-hash a552268ca7a26fd1ca4fefcb73e68028647f4f9e8c444ef72654a2735c0df28c --out repro --json --no-open",
+      "fixture": {
+        "schemaVersion": "1",
+        "caseId": "offset-input-utc-leap-boundary",
+        "contract": "day-bucket",
+        "contractVersion": "1",
+        "title": "Numeric offset input crosses a leap-day boundary",
+        "tags": [
+          "day-boundary"
+        ],
+        "inputValidity": "valid",
+        "input": {
+          "instant": "2024-03-01T00:15:00+05:45",
+          "timeZone": "UTC"
+        },
+        "expected": {
+          "status": "value",
+          "value": "2024-02-29"
+        },
+        "rationale": "March 1 00:15 − 05:45 = Feb 29 18:30Z. A true UTC bucket is valid.",
+        "sources": [
+          "https://data.iana.org/time-zones/tzdb-2026a/etcetera",
+          "https://www.iana.org/time-zones",
+          "https://tc39.es/proposal-temporal/docs/timezone.html"
+        ],
+        "oracle": {
+          "method": "Literal expected reviewed with Gregorian rules, manual UTC = local − offset, and independent CPython zoneinfo/TZif cross-check; no Temporal imports.",
+          "calculation": "March 1 00:15 − 05:45 = Feb 29 18:30Z. A true UTC bucket is valid.",
+          "canaries": [
+            {
+              "timeZone": "UTC",
+              "instant": "2024-02-29T18:30:00Z",
+              "offset": "+00:00",
+              "localDateTime": "2024-02-29T18:30:00"
+            }
+          ],
+          "transitions": [],
+          "candidates": [],
+          "dayBounds": {
+            "start": "2024-02-29T00:00:00Z",
+            "end": "2024-03-01T00:00:00Z",
+            "hours": 24
+          }
+        },
+        "reviewedAt": "2026-10-12"
+      },
+      "logs": {
+        "stdout": "",
+        "stderr": "",
+        "truncated": false
+      },
+      "status": "PASS",
+      "actual": {
+        "status": "value",
+        "value": "2024-02-29"
+      },
+      "reasonCode": null,
+      "explanation": "Matches the frozen outcome. March 1 00:15 − 05:45 = Feb 29 18:30Z. A true UTC bucket is valid.",
+      "durationMs": 72
+    },
+    {
+      "caseId": "apia-skipped-date-unsupported",
+      "contract": "recurrence",
+      "expected": {
+        "status": "rejected",
+        "reasonCode": "UNSUPPORTED_RECURRENCE_TRANSITION"
+      },
+      "repro": "chronocases run --adapter 'sample/buggy/adapter.mjs' --case 'apia-skipped-date-unsupported' --tz 'UTC' --corpus-hash a552268ca7a26fd1ca4fefcb73e68028647f4f9e8c444ef72654a2735c0df28c --out repro --json --no-open",
+      "fixture": {
+        "schemaVersion": "1",
+        "caseId": "apia-skipped-date-unsupported",
+        "contract": "recurrence",
+        "contractVersion": "1",
+        "title": "Decline a skipped civil date before selection",
+        "tags": [
+          "daily",
+          "policy",
+          "apia"
+        ],
+        "inputValidity": "unsupported",
+        "input": {
+          "timeZone": "Pacific/Apia",
+          "localTime": "09:00:00",
+          "firstCandidateDate": "2011-12-30",
+          "horizonDays": 2,
+          "strictlyAfter": "2011-12-29T00:00:00Z",
+          "gapPolicy": "shift-by-gap",
+          "foldPolicy": "earlier"
+        },
+        "expected": {
+          "status": "rejected",
+          "reasonCode": "UNSUPPORTED_RECURRENCE_TRANSITION"
+        },
+        "rationale": "Apia jumps from −10:00 to +14:00, skipping Dec 30. Preflight declines the whole window; no computed occurrence is claimed.",
+        "sources": [
+          "https://data.iana.org/time-zones/tzdb-2026a/australasia",
+          "https://www.iana.org/time-zones",
+          "https://tc39.es/proposal-temporal/docs/timezone.html"
+        ],
+        "oracle": {
+          "method": "Literal expected reviewed with Gregorian rules, manual UTC = local − offset, and independent CPython zoneinfo/TZif cross-check; no Temporal imports.",
+          "calculation": "Apia jumps from −10:00 to +14:00, skipping Dec 30. Preflight declines the whole window; no computed occurrence is claimed.",
+          "canaries": [
+            {
+              "timeZone": "Pacific/Apia",
+              "instant": "2011-12-30T19:00:00Z",
+              "offset": "+14:00",
+              "localDateTime": "2011-12-31T09:00:00"
+            },
+            {
+              "timeZone": "Pacific/Apia",
+              "instant": "2011-12-30T09:59:59Z",
+              "offset": "-10:00",
+              "localDateTime": "2011-12-29T23:59:59"
+            },
+            {
+              "timeZone": "Pacific/Apia",
+              "instant": "2011-12-30T10:00:00Z",
+              "offset": "+14:00",
+              "localDateTime": "2011-12-31T00:00:00"
+            }
+          ],
+          "transitions": [
+            {
+              "instant": "2011-12-30T10:00:00Z",
+              "beforeOffset": "-10:00",
+              "afterOffset": "+14:00",
+              "note": "2011-12-30 is skipped as a civil date; recurrence v1 declines this entire window."
+            }
+          ],
+          "candidates": [
+            {
+              "nominalDate": "2011-12-30",
+              "instants": [],
+              "forwardProjection": "2011-12-30T19:00:00Z"
+            },
+            {
+              "nominalDate": "2011-12-31",
+              "instants": [
+                "2011-12-30T19:00:00Z"
+              ]
+            }
+          ]
+        },
+        "reviewedAt": "2026-10-12"
+      },
+      "logs": {
+        "stdout": "",
+        "stderr": "",
+        "truncated": false
+      },
+      "status": "UNSUPPORTED",
+      "actual": {
+        "status": "rejected",
+        "reasonCode": "UNSUPPORTED_RECURRENCE_TRANSITION"
+      },
+      "reasonCode": "UNSUPPORTED_RECURRENCE_TRANSITION",
+      "explanation": "Matches the declared unsupported-transition negative self-test. No occurrence computation is covered for this case.",
+      "durationMs": 77
+    },
+    {
+      "caseId": "lord-howe-gap-shift",
+      "contract": "recurrence",
+      "expected": {
+        "status": "value",
+        "value": {
+          "nominalDate": "2024-10-06",
+          "resolvedLocalDateTime": "2024-10-06T02:45:00",
+          "instant": "2024-10-05T15:45:00Z",
+          "offset": "+11:00",
+          "appliedPolicy": "gap:shift-by-gap"
+        }
+      },
+      "repro": "chronocases run --adapter 'sample/buggy/adapter.mjs' --case 'lord-howe-gap-shift' --tz 'UTC' --corpus-hash a552268ca7a26fd1ca4fefcb73e68028647f4f9e8c444ef72654a2735c0df28c --out repro --json --no-open",
+      "fixture": {
+        "schemaVersion": "1",
+        "caseId": "lord-howe-gap-shift",
+        "contract": "recurrence",
+        "contractVersion": "1",
+        "title": "Shift by the actual 30-minute gap",
+        "tags": [
+          "daily",
+          "policy",
+          "lord-gap"
+        ],
+        "inputValidity": "valid",
+        "input": {
+          "timeZone": "Australia/Lord_Howe",
+          "localTime": "02:15:00",
+          "firstCandidateDate": "2024-10-06",
+          "horizonDays": 2,
+          "strictlyAfter": "2024-10-05T00:00:00Z",
+          "gapPolicy": "shift-by-gap",
+          "foldPolicy": "earlier"
+        },
+        "expected": {
+          "status": "value",
+          "value": {
+            "nominalDate": "2024-10-06",
+            "resolvedLocalDateTime": "2024-10-06T02:45:00",
+            "instant": "2024-10-05T15:45:00Z",
+            "offset": "+11:00",
+            "appliedPolicy": "gap:shift-by-gap"
+          }
+        },
+        "rationale": "02:15 + 00:30 gap = 02:45; UTC = Oct 6 02:45 − 11:00 = Oct 5 15:45Z.",
+        "sources": [
+          "https://data.iana.org/time-zones/tzdb-2026a/australasia",
+          "https://www.iana.org/time-zones",
+          "https://tc39.es/proposal-temporal/docs/timezone.html"
+        ],
+        "oracle": {
+          "method": "Literal expected reviewed with Gregorian rules, manual UTC = local − offset, and independent CPython zoneinfo/TZif cross-check; no Temporal imports.",
+          "calculation": "02:15 + 00:30 gap = 02:45; UTC = Oct 6 02:45 − 11:00 = Oct 5 15:45Z.",
+          "canaries": [
+            {
+              "timeZone": "Australia/Lord_Howe",
+              "instant": "2024-10-05T15:45:00Z",
+              "offset": "+11:00",
+              "localDateTime": "2024-10-06T02:45:00"
+            },
+            {
+              "timeZone": "Australia/Lord_Howe",
+              "instant": "2024-10-06T15:15:00Z",
+              "offset": "+11:00",
+              "localDateTime": "2024-10-07T02:15:00"
+            },
+            {
+              "timeZone": "Australia/Lord_Howe",
+              "instant": "2024-10-05T15:29:59Z",
+              "offset": "+10:30",
+              "localDateTime": "2024-10-06T01:59:59"
+            },
+            {
+              "timeZone": "Australia/Lord_Howe",
+              "instant": "2024-10-05T15:30:00Z",
+              "offset": "+11:00",
+              "localDateTime": "2024-10-06T02:30:00"
+            }
+          ],
+          "transitions": [
+            {
+              "instant": "2024-10-05T15:30:00Z",
+              "beforeOffset": "+10:30",
+              "afterOffset": "+11:00",
+              "note": "02:00–02:29:59 local is missing; gap duration 30 minutes."
+            }
+          ],
+          "candidates": [
+            {
+              "nominalDate": "2024-10-06",
+              "instants": [],
+              "forwardProjection": "2024-10-05T15:45:00Z"
+            },
+            {
+              "nominalDate": "2024-10-07",
+              "instants": [
+                "2024-10-06T15:15:00Z"
+              ]
+            }
+          ]
+        },
+        "reviewedAt": "2026-10-12"
+      },
+      "logs": {
+        "stdout": "",
+        "stderr": "",
+        "truncated": false
+      },
+      "status": "PASS",
+      "actual": {
+        "status": "value",
+        "value": {
+          "nominalDate": "2024-10-06",
+          "resolvedLocalDateTime": "2024-10-06T02:45:00",
+          "instant": "2024-10-05T15:45:00Z",
+          "offset": "+11:00",
+          "appliedPolicy": "gap:shift-by-gap"
+        }
+      },
+      "reasonCode": null,
+      "explanation": "Matches the frozen outcome. 02:15 + 00:30 gap = 02:45; UTC = Oct 6 02:45 − 11:00 = Oct 5 15:45Z.",
+      "durationMs": 79
+    },
+    {
+      "caseId": "ny-fold-earlier-after-first",
+      "contract": "recurrence",
+      "expected": {
+        "status": "value",
+        "value": {
+          "nominalDate": "2024-11-04",
+          "resolvedLocalDateTime": "2024-11-04T01:30:00",
+          "instant": "2024-11-04T06:30:00Z",
+          "offset": "-05:00",
+          "appliedPolicy": "exact"
+        }
+      },
+      "repro": "chronocases run --adapter 'sample/buggy/adapter.mjs' --case 'ny-fold-earlier-after-first' --tz 'UTC' --corpus-hash a552268ca7a26fd1ca4fefcb73e68028647f4f9e8c444ef72654a2735c0df28c --out repro --json --no-open",
+      "fixture": {
+        "schemaVersion": "1",
+        "caseId": "ny-fold-earlier-after-first",
+        "contract": "recurrence",
+        "contractVersion": "1",
+        "title": "Earlier has passed; keep its policy",
+        "tags": [
+          "daily",
+          "policy",
+          "ny-fold"
+        ],
+        "inputValidity": "valid",
+        "input": {
+          "timeZone": "America/New_York",
+          "localTime": "01:30:00",
+          "firstCandidateDate": "2024-11-03",
+          "horizonDays": 2,
+          "strictlyAfter": "2024-11-03T05:45:00Z",
+          "gapPolicy": "shift-by-gap",
+          "foldPolicy": "earlier"
+        },
+        "expected": {
+          "status": "value",
+          "value": {
+            "nominalDate": "2024-11-04",
+            "resolvedLocalDateTime": "2024-11-04T01:30:00",
+            "instant": "2024-11-04T06:30:00Z",
+            "offset": "-05:00",
+            "appliedPolicy": "exact"
+          }
+        },
+        "rationale": "Earlier 05:30Z <= 05:45Z. Do not substitute 06:30Z. Next nominal day: 01:30 − (−05:00) = 06:30Z.",
+        "sources": [
+          "https://data.iana.org/time-zones/tzdb-2026a/northamerica",
+          "https://www.iana.org/time-zones",
+          "https://tc39.es/proposal-temporal/docs/timezone.html"
+        ],
+        "oracle": {
+          "method": "Literal expected reviewed with Gregorian rules, manual UTC = local − offset, and independent CPython zoneinfo/TZif cross-check; no Temporal imports.",
+          "calculation": "Earlier 05:30Z <= 05:45Z. Do not substitute 06:30Z. Next nominal day: 01:30 − (−05:00) = 06:30Z.",
+          "canaries": [
+            {
+              "timeZone": "America/New_York",
+              "instant": "2024-11-03T05:30:00Z",
+              "offset": "-04:00",
+              "localDateTime": "2024-11-03T01:30:00"
+            },
+            {
+              "timeZone": "America/New_York",
+              "instant": "2024-11-03T06:30:00Z",
+              "offset": "-05:00",
+              "localDateTime": "2024-11-03T01:30:00"
+            },
+            {
+              "timeZone": "America/New_York",
+              "instant": "2024-11-04T06:30:00Z",
+              "offset": "-05:00",
+              "localDateTime": "2024-11-04T01:30:00"
+            },
+            {
+              "timeZone": "America/New_York",
+              "instant": "2024-11-03T05:59:59Z",
+              "offset": "-04:00",
+              "localDateTime": "2024-11-03T01:59:59"
+            },
+            {
+              "timeZone": "America/New_York",
+              "instant": "2024-11-03T06:00:00Z",
+              "offset": "-05:00",
+              "localDateTime": "2024-11-03T01:00:00"
+            }
+          ],
+          "transitions": [
+            {
+              "instant": "2024-11-03T06:00:00Z",
+              "beforeOffset": "-04:00",
+              "afterOffset": "-05:00",
+              "note": "01:00–01:59:59 local occurs twice; fold duration 60 minutes."
+            }
+          ],
+          "candidates": [
+            {
+              "nominalDate": "2024-11-03",
+              "instants": [
+                "2024-11-03T05:30:00Z",
+                "2024-11-03T06:30:00Z"
+              ]
+            },
+            {
+              "nominalDate": "2024-11-04",
+              "instants": [
+                "2024-11-04T06:30:00Z"
+              ]
+            }
+          ]
+        },
+        "reviewedAt": "2026-10-12"
+      },
+      "logs": {
+        "stdout": "",
+        "stderr": "",
+        "truncated": false
+      },
+      "status": "FAIL",
+      "actual": {
+        "status": "value",
+        "value": {
+          "nominalDate": "2024-11-04",
+          "resolvedLocalDateTime": "2024-11-04T00:30:00",
+          "instant": "2024-11-04T05:30:00Z",
+          "offset": "-05:00",
+          "appliedPolicy": "exact"
+        }
+      },
+      "reasonCode": null,
+      "explanation": "Search the explicit nominal-date window in calendar order. Apply the requested gap/fold policy before comparing the selected instant strictly with the cursor. Fixed 24-hour steps or substituting the other fold candidate are possible causes. Earlier 05:30Z <= 05:45Z. Do not substitute 06:30Z. Next nominal day: 01:30 − (−05:00) = 06:30Z.",
+      "durationMs": 89
+    },
+    {
+      "caseId": "ny-fold-earlier",
+      "contract": "recurrence",
+      "expected": {
+        "status": "value",
+        "value": {
+          "nominalDate": "2024-11-03",
+          "resolvedLocalDateTime": "2024-11-03T01:30:00",
+          "instant": "2024-11-03T05:30:00Z",
+          "offset": "-04:00",
+          "appliedPolicy": "fold:earlier"
+        }
+      },
+      "repro": "chronocases run --adapter 'sample/buggy/adapter.mjs' --case 'ny-fold-earlier' --tz 'UTC' --corpus-hash a552268ca7a26fd1ca4fefcb73e68028647f4f9e8c444ef72654a2735c0df28c --out repro --json --no-open",
+      "fixture": {
+        "schemaVersion": "1",
+        "caseId": "ny-fold-earlier",
+        "contract": "recurrence",
+        "contractVersion": "1",
+        "title": "Choose the first repeated wall time",
+        "tags": [
+          "daily",
+          "policy",
+          "ny-fold"
+        ],
+        "inputValidity": "valid",
+        "input": {
+          "timeZone": "America/New_York",
+          "localTime": "01:30:00",
+          "firstCandidateDate": "2024-11-03",
+          "horizonDays": 2,
+          "strictlyAfter": "2024-11-03T00:00:00Z",
+          "gapPolicy": "shift-by-gap",
+          "foldPolicy": "earlier"
+        },
+        "expected": {
+          "status": "value",
+          "value": {
+            "nominalDate": "2024-11-03",
+            "resolvedLocalDateTime": "2024-11-03T01:30:00",
+            "instant": "2024-11-03T05:30:00Z",
+            "offset": "-04:00",
+            "appliedPolicy": "fold:earlier"
+          }
+        },
+        "rationale": "01:30 − (−04:00) = 05:30Z; earlier selects this candidate.",
+        "sources": [
+          "https://data.iana.org/time-zones/tzdb-2026a/northamerica",
+          "https://www.iana.org/time-zones",
+          "https://tc39.es/proposal-temporal/docs/timezone.html"
+        ],
+        "oracle": {
+          "method": "Literal expected reviewed with Gregorian rules, manual UTC = local − offset, and independent CPython zoneinfo/TZif cross-check; no Temporal imports.",
+          "calculation": "01:30 − (−04:00) = 05:30Z; earlier selects this candidate.",
+          "canaries": [
+            {
+              "timeZone": "America/New_York",
+              "instant": "2024-11-03T05:30:00Z",
+              "offset": "-04:00",
+              "localDateTime": "2024-11-03T01:30:00"
+            },
+            {
+              "timeZone": "America/New_York",
+              "instant": "2024-11-03T06:30:00Z",
+              "offset": "-05:00",
+              "localDateTime": "2024-11-03T01:30:00"
+            },
+            {
+              "timeZone": "America/New_York",
+              "instant": "2024-11-04T06:30:00Z",
+              "offset": "-05:00",
+              "localDateTime": "2024-11-04T01:30:00"
+            },
+            {
+              "timeZone": "America/New_York",
+              "instant": "2024-11-03T05:59:59Z",
+              "offset": "-04:00",
+              "localDateTime": "2024-11-03T01:59:59"
+            },
+            {
+              "timeZone": "America/New_York",
+              "instant": "2024-11-03T06:00:00Z",
+              "offset": "-05:00",
+              "localDateTime": "2024-11-03T01:00:00"
+            }
+          ],
+          "transitions": [
+            {
+              "instant": "2024-11-03T06:00:00Z",
+              "beforeOffset": "-04:00",
+              "afterOffset": "-05:00",
+              "note": "01:00–01:59:59 local occurs twice; fold duration 60 minutes."
+            }
+          ],
+          "candidates": [
+            {
+              "nominalDate": "2024-11-03",
+              "instants": [
+                "2024-11-03T05:30:00Z",
+                "2024-11-03T06:30:00Z"
+              ]
+            },
+            {
+              "nominalDate": "2024-11-04",
+              "instants": [
+                "2024-11-04T06:30:00Z"
+              ]
+            }
+          ]
+        },
+        "reviewedAt": "2026-10-12"
+      },
+      "logs": {
+        "stdout": "",
+        "stderr": "",
+        "truncated": false
+      },
+      "status": "PASS",
+      "actual": {
+        "status": "value",
+        "value": {
+          "nominalDate": "2024-11-03",
+          "resolvedLocalDateTime": "2024-11-03T01:30:00",
+          "instant": "2024-11-03T05:30:00Z",
+          "offset": "-04:00",
+          "appliedPolicy": "fold:earlier"
+        }
+      },
+      "reasonCode": null,
+      "explanation": "Matches the frozen outcome. 01:30 − (−04:00) = 05:30Z; earlier selects this candidate.",
+      "durationMs": 74
+    },
+    {
+      "caseId": "ny-fold-later-after-first",
+      "contract": "recurrence",
+      "expected": {
+        "status": "value",
+        "value": {
+          "nominalDate": "2024-11-03",
+          "resolvedLocalDateTime": "2024-11-03T01:30:00",
+          "instant": "2024-11-03T06:30:00Z",
+          "offset": "-05:00",
+          "appliedPolicy": "fold:later"
+        }
+      },
+      "repro": "chronocases run --adapter 'sample/buggy/adapter.mjs' --case 'ny-fold-later-after-first' --tz 'UTC' --corpus-hash a552268ca7a26fd1ca4fefcb73e68028647f4f9e8c444ef72654a2735c0df28c --out repro --json --no-open",
+      "fixture": {
+        "schemaVersion": "1",
+        "caseId": "ny-fold-later-after-first",
+        "contract": "recurrence",
+        "contractVersion": "1",
+        "title": "Later remains ahead of the same cursor",
+        "tags": [
+          "daily",
+          "policy",
+          "ny-fold"
+        ],
+        "inputValidity": "valid",
+        "input": {
+          "timeZone": "America/New_York",
+          "localTime": "01:30:00",
+          "firstCandidateDate": "2024-11-03",
+          "horizonDays": 2,
+          "strictlyAfter": "2024-11-03T05:45:00Z",
+          "gapPolicy": "shift-by-gap",
+          "foldPolicy": "later"
+        },
+        "expected": {
+          "status": "value",
+          "value": {
+            "nominalDate": "2024-11-03",
+            "resolvedLocalDateTime": "2024-11-03T01:30:00",
+            "instant": "2024-11-03T06:30:00Z",
+            "offset": "-05:00",
+            "appliedPolicy": "fold:later"
+          }
+        },
+        "rationale": "Later 06:30Z > 05:45Z; retain November 3.",
+        "sources": [
+          "https://data.iana.org/time-zones/tzdb-2026a/northamerica",
+          "https://www.iana.org/time-zones",
+          "https://tc39.es/proposal-temporal/docs/timezone.html"
+        ],
+        "oracle": {
+          "method": "Literal expected reviewed with Gregorian rules, manual UTC = local − offset, and independent CPython zoneinfo/TZif cross-check; no Temporal imports.",
+          "calculation": "Later 06:30Z > 05:45Z; retain November 3.",
+          "canaries": [
+            {
+              "timeZone": "America/New_York",
+              "instant": "2024-11-03T05:30:00Z",
+              "offset": "-04:00",
+              "localDateTime": "2024-11-03T01:30:00"
+            },
+            {
+              "timeZone": "America/New_York",
+              "instant": "2024-11-03T06:30:00Z",
+              "offset": "-05:00",
+              "localDateTime": "2024-11-03T01:30:00"
+            },
+            {
+              "timeZone": "America/New_York",
+              "instant": "2024-11-04T06:30:00Z",
+              "offset": "-05:00",
+              "localDateTime": "2024-11-04T01:30:00"
+            },
+            {
+              "timeZone": "America/New_York",
+              "instant": "2024-11-03T05:59:59Z",
+              "offset": "-04:00",
+              "localDateTime": "2024-11-03T01:59:59"
+            },
+            {
+              "timeZone": "America/New_York",
+              "instant": "2024-11-03T06:00:00Z",
+              "offset": "-05:00",
+              "localDateTime": "2024-11-03T01:00:00"
+            }
+          ],
+          "transitions": [
+            {
+              "instant": "2024-11-03T06:00:00Z",
+              "beforeOffset": "-04:00",
+              "afterOffset": "-05:00",
+              "note": "01:00–01:59:59 local occurs twice; fold duration 60 minutes."
+            }
+          ],
+          "candidates": [
+            {
+              "nominalDate": "2024-11-03",
+              "instants": [
+                "2024-11-03T05:30:00Z",
+                "2024-11-03T06:30:00Z"
+              ]
+            },
+            {
+              "nominalDate": "2024-11-04",
+              "instants": [
+                "2024-11-04T06:30:00Z"
+              ]
+            }
+          ]
+        },
+        "reviewedAt": "2026-10-12"
+      },
+      "logs": {
+        "stdout": "",
+        "stderr": "",
+        "truncated": false
+      },
+      "status": "PASS",
+      "actual": {
+        "status": "value",
+        "value": {
+          "nominalDate": "2024-11-03",
+          "resolvedLocalDateTime": "2024-11-03T01:30:00",
+          "instant": "2024-11-03T06:30:00Z",
+          "offset": "-05:00",
+          "appliedPolicy": "fold:later"
+        }
+      },
+      "reasonCode": null,
+      "explanation": "Matches the frozen outcome. Later 06:30Z > 05:45Z; retain November 3.",
+      "durationMs": 79
+    },
+    {
+      "caseId": "ny-fold-later",
+      "contract": "recurrence",
+      "expected": {
+        "status": "value",
+        "value": {
+          "nominalDate": "2024-11-03",
+          "resolvedLocalDateTime": "2024-11-03T01:30:00",
+          "instant": "2024-11-03T06:30:00Z",
+          "offset": "-05:00",
+          "appliedPolicy": "fold:later"
+        }
+      },
+      "repro": "chronocases run --adapter 'sample/buggy/adapter.mjs' --case 'ny-fold-later' --tz 'UTC' --corpus-hash a552268ca7a26fd1ca4fefcb73e68028647f4f9e8c444ef72654a2735c0df28c --out repro --json --no-open",
+      "fixture": {
+        "schemaVersion": "1",
+        "caseId": "ny-fold-later",
+        "contract": "recurrence",
+        "contractVersion": "1",
+        "title": "Choose the second repeated wall time",
+        "tags": [
+          "daily",
+          "policy",
+          "ny-fold"
+        ],
+        "inputValidity": "valid",
+        "input": {
+          "timeZone": "America/New_York",
+          "localTime": "01:30:00",
+          "firstCandidateDate": "2024-11-03",
+          "horizonDays": 2,
+          "strictlyAfter": "2024-11-03T00:00:00Z",
+          "gapPolicy": "shift-by-gap",
+          "foldPolicy": "later"
+        },
+        "expected": {
+          "status": "value",
+          "value": {
+            "nominalDate": "2024-11-03",
+            "resolvedLocalDateTime": "2024-11-03T01:30:00",
+            "instant": "2024-11-03T06:30:00Z",
+            "offset": "-05:00",
+            "appliedPolicy": "fold:later"
+          }
+        },
+        "rationale": "01:30 − (−05:00) = 06:30Z; later selects this candidate.",
+        "sources": [
+          "https://data.iana.org/time-zones/tzdb-2026a/northamerica",
+          "https://www.iana.org/time-zones",
+          "https://tc39.es/proposal-temporal/docs/timezone.html"
+        ],
+        "oracle": {
+          "method": "Literal expected reviewed with Gregorian rules, manual UTC = local − offset, and independent CPython zoneinfo/TZif cross-check; no Temporal imports.",
+          "calculation": "01:30 − (−05:00) = 06:30Z; later selects this candidate.",
+          "canaries": [
+            {
+              "timeZone": "America/New_York",
+              "instant": "2024-11-03T05:30:00Z",
+              "offset": "-04:00",
+              "localDateTime": "2024-11-03T01:30:00"
+            },
+            {
+              "timeZone": "America/New_York",
+              "instant": "2024-11-03T06:30:00Z",
+              "offset": "-05:00",
+              "localDateTime": "2024-11-03T01:30:00"
+            },
+            {
+              "timeZone": "America/New_York",
+              "instant": "2024-11-04T06:30:00Z",
+              "offset": "-05:00",
+              "localDateTime": "2024-11-04T01:30:00"
+            },
+            {
+              "timeZone": "America/New_York",
+              "instant": "2024-11-03T05:59:59Z",
+              "offset": "-04:00",
+              "localDateTime": "2024-11-03T01:59:59"
+            },
+            {
+              "timeZone": "America/New_York",
+              "instant": "2024-11-03T06:00:00Z",
+              "offset": "-05:00",
+              "localDateTime": "2024-11-03T01:00:00"
+            }
+          ],
+          "transitions": [
+            {
+              "instant": "2024-11-03T06:00:00Z",
+              "beforeOffset": "-04:00",
+              "afterOffset": "-05:00",
+              "note": "01:00–01:59:59 local occurs twice; fold duration 60 minutes."
+            }
+          ],
+          "candidates": [
+            {
+              "nominalDate": "2024-11-03",
+              "instants": [
+                "2024-11-03T05:30:00Z",
+                "2024-11-03T06:30:00Z"
+              ]
+            },
+            {
+              "nominalDate": "2024-11-04",
+              "instants": [
+                "2024-11-04T06:30:00Z"
+              ]
+            }
+          ]
+        },
+        "reviewedAt": "2026-10-12"
+      },
+      "logs": {
+        "stdout": "",
+        "stderr": "",
+        "truncated": false
+      },
+      "status": "PASS",
+      "actual": {
+        "status": "value",
+        "value": {
+          "nominalDate": "2024-11-03",
+          "resolvedLocalDateTime": "2024-11-03T01:30:00",
+          "instant": "2024-11-03T06:30:00Z",
+          "offset": "-05:00",
+          "appliedPolicy": "fold:later"
+        }
+      },
+      "reasonCode": null,
+      "explanation": "Matches the frozen outcome. 01:30 − (−05:00) = 06:30Z; later selects this candidate.",
+      "durationMs": 76
+    },
+    {
+      "caseId": "ny-fold-reject-after-both",
+      "contract": "recurrence",
+      "expected": {
+        "status": "value",
+        "value": {
+          "nominalDate": "2024-11-04",
+          "resolvedLocalDateTime": "2024-11-04T01:30:00",
+          "instant": "2024-11-04T06:30:00Z",
+          "offset": "-05:00",
+          "appliedPolicy": "exact"
+        }
+      },
+      "repro": "chronocases run --adapter 'sample/buggy/adapter.mjs' --case 'ny-fold-reject-after-both' --tz 'UTC' --corpus-hash a552268ca7a26fd1ca4fefcb73e68028647f4f9e8c444ef72654a2735c0df28c --out repro --json --no-open",
+      "fixture": {
+        "schemaVersion": "1",
+        "caseId": "ny-fold-reject-after-both",
+        "contract": "recurrence",
+        "contractVersion": "1",
+        "title": "Skip ambiguity after both candidates passed",
+        "tags": [
+          "daily",
+          "policy",
+          "ny-fold"
+        ],
+        "inputValidity": "valid",
+        "input": {
+          "timeZone": "America/New_York",
+          "localTime": "01:30:00",
+          "firstCandidateDate": "2024-11-03",
+          "horizonDays": 2,
+          "strictlyAfter": "2024-11-03T06:45:00Z",
+          "gapPolicy": "shift-by-gap",
+          "foldPolicy": "reject"
+        },
+        "expected": {
+          "status": "value",
+          "value": {
+            "nominalDate": "2024-11-04",
+            "resolvedLocalDateTime": "2024-11-04T01:30:00",
+            "instant": "2024-11-04T06:30:00Z",
+            "offset": "-05:00",
+            "appliedPolicy": "exact"
+          }
+        },
+        "rationale": "Both 05:30Z and 06:30Z are earlier than cursor 06:45Z. Next day is 01:30 − (−05:00) = 06:30Z.",
+        "sources": [
+          "https://data.iana.org/time-zones/tzdb-2026a/northamerica",
+          "https://www.iana.org/time-zones",
+          "https://tc39.es/proposal-temporal/docs/timezone.html"
+        ],
+        "oracle": {
+          "method": "Literal expected reviewed with Gregorian rules, manual UTC = local − offset, and independent CPython zoneinfo/TZif cross-check; no Temporal imports.",
+          "calculation": "Both 05:30Z and 06:30Z are earlier than cursor 06:45Z. Next day is 01:30 − (−05:00) = 06:30Z.",
+          "canaries": [
+            {
+              "timeZone": "America/New_York",
+              "instant": "2024-11-03T05:30:00Z",
+              "offset": "-04:00",
+              "localDateTime": "2024-11-03T01:30:00"
+            },
+            {
+              "timeZone": "America/New_York",
+              "instant": "2024-11-03T06:30:00Z",
+              "offset": "-05:00",
+              "localDateTime": "2024-11-03T01:30:00"
+            },
+            {
+              "timeZone": "America/New_York",
+              "instant": "2024-11-04T06:30:00Z",
+              "offset": "-05:00",
+              "localDateTime": "2024-11-04T01:30:00"
+            },
+            {
+              "timeZone": "America/New_York",
+              "instant": "2024-11-03T05:59:59Z",
+              "offset": "-04:00",
+              "localDateTime": "2024-11-03T01:59:59"
+            },
+            {
+              "timeZone": "America/New_York",
+              "instant": "2024-11-03T06:00:00Z",
+              "offset": "-05:00",
+              "localDateTime": "2024-11-03T01:00:00"
+            }
+          ],
+          "transitions": [
+            {
+              "instant": "2024-11-03T06:00:00Z",
+              "beforeOffset": "-04:00",
+              "afterOffset": "-05:00",
+              "note": "01:00–01:59:59 local occurs twice; fold duration 60 minutes."
+            }
+          ],
+          "candidates": [
+            {
+              "nominalDate": "2024-11-03",
+              "instants": [
+                "2024-11-03T05:30:00Z",
+                "2024-11-03T06:30:00Z"
+              ]
+            },
+            {
+              "nominalDate": "2024-11-04",
+              "instants": [
+                "2024-11-04T06:30:00Z"
+              ]
+            }
+          ]
+        },
+        "reviewedAt": "2026-10-12"
+      },
+      "logs": {
+        "stdout": "",
+        "stderr": "",
+        "truncated": false
+      },
+      "status": "FAIL",
+      "actual": {
+        "status": "rejected",
+        "reasonCode": "AMBIGUOUS_LOCAL_TIME"
+      },
+      "reasonCode": null,
+      "explanation": "Search the explicit nominal-date window in calendar order. Apply the requested gap/fold policy before comparing the selected instant strictly with the cursor. Fixed 24-hour steps or substituting the other fold candidate are possible causes. Both 05:30Z and 06:30Z are earlier than cursor 06:45Z. Next day is 01:30 − (−05:00) = 06:30Z.",
+      "durationMs": 75
+    },
+    {
+      "caseId": "ny-fold-reject-before",
+      "contract": "recurrence",
+      "expected": {
+        "status": "rejected",
+        "reasonCode": "AMBIGUOUS_LOCAL_TIME"
+      },
+      "repro": "chronocases run --adapter 'sample/buggy/adapter.mjs' --case 'ny-fold-reject-before' --tz 'UTC' --corpus-hash a552268ca7a26fd1ca4fefcb73e68028647f4f9e8c444ef72654a2735c0df28c --out repro --json --no-open",
+      "fixture": {
+        "schemaVersion": "1",
+        "caseId": "ny-fold-reject-before",
+        "contract": "recurrence",
+        "contractVersion": "1",
+        "title": "Reject ambiguity before both candidates",
+        "tags": [
+          "daily",
+          "policy",
+          "ny-fold"
+        ],
+        "inputValidity": "valid",
+        "input": {
+          "timeZone": "America/New_York",
+          "localTime": "01:30:00",
+          "firstCandidateDate": "2024-11-03",
+          "horizonDays": 2,
+          "strictlyAfter": "2024-11-03T05:00:00Z",
+          "gapPolicy": "shift-by-gap",
+          "foldPolicy": "reject"
+        },
+        "expected": {
+          "status": "rejected",
+          "reasonCode": "AMBIGUOUS_LOCAL_TIME"
+        },
+        "rationale": "Candidates 05:30Z and 06:30Z are future; reject the nominal date.",
+        "sources": [
+          "https://data.iana.org/time-zones/tzdb-2026a/northamerica",
+          "https://www.iana.org/time-zones",
+          "https://tc39.es/proposal-temporal/docs/timezone.html"
+        ],
+        "oracle": {
+          "method": "Literal expected reviewed with Gregorian rules, manual UTC = local − offset, and independent CPython zoneinfo/TZif cross-check; no Temporal imports.",
+          "calculation": "Candidates 05:30Z and 06:30Z are future; reject the nominal date.",
+          "canaries": [
+            {
+              "timeZone": "America/New_York",
+              "instant": "2024-11-03T05:30:00Z",
+              "offset": "-04:00",
+              "localDateTime": "2024-11-03T01:30:00"
+            },
+            {
+              "timeZone": "America/New_York",
+              "instant": "2024-11-03T06:30:00Z",
+              "offset": "-05:00",
+              "localDateTime": "2024-11-03T01:30:00"
+            },
+            {
+              "timeZone": "America/New_York",
+              "instant": "2024-11-04T06:30:00Z",
+              "offset": "-05:00",
+              "localDateTime": "2024-11-04T01:30:00"
+            },
+            {
+              "timeZone": "America/New_York",
+              "instant": "2024-11-03T05:59:59Z",
+              "offset": "-04:00",
+              "localDateTime": "2024-11-03T01:59:59"
+            },
+            {
+              "timeZone": "America/New_York",
+              "instant": "2024-11-03T06:00:00Z",
+              "offset": "-05:00",
+              "localDateTime": "2024-11-03T01:00:00"
+            }
+          ],
+          "transitions": [
+            {
+              "instant": "2024-11-03T06:00:00Z",
+              "beforeOffset": "-04:00",
+              "afterOffset": "-05:00",
+              "note": "01:00–01:59:59 local occurs twice; fold duration 60 minutes."
+            }
+          ],
+          "candidates": [
+            {
+              "nominalDate": "2024-11-03",
+              "instants": [
+                "2024-11-03T05:30:00Z",
+                "2024-11-03T06:30:00Z"
+              ]
+            },
+            {
+              "nominalDate": "2024-11-04",
+              "instants": [
+                "2024-11-04T06:30:00Z"
+              ]
+            }
+          ]
+        },
+        "reviewedAt": "2026-10-12"
+      },
+      "logs": {
+        "stdout": "",
+        "stderr": "",
+        "truncated": false
+      },
+      "status": "PASS",
+      "actual": {
+        "status": "rejected",
+        "reasonCode": "AMBIGUOUS_LOCAL_TIME"
+      },
+      "reasonCode": null,
+      "explanation": "Matches the frozen outcome. Candidates 05:30Z and 06:30Z are future; reject the nominal date.",
+      "durationMs": 75
+    },
+    {
+      "caseId": "ny-gap-reject-after-projection",
+      "contract": "recurrence",
+      "expected": {
+        "status": "value",
+        "value": {
+          "nominalDate": "2024-03-11",
+          "resolvedLocalDateTime": "2024-03-11T02:30:00",
+          "instant": "2024-03-11T06:30:00Z",
+          "offset": "-04:00",
+          "appliedPolicy": "exact"
+        }
+      },
+      "repro": "chronocases run --adapter 'sample/buggy/adapter.mjs' --case 'ny-gap-reject-after-projection' --tz 'UTC' --corpus-hash a552268ca7a26fd1ca4fefcb73e68028647f4f9e8c444ef72654a2735c0df28c --out repro --json --no-open",
+      "fixture": {
+        "schemaVersion": "1",
+        "caseId": "ny-gap-reject-after-projection",
+        "contract": "recurrence",
+        "contractVersion": "1",
+        "title": "A past gap does not reject the future search",
+        "tags": [
+          "daily",
+          "policy",
+          "ny-gap"
+        ],
+        "inputValidity": "valid",
+        "input": {
+          "timeZone": "America/New_York",
+          "localTime": "02:30:00",
+          "firstCandidateDate": "2024-03-10",
+          "horizonDays": 2,
+          "strictlyAfter": "2024-03-10T07:45:00Z",
+          "gapPolicy": "reject",
+          "foldPolicy": "earlier"
+        },
+        "expected": {
+          "status": "value",
+          "value": {
+            "nominalDate": "2024-03-11",
+            "resolvedLocalDateTime": "2024-03-11T02:30:00",
+            "instant": "2024-03-11T06:30:00Z",
+            "offset": "-04:00",
+            "appliedPolicy": "exact"
+          }
+        },
+        "rationale": "Forward projection 07:30Z is earlier than cursor 07:45Z and is skipped. Next date: 02:30 − (−04:00) = 06:30Z.",
+        "sources": [
+          "https://data.iana.org/time-zones/tzdb-2026a/northamerica",
+          "https://www.iana.org/time-zones",
+          "https://tc39.es/proposal-temporal/docs/timezone.html"
+        ],
+        "oracle": {
+          "method": "Literal expected reviewed with Gregorian rules, manual UTC = local − offset, and independent CPython zoneinfo/TZif cross-check; no Temporal imports.",
+          "calculation": "Forward projection 07:30Z is earlier than cursor 07:45Z and is skipped. Next date: 02:30 − (−04:00) = 06:30Z.",
+          "canaries": [
+            {
+              "timeZone": "America/New_York",
+              "instant": "2024-03-10T07:30:00Z",
+              "offset": "-04:00",
+              "localDateTime": "2024-03-10T03:30:00"
+            },
+            {
+              "timeZone": "America/New_York",
+              "instant": "2024-03-11T06:30:00Z",
+              "offset": "-04:00",
+              "localDateTime": "2024-03-11T02:30:00"
+            },
+            {
+              "timeZone": "America/New_York",
+              "instant": "2024-03-10T06:59:59Z",
+              "offset": "-05:00",
+              "localDateTime": "2024-03-10T01:59:59"
+            },
+            {
+              "timeZone": "America/New_York",
+              "instant": "2024-03-10T07:00:00Z",
+              "offset": "-04:00",
+              "localDateTime": "2024-03-10T03:00:00"
+            }
+          ],
+          "transitions": [
+            {
+              "instant": "2024-03-10T07:00:00Z",
+              "beforeOffset": "-05:00",
+              "afterOffset": "-04:00",
+              "note": "02:00–02:59:59 local is missing; gap duration 60 minutes."
+            }
+          ],
+          "candidates": [
+            {
+              "nominalDate": "2024-03-10",
+              "instants": [],
+              "forwardProjection": "2024-03-10T07:30:00Z"
+            },
+            {
+              "nominalDate": "2024-03-11",
+              "instants": [
+                "2024-03-11T06:30:00Z"
+              ]
+            }
+          ]
+        },
+        "reviewedAt": "2026-10-12"
+      },
+      "logs": {
+        "stdout": "",
+        "stderr": "",
+        "truncated": false
+      },
+      "status": "FAIL",
+      "actual": {
+        "status": "rejected",
+        "reasonCode": "NONEXISTENT_LOCAL_TIME"
+      },
+      "reasonCode": null,
+      "explanation": "Search the explicit nominal-date window in calendar order. Apply the requested gap/fold policy before comparing the selected instant strictly with the cursor. Fixed 24-hour steps or substituting the other fold candidate are possible causes. Forward projection 07:30Z is earlier than cursor 07:45Z and is skipped. Next date: 02:30 − (−04:00) = 06:30Z.",
+      "durationMs": 74
+    },
+    {
+      "caseId": "ny-gap-reject",
+      "contract": "recurrence",
+      "expected": {
+        "status": "rejected",
+        "reasonCode": "NONEXISTENT_LOCAL_TIME"
+      },
+      "repro": "chronocases run --adapter 'sample/buggy/adapter.mjs' --case 'ny-gap-reject' --tz 'UTC' --corpus-hash a552268ca7a26fd1ca4fefcb73e68028647f4f9e8c444ef72654a2735c0df28c --out repro --json --no-open",
+      "fixture": {
+        "schemaVersion": "1",
+        "caseId": "ny-gap-reject",
+        "contract": "recurrence",
+        "contractVersion": "1",
+        "title": "Reject a future nonexistent wall time",
+        "tags": [
+          "daily",
+          "policy",
+          "ny-gap"
+        ],
+        "inputValidity": "valid",
+        "input": {
+          "timeZone": "America/New_York",
+          "localTime": "02:30:00",
+          "firstCandidateDate": "2024-03-10",
+          "horizonDays": 2,
+          "strictlyAfter": "2024-03-10T00:00:00Z",
+          "gapPolicy": "reject",
+          "foldPolicy": "earlier"
+        },
+        "expected": {
+          "status": "rejected",
+          "reasonCode": "NONEXISTENT_LOCAL_TIME"
+        },
+        "rationale": "Forward projection 07:30Z > cursor 00:00Z, so reject when reaching March 10.",
+        "sources": [
+          "https://data.iana.org/time-zones/tzdb-2026a/northamerica",
+          "https://www.iana.org/time-zones",
+          "https://tc39.es/proposal-temporal/docs/timezone.html"
+        ],
+        "oracle": {
+          "method": "Literal expected reviewed with Gregorian rules, manual UTC = local − offset, and independent CPython zoneinfo/TZif cross-check; no Temporal imports.",
+          "calculation": "Forward projection 07:30Z > cursor 00:00Z, so reject when reaching March 10.",
+          "canaries": [
+            {
+              "timeZone": "America/New_York",
+              "instant": "2024-03-10T07:30:00Z",
+              "offset": "-04:00",
+              "localDateTime": "2024-03-10T03:30:00"
+            },
+            {
+              "timeZone": "America/New_York",
+              "instant": "2024-03-11T06:30:00Z",
+              "offset": "-04:00",
+              "localDateTime": "2024-03-11T02:30:00"
+            },
+            {
+              "timeZone": "America/New_York",
+              "instant": "2024-03-10T06:59:59Z",
+              "offset": "-05:00",
+              "localDateTime": "2024-03-10T01:59:59"
+            },
+            {
+              "timeZone": "America/New_York",
+              "instant": "2024-03-10T07:00:00Z",
+              "offset": "-04:00",
+              "localDateTime": "2024-03-10T03:00:00"
+            }
+          ],
+          "transitions": [
+            {
+              "instant": "2024-03-10T07:00:00Z",
+              "beforeOffset": "-05:00",
+              "afterOffset": "-04:00",
+              "note": "02:00–02:59:59 local is missing; gap duration 60 minutes."
+            }
+          ],
+          "candidates": [
+            {
+              "nominalDate": "2024-03-10",
+              "instants": [],
+              "forwardProjection": "2024-03-10T07:30:00Z"
+            },
+            {
+              "nominalDate": "2024-03-11",
+              "instants": [
+                "2024-03-11T06:30:00Z"
+              ]
+            }
+          ]
+        },
+        "reviewedAt": "2026-10-12"
+      },
+      "logs": {
+        "stdout": "",
+        "stderr": "",
+        "truncated": false
+      },
+      "status": "PASS",
+      "actual": {
+        "status": "rejected",
+        "reasonCode": "NONEXISTENT_LOCAL_TIME"
+      },
+      "reasonCode": null,
+      "explanation": "Matches the frozen outcome. Forward projection 07:30Z > cursor 00:00Z, so reject when reaching March 10.",
+      "durationMs": 74
+    },
+    {
+      "caseId": "ny-gap-shift",
+      "contract": "recurrence",
+      "expected": {
+        "status": "value",
+        "value": {
+          "nominalDate": "2024-03-10",
+          "resolvedLocalDateTime": "2024-03-10T03:30:00",
+          "instant": "2024-03-10T07:30:00Z",
+          "offset": "-04:00",
+          "appliedPolicy": "gap:shift-by-gap"
+        }
+      },
+      "repro": "chronocases run --adapter 'sample/buggy/adapter.mjs' --case 'ny-gap-shift' --tz 'UTC' --corpus-hash a552268ca7a26fd1ca4fefcb73e68028647f4f9e8c444ef72654a2735c0df28c --out repro --json --no-open",
+      "fixture": {
+        "schemaVersion": "1",
+        "caseId": "ny-gap-shift",
+        "contract": "recurrence",
+        "contractVersion": "1",
+        "title": "Shift the missing wall time by one hour",
+        "tags": [
+          "daily",
+          "policy",
+          "ny-gap"
+        ],
+        "inputValidity": "valid",
+        "input": {
+          "timeZone": "America/New_York",
+          "localTime": "02:30:00",
+          "firstCandidateDate": "2024-03-10",
+          "horizonDays": 2,
+          "strictlyAfter": "2024-03-10T00:00:00Z",
+          "gapPolicy": "shift-by-gap",
+          "foldPolicy": "earlier"
+        },
+        "expected": {
+          "status": "value",
+          "value": {
+            "nominalDate": "2024-03-10",
+            "resolvedLocalDateTime": "2024-03-10T03:30:00",
+            "instant": "2024-03-10T07:30:00Z",
+            "offset": "-04:00",
+            "appliedPolicy": "gap:shift-by-gap"
+          }
+        },
+        "rationale": "02:30 + 01:00 gap = 03:30; UTC = 03:30 − (−04:00) = 07:30Z.",
+        "sources": [
+          "https://data.iana.org/time-zones/tzdb-2026a/northamerica",
+          "https://www.iana.org/time-zones",
+          "https://tc39.es/proposal-temporal/docs/timezone.html"
+        ],
+        "oracle": {
+          "method": "Literal expected reviewed with Gregorian rules, manual UTC = local − offset, and independent CPython zoneinfo/TZif cross-check; no Temporal imports.",
+          "calculation": "02:30 + 01:00 gap = 03:30; UTC = 03:30 − (−04:00) = 07:30Z.",
+          "canaries": [
+            {
+              "timeZone": "America/New_York",
+              "instant": "2024-03-10T07:30:00Z",
+              "offset": "-04:00",
+              "localDateTime": "2024-03-10T03:30:00"
+            },
+            {
+              "timeZone": "America/New_York",
+              "instant": "2024-03-11T06:30:00Z",
+              "offset": "-04:00",
+              "localDateTime": "2024-03-11T02:30:00"
+            },
+            {
+              "timeZone": "America/New_York",
+              "instant": "2024-03-10T06:59:59Z",
+              "offset": "-05:00",
+              "localDateTime": "2024-03-10T01:59:59"
+            },
+            {
+              "timeZone": "America/New_York",
+              "instant": "2024-03-10T07:00:00Z",
+              "offset": "-04:00",
+              "localDateTime": "2024-03-10T03:00:00"
+            }
+          ],
+          "transitions": [
+            {
+              "instant": "2024-03-10T07:00:00Z",
+              "beforeOffset": "-05:00",
+              "afterOffset": "-04:00",
+              "note": "02:00–02:59:59 local is missing; gap duration 60 minutes."
+            }
+          ],
+          "candidates": [
+            {
+              "nominalDate": "2024-03-10",
+              "instants": [],
+              "forwardProjection": "2024-03-10T07:30:00Z"
+            },
+            {
+              "nominalDate": "2024-03-11",
+              "instants": [
+                "2024-03-11T06:30:00Z"
+              ]
+            }
+          ]
+        },
+        "reviewedAt": "2026-10-12"
+      },
+      "logs": {
+        "stdout": "",
+        "stderr": "",
+        "truncated": false
+      },
+      "status": "PASS",
+      "actual": {
+        "status": "value",
+        "value": {
+          "nominalDate": "2024-03-10",
+          "resolvedLocalDateTime": "2024-03-10T03:30:00",
+          "instant": "2024-03-10T07:30:00Z",
+          "offset": "-04:00",
+          "appliedPolicy": "gap:shift-by-gap"
+        }
+      },
+      "reasonCode": null,
+      "explanation": "Matches the frozen outcome. 02:30 + 01:00 gap = 03:30; UTC = 03:30 − (−04:00) = 07:30Z.",
+      "durationMs": 76
+    },
+    {
+      "caseId": "ny-gap-skip",
+      "contract": "recurrence",
+      "expected": {
+        "status": "value",
+        "value": {
+          "nominalDate": "2024-03-11",
+          "resolvedLocalDateTime": "2024-03-11T02:30:00",
+          "instant": "2024-03-11T06:30:00Z",
+          "offset": "-04:00",
+          "appliedPolicy": "exact"
+        }
+      },
+      "repro": "chronocases run --adapter 'sample/buggy/adapter.mjs' --case 'ny-gap-skip' --tz 'UTC' --corpus-hash a552268ca7a26fd1ca4fefcb73e68028647f4f9e8c444ef72654a2735c0df28c --out repro --json --no-open",
+      "fixture": {
+        "schemaVersion": "1",
+        "caseId": "ny-gap-skip",
+        "contract": "recurrence",
+        "contractVersion": "1",
+        "title": "Skip the nominal date in the gap",
+        "tags": [
+          "daily",
+          "policy",
+          "ny-gap"
+        ],
+        "inputValidity": "valid",
+        "input": {
+          "timeZone": "America/New_York",
+          "localTime": "02:30:00",
+          "firstCandidateDate": "2024-03-10",
+          "horizonDays": 2,
+          "strictlyAfter": "2024-03-10T00:00:00Z",
+          "gapPolicy": "skip",
+          "foldPolicy": "earlier"
+        },
+        "expected": {
+          "status": "value",
+          "value": {
+            "nominalDate": "2024-03-11",
+            "resolvedLocalDateTime": "2024-03-11T02:30:00",
+            "instant": "2024-03-11T06:30:00Z",
+            "offset": "-04:00",
+            "appliedPolicy": "exact"
+          }
+        },
+        "rationale": "March 10 has zero candidates. March 11 02:30 − (−04:00) = 06:30Z.",
+        "sources": [
+          "https://data.iana.org/time-zones/tzdb-2026a/northamerica",
+          "https://www.iana.org/time-zones",
+          "https://tc39.es/proposal-temporal/docs/timezone.html"
+        ],
+        "oracle": {
+          "method": "Literal expected reviewed with Gregorian rules, manual UTC = local − offset, and independent CPython zoneinfo/TZif cross-check; no Temporal imports.",
+          "calculation": "March 10 has zero candidates. March 11 02:30 − (−04:00) = 06:30Z.",
+          "canaries": [
+            {
+              "timeZone": "America/New_York",
+              "instant": "2024-03-10T07:30:00Z",
+              "offset": "-04:00",
+              "localDateTime": "2024-03-10T03:30:00"
+            },
+            {
+              "timeZone": "America/New_York",
+              "instant": "2024-03-11T06:30:00Z",
+              "offset": "-04:00",
+              "localDateTime": "2024-03-11T02:30:00"
+            },
+            {
+              "timeZone": "America/New_York",
+              "instant": "2024-03-10T06:59:59Z",
+              "offset": "-05:00",
+              "localDateTime": "2024-03-10T01:59:59"
+            },
+            {
+              "timeZone": "America/New_York",
+              "instant": "2024-03-10T07:00:00Z",
+              "offset": "-04:00",
+              "localDateTime": "2024-03-10T03:00:00"
+            }
+          ],
+          "transitions": [
+            {
+              "instant": "2024-03-10T07:00:00Z",
+              "beforeOffset": "-05:00",
+              "afterOffset": "-04:00",
+              "note": "02:00–02:59:59 local is missing; gap duration 60 minutes."
+            }
+          ],
+          "candidates": [
+            {
+              "nominalDate": "2024-03-10",
+              "instants": [],
+              "forwardProjection": "2024-03-10T07:30:00Z"
+            },
+            {
+              "nominalDate": "2024-03-11",
+              "instants": [
+                "2024-03-11T06:30:00Z"
+              ]
+            }
+          ]
+        },
+        "reviewedAt": "2026-10-12"
+      },
+      "logs": {
+        "stdout": "",
+        "stderr": "",
+        "truncated": false
+      },
+      "status": "PASS",
+      "actual": {
+        "status": "value",
+        "value": {
+          "nominalDate": "2024-03-11",
+          "resolvedLocalDateTime": "2024-03-11T02:30:00",
+          "instant": "2024-03-11T06:30:00Z",
+          "offset": "-04:00",
+          "appliedPolicy": "exact"
+        }
+      },
+      "reasonCode": null,
+      "explanation": "Matches the frozen outcome. March 10 has zero candidates. March 11 02:30 − (−04:00) = 06:30Z.",
+      "durationMs": 80
+    },
+    {
+      "caseId": "ny-strict-equality",
+      "contract": "recurrence",
+      "expected": {
+        "status": "value",
+        "value": {
+          "nominalDate": "2024-11-05",
+          "resolvedLocalDateTime": "2024-11-05T01:30:00",
+          "instant": "2024-11-05T06:30:00Z",
+          "offset": "-05:00",
+          "appliedPolicy": "exact"
+        }
+      },
+      "repro": "chronocases run --adapter 'sample/buggy/adapter.mjs' --case 'ny-strict-equality' --tz 'UTC' --corpus-hash a552268ca7a26fd1ca4fefcb73e68028647f4f9e8c444ef72654a2735c0df28c --out repro --json --no-open",
+      "fixture": {
+        "schemaVersion": "1",
+        "caseId": "ny-strict-equality",
+        "contract": "recurrence",
+        "contractVersion": "1",
+        "title": "Equality cannot be the next occurrence",
+        "tags": [
+          "daily",
+          "policy",
+          "ny-fold"
+        ],
+        "inputValidity": "valid",
+        "input": {
+          "timeZone": "America/New_York",
+          "localTime": "01:30:00",
+          "firstCandidateDate": "2024-11-04",
+          "horizonDays": 2,
+          "strictlyAfter": "2024-11-04T06:30:00Z",
+          "gapPolicy": "shift-by-gap",
+          "foldPolicy": "earlier"
+        },
+        "expected": {
+          "status": "value",
+          "value": {
+            "nominalDate": "2024-11-05",
+            "resolvedLocalDateTime": "2024-11-05T01:30:00",
+            "instant": "2024-11-05T06:30:00Z",
+            "offset": "-05:00",
+            "appliedPolicy": "exact"
+          }
+        },
+        "rationale": "November 4 06:30Z equals the cursor, so advance one calendar date.",
+        "sources": [
+          "https://data.iana.org/time-zones/tzdb-2026a/northamerica",
+          "https://www.iana.org/time-zones",
+          "https://tc39.es/proposal-temporal/docs/timezone.html"
+        ],
+        "oracle": {
+          "method": "Literal expected reviewed with Gregorian rules, manual UTC = local − offset, and independent CPython zoneinfo/TZif cross-check; no Temporal imports.",
+          "calculation": "November 4 06:30Z equals the cursor, so advance one calendar date.",
+          "canaries": [
+            {
+              "timeZone": "America/New_York",
+              "instant": "2024-11-04T06:30:00Z",
+              "offset": "-05:00",
+              "localDateTime": "2024-11-04T01:30:00"
+            },
+            {
+              "timeZone": "America/New_York",
+              "instant": "2024-11-05T06:30:00Z",
+              "offset": "-05:00",
+              "localDateTime": "2024-11-05T01:30:00"
+            },
+            {
+              "timeZone": "America/New_York",
+              "instant": "2024-11-03T05:59:59Z",
+              "offset": "-04:00",
+              "localDateTime": "2024-11-03T01:59:59"
+            },
+            {
+              "timeZone": "America/New_York",
+              "instant": "2024-11-03T06:00:00Z",
+              "offset": "-05:00",
+              "localDateTime": "2024-11-03T01:00:00"
+            }
+          ],
+          "transitions": [
+            {
+              "instant": "2024-11-03T06:00:00Z",
+              "beforeOffset": "-04:00",
+              "afterOffset": "-05:00",
+              "note": "01:00–01:59:59 local occurs twice; fold duration 60 minutes."
+            }
+          ],
+          "candidates": [
+            {
+              "nominalDate": "2024-11-04",
+              "instants": [
+                "2024-11-04T06:30:00Z"
+              ]
+            },
+            {
+              "nominalDate": "2024-11-05",
+              "instants": [
+                "2024-11-05T06:30:00Z"
+              ]
+            }
+          ]
+        },
+        "reviewedAt": "2026-10-12"
+      },
+      "logs": {
+        "stdout": "",
+        "stderr": "",
+        "truncated": false
+      },
+      "status": "PASS",
+      "actual": {
+        "status": "value",
+        "value": {
+          "nominalDate": "2024-11-05",
+          "resolvedLocalDateTime": "2024-11-05T01:30:00",
+          "instant": "2024-11-05T06:30:00Z",
+          "offset": "-05:00",
+          "appliedPolicy": "exact"
+        }
+      },
+      "reasonCode": null,
+      "explanation": "Matches the frozen outcome. November 4 06:30Z equals the cursor, so advance one calendar date.",
+      "durationMs": 76
+    },
+    {
+      "caseId": "recurrence-window-out-of-range",
+      "contract": "recurrence",
+      "expected": {
+        "status": "rejected",
+        "reasonCode": "OUT_OF_RANGE"
+      },
+      "repro": "chronocases run --adapter 'sample/buggy/adapter.mjs' --case 'recurrence-window-out-of-range' --tz 'UTC' --corpus-hash a552268ca7a26fd1ca4fefcb73e68028647f4f9e8c444ef72654a2735c0df28c --out repro --json --no-open",
+      "fixture": {
+        "schemaVersion": "1",
+        "caseId": "recurrence-window-out-of-range",
+        "contract": "recurrence",
+        "contractVersion": "1",
+        "title": "The entire nominal window must fit v1",
+        "tags": [
+          "daily",
+          "policy"
+        ],
+        "inputValidity": "invalid",
+        "input": {
+          "timeZone": "UTC",
+          "localTime": "09:00:00",
+          "firstCandidateDate": "2100-12-31",
+          "horizonDays": 2,
+          "strictlyAfter": "2100-12-30T00:00:00Z",
+          "gapPolicy": "shift-by-gap",
+          "foldPolicy": "earlier"
+        },
+        "expected": {
+          "status": "rejected",
+          "reasonCode": "OUT_OF_RANGE"
+        },
+        "rationale": "The included second nominal date would be 2101-01-01, outside v1. Reject before searching.",
+        "sources": [
+          "https://data.iana.org/time-zones/tzdb-2026a/etcetera",
+          "https://www.iana.org/time-zones",
+          "https://tc39.es/proposal-temporal/docs/timezone.html"
+        ],
+        "oracle": {
+          "method": "Literal expected reviewed with Gregorian rules, manual UTC = local − offset, and independent CPython zoneinfo/TZif cross-check; no Temporal imports.",
+          "calculation": "The included second nominal date would be 2101-01-01, outside v1. Reject before searching.",
+          "canaries": [
+            {
+              "timeZone": "UTC",
+              "instant": "2024-06-04T00:00:00Z",
+              "offset": "+00:00",
+              "localDateTime": "2024-06-04T00:00:00"
+            }
+          ],
+          "transitions": [],
+          "candidates": []
+        },
+        "reviewedAt": "2026-10-12"
+      },
+      "logs": {
+        "stdout": "",
+        "stderr": "",
+        "truncated": false
+      },
+      "status": "PASS",
+      "actual": {
+        "status": "rejected",
+        "reasonCode": "OUT_OF_RANGE"
+      },
+      "reasonCode": null,
+      "explanation": "Matches the frozen outcome. The included second nominal date would be 2101-01-01, outside v1. Reject before searching.",
+      "durationMs": 72
+    },
+    {
+      "caseId": "utc-ordinary-daily",
+      "contract": "recurrence",
+      "expected": {
+        "status": "value",
+        "value": {
+          "nominalDate": "2024-06-04",
+          "resolvedLocalDateTime": "2024-06-04T09:00:00",
+          "instant": "2024-06-04T09:00:00Z",
+          "offset": "+00:00",
+          "appliedPolicy": "exact"
+        }
+      },
+      "repro": "chronocases run --adapter 'sample/buggy/adapter.mjs' --case 'utc-ordinary-daily' --tz 'UTC' --corpus-hash a552268ca7a26fd1ca4fefcb73e68028647f4f9e8c444ef72654a2735c0df28c --out repro --json --no-open",
+      "fixture": {
+        "schemaVersion": "1",
+        "caseId": "utc-ordinary-daily",
+        "contract": "recurrence",
+        "contractVersion": "1",
+        "title": "UTC is a valid daily schedule zone",
+        "tags": [
+          "daily",
+          "policy"
+        ],
+        "inputValidity": "valid",
+        "input": {
+          "timeZone": "UTC",
+          "localTime": "09:00:00",
+          "firstCandidateDate": "2024-06-04",
+          "horizonDays": 2,
+          "strictlyAfter": "2024-06-04T08:00:00Z",
+          "gapPolicy": "shift-by-gap",
+          "foldPolicy": "earlier"
+        },
+        "expected": {
+          "status": "value",
+          "value": {
+            "nominalDate": "2024-06-04",
+            "resolvedLocalDateTime": "2024-06-04T09:00:00",
+            "instant": "2024-06-04T09:00:00Z",
+            "offset": "+00:00",
+            "appliedPolicy": "exact"
+          }
+        },
+        "rationale": "UTC 09:00 − 00:00 = 09:00Z > 08:00Z. No transition or projection. ",
+        "sources": [
+          "https://data.iana.org/time-zones/tzdb-2026a/etcetera",
+          "https://www.iana.org/time-zones",
+          "https://tc39.es/proposal-temporal/docs/timezone.html"
+        ],
+        "oracle": {
+          "method": "Literal expected reviewed with Gregorian rules, manual UTC = local − offset, and independent CPython zoneinfo/TZif cross-check; no Temporal imports.",
+          "calculation": "UTC 09:00 − 00:00 = 09:00Z > 08:00Z. No transition or projection. ",
+          "canaries": [
+            {
+              "timeZone": "UTC",
+              "instant": "2024-06-04T09:00:00Z",
+              "offset": "+00:00",
+              "localDateTime": "2024-06-04T09:00:00"
+            },
+            {
+              "timeZone": "UTC",
+              "instant": "2024-06-05T09:00:00Z",
+              "offset": "+00:00",
+              "localDateTime": "2024-06-05T09:00:00"
+            }
+          ],
+          "transitions": [],
+          "candidates": [
+            {
+              "nominalDate": "2024-06-04",
+              "instants": [
+                "2024-06-04T09:00:00Z"
+              ]
+            },
+            {
+              "nominalDate": "2024-06-05",
+              "instants": [
+                "2024-06-05T09:00:00Z"
+              ]
+            }
+          ]
+        },
+        "reviewedAt": "2026-10-12"
+      },
+      "logs": {
+        "stdout": "",
+        "stderr": "",
+        "truncated": false
+      },
+      "status": "PASS",
+      "actual": {
+        "status": "value",
+        "value": {
+          "nominalDate": "2024-06-04",
+          "resolvedLocalDateTime": "2024-06-04T09:00:00",
+          "instant": "2024-06-04T09:00:00Z",
+          "offset": "+00:00",
+          "appliedPolicy": "exact"
+        }
+      },
+      "reasonCode": null,
+      "explanation": "Matches the frozen outcome. UTC 09:00 − 00:00 = 09:00Z > 08:00Z. No transition or projection. ",
+      "durationMs": 75
+    },
+    {
+      "caseId": "utc-window-empty",
+      "contract": "recurrence",
+      "expected": {
+        "status": "no-occurrence",
+        "reasonCode": "NO_OCCURRENCE_IN_WINDOW"
+      },
+      "repro": "chronocases run --adapter 'sample/buggy/adapter.mjs' --case 'utc-window-empty' --tz 'UTC' --corpus-hash a552268ca7a26fd1ca4fefcb73e68028647f4f9e8c444ef72654a2735c0df28c --out repro --json --no-open",
+      "fixture": {
+        "schemaVersion": "1",
+        "caseId": "utc-window-empty",
+        "contract": "recurrence",
+        "contractVersion": "1",
+        "title": "Finite search window has no next value",
+        "tags": [
+          "daily",
+          "policy"
+        ],
+        "inputValidity": "valid",
+        "input": {
+          "timeZone": "UTC",
+          "localTime": "09:00:00",
+          "firstCandidateDate": "2024-06-04",
+          "horizonDays": 1,
+          "strictlyAfter": "2024-06-04T09:00:00Z",
+          "gapPolicy": "shift-by-gap",
+          "foldPolicy": "earlier"
+        },
+        "expected": {
+          "status": "no-occurrence",
+          "reasonCode": "NO_OCCURRENCE_IN_WINDOW"
+        },
+        "rationale": "The only candidate equals the cursor; the one-date window is exhausted.",
+        "sources": [
+          "https://data.iana.org/time-zones/tzdb-2026a/etcetera",
+          "https://www.iana.org/time-zones",
+          "https://tc39.es/proposal-temporal/docs/timezone.html"
+        ],
+        "oracle": {
+          "method": "Literal expected reviewed with Gregorian rules, manual UTC = local − offset, and independent CPython zoneinfo/TZif cross-check; no Temporal imports.",
+          "calculation": "The only candidate equals the cursor; the one-date window is exhausted.",
+          "canaries": [
+            {
+              "timeZone": "UTC",
+              "instant": "2024-06-04T09:00:00Z",
+              "offset": "+00:00",
+              "localDateTime": "2024-06-04T09:00:00"
+            }
+          ],
+          "transitions": [],
+          "candidates": [
+            {
+              "nominalDate": "2024-06-04",
+              "instants": [
+                "2024-06-04T09:00:00Z"
+              ]
+            }
+          ]
+        },
+        "reviewedAt": "2026-10-12"
+      },
+      "logs": {
+        "stdout": "",
+        "stderr": "",
+        "truncated": false
+      },
+      "status": "PASS",
+      "actual": {
+        "status": "no-occurrence",
+        "reasonCode": "NO_OCCURRENCE_IN_WINDOW"
+      },
+      "reasonCode": null,
+      "explanation": "The finite nominal-date window is exhausted. This is a normal no-result outcome, not a timeout.",
+      "durationMs": 79
+    }
+  ]
+}
